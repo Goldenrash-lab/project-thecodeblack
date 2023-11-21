@@ -1,0 +1,33 @@
+{
+  "name": "project-thecodeblack",
+  "version": "2.0.0",
+  "description": "",
+  "homepage": "https://goldenrash-lab.github.io/project-thecodeblack",
+  "scripts": {
+    "start": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /project-thecodeblack/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goldenrash-lab/project-thecodeblack.git"
+  },
+  "keywords": [],
+  "author": "Team The Code Black",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goldenrash-lab/project-thecodeblack/issues"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "lodash.throttle": "^4.1.1",
+    "modern-normalize": "^1.1.0",
+    "tui-pagination": "^3.4.1"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.6.0",
+    "parcel": "^2.6.0",
+    "parcel-reporter-clean-dist": "^1.0.4",
+    "posthtml-include": "^1.7.4"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead"
+}

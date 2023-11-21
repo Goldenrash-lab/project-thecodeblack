@@ -1,0 +1,6 @@
+@import '../../node_modules/modern-normalize/modern-normalize.css';
+@import './layouts/header.css';
+@import './layouts/hero.css';
+@import './layouts/products.css';
+@import './layouts/modal.css';
+@import './layouts/footer.css';

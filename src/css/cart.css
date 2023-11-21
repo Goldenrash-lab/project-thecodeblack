@@ -1,2 +1,4 @@
+@import './base/common.css';
+@import './base/container.css';
 @import './layouts/header.css';
 @import './layouts/footer.css';

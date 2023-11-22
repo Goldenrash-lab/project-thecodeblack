@@ -1,3 +1,12 @@
+.filters-title {
+    color: var(--card-fields);
+    margin-bottom: 8px;
+font-family: Neue Montreal;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.29; /* 128.571% */
+}
 .filters__form {
 position: relative;
 display: flex;
@@ -7,25 +16,22 @@ align-items: flex-start;
 gap: 8px;
 padding-bottom: 40px;
 }
-.filters-title {
-    color: var(--card-fields);
-font-family: Neue Montreal;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 18px; /* 128.571% */
-}
+@media only screen and (min-width: 768px) {
+    .filters__form  {
+        flex-direction: row;
+    }
+  }
 .search-input, .category-choice, .sort-by {
-    display: flex;
+    /* display: flex; */
     background-color: inherit;
     outline: transparent;
     min-width: 100%;
     border-radius: 30px;
     border: 1px solid var(--card-fields);
     padding: 14px 20px;
-    justify-content: center;
-    align-items: center;
-    gap: 209px;
+    /* justify-content: center;
+    align-items: center; */
+    /* gap: 209px; */
     color: var(--black);
 font-family: Neue Montreal;
 font-size: 14px;
@@ -33,6 +39,9 @@ font-style: normal;
 font-weight: 400;
 line-height: 1.29; /* 128.571% */
 }
+.sort-by {
+    background-color: var(--card-background);
+} 
 .search-input::placeholder {
     color: var(--black);
 font-family: Neue Montreal;
@@ -41,14 +50,40 @@ font-style: normal;
 font-weight: 400;
 line-height: 1.29; /* 128.571% */
 }
-
+@media only screen and (min-width: 768px) {
+    .search-input  {
+        min-width: 269px;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    .category-choice {
+        min-width: 189px;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    .sort-by  {
+        min-width: 200px;
+    }
+  }
 .search-submit {
 position: absolute;
-top: 40px;
+top: 15px;
 right: 15px;
 border: none;
 background-color: transparent;
 
+}
+@media only screen and (min-width: 768px) {
+    .search-submit  {
+        /* top: 15px; */
+        right: 450px;
+  }
+}
+@media only screen and (min-width: 1272px) {
+    .search-submit  {
+        /* top: 15px; */
+        left: -315px;
+  }
 }
 .search-submit:hover, .search-submit:focus {
     cursor: pointer; 

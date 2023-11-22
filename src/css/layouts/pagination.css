@@ -1,3 +1,22 @@
+.pagination {
+  min-width: 288px;
+
+}
+
+@media only screen and (min-width: 768px) {
+  .pagination {
+    width: 736px;
+  }
+}
+
+@media only screen and (min-width: 1272px) {
+  .pagination {
+    width: 925px;
+
+  }
+}
+
+
 /*!
  * TOAST UI Pagination
  * @version 3.4.1
@@ -32,7 +51,7 @@
   display: inline-block;
   position: relative;
   width: 28px;
-  padding: 8px 0 6px;
+  padding: 8px;
   margin-left: 0;
   color: #a3a3a3;
   font-size: 12px;
@@ -211,4 +230,20 @@
   height: 12px;
   padding: 8px 0 6px;
   vertical-align: top;
+}
+
+.tui-first {
+  display: none !important;
+}
+
+.tui-last {
+  display: none !important;
+}
+
+.tui-next-is-ellip {
+  display: none !important;
+}
+
+.tui-prev-is-ellip {
+  display: none !important;
 }

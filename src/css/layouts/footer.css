@@ -1,0 +1,234 @@
+.footer {background-color: #6D8434;
+  padding: 40 0 20 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer__wrapper {
+
+    }
+}
+@media only screen and (min-width: 1280px) {
+  .footer__wrapper {
+    display:flex;
+    justify-content: space-between ;
+    }
+}
+
+.footer-social {
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
+
+.footer-homepage{
+
+}
+.footer-homepage__link{
+
+}
+.footer-social__logo {
+  width: 197px;
+  height: 32px;
+}
+
+
+
+
+
+.footer-social__list{
+display: flex;
+gap: 12px;
+}
+.footer-social__link {
+  display: flex;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #E8E8E24D; 
+}
+.footer-social__link:hover{
+  background-color: #E8E8E24D;
+}
+.footer-social__link:focus{
+  background-color: #E8E8E24D;
+}
+.footer-social__icon{
+width: 24px;   
+height: 24px;
+fill: #E8E8E2;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+  .footer-info {
+margin-top: 20px;
+    }
+  }
+.footer-info {
+display: flex;
+flex-direction: column;
+}
+@media only screen and (max-width: 767px) {
+  .fotter-info__variety {
+    margin-top: 40px;
+    width: 335px;
+    font-family: Neue Montreal;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: #E8E8E2;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .fotter-info__variety {
+      width: 410px;
+      height: 88px;
+      
+      font-family: Neue Montreal;
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 44px;
+      letter-spacing: -0.02em;
+      color: #E8E8E2;
+      }
+    }
+    @media only screen and (max-width: 767px) {
+      .fotter-info__description {
+        width: 335px;
+        height: 54px;
+          
+        font-family: Neue Montreal;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: 0em;
+        color: #E8E8E2B2;
+        margin-top: 14px;
+        }
+          }
+ @media only screen and (min-width: 768px) {
+  .fotter-info__description {
+    width: 410px;
+    height: 72px;
+      
+    font-family: Neue Montreal;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #E8E8E2B2;
+    margin-top: 20px;
+    }
+      }
+
+
+
+
+@media only screen and (max-width: 767px) {
+  .footer-form {
+margin-top: 80px;
+  }
+  }
+.footer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media only screen and (max-width: 767px) {
+  .footer-form__text {
+    font-family: Neue Montreal;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    color: #E8E8E2;
+    height: 18px;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .footer-form__text {
+      font-family: Neue Montreal;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0px;
+      color: #E8E8E2;
+      
+      height: 24px;
+      }
+    }
+
+.fotter-info__input {
+padding-left: 20px;
+cursor: pointer;
+
+height: 48px;
+border-radius: 30px;
+border: 1px solid #E8E8E2;
+background-color: #6D8434;
+color:#E8E8E2 ;
+}
+.fotter-info__input::placeholder{
+  color: #E8E8E299;
+}
+.footer-form__button {
+cursor: pointer;
+width: 336px;
+height: 48px;
+
+border-radius: 30px;
+border: #E8E8E2;
+}
+.footer-form__button:hover{
+  color: #6D8434;
+}
+.footer-form__button:focus{
+  color: #6D8434;
+}
+.footer-form__button-text{
+font-family: Neue Montreal;
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+.footer-cop__wrapper {
+display: flex;
+flex-direction: column;
+align-items: start;
+padding-top: 80px;
+gap: 8px;
+  }
+  }
+@media only screen and (min-width: 768px) {
+    .footer-cop__wrapper {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 120px;
+    }
+      }
+
+.footer-cop__copyright {
+font-family: Neue Montreal;
+font-size: 14px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0em;
+text-align: right;
+color: #E8E8E2;
+}
+
+
+

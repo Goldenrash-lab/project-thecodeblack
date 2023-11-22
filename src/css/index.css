@@ -1,5 +1,6 @@
 @import '../../node_modules/modern-normalize/modern-normalize.css';
 @import './base/common.css';
+@import './utils/variables.css';
 @import './base/container.css';
 @import './layouts/header.css';
 @import './layouts/hero.css';

@@ -1,3 +1,6 @@
+.products {
+  display: flex;
+}
 .products__list {
   display: flex;
   flex-direction: column;
@@ -6,7 +9,7 @@
 .products__item {
   max-width: 335px;
   padding: 20;
-  background-color: #fafafa;
+  background-color: var(--card-background);
   border-radius: 20px;
 }
 .products__item-img {
@@ -17,7 +20,7 @@
   font-weight: 500;
   line-height: 1.11;
 
-  color: #010101;
+  color: var(--black);
   margin-top: 20px;
 }
 .products__item-info {
@@ -43,7 +46,7 @@
 
 .products__item-text {
   margin-left: 2px;
-  color: #010101;
+  color: var(--black);
 }
 .products__item-buy {
   margin-top: 40px;
@@ -53,7 +56,7 @@
   align-items: flex-end;
 }
 .products__item-link {
-  background-color: #6d8434;
+  background-color: var(--green);
   width: 34px;
   height: 34px;
   display: flex;
@@ -62,8 +65,94 @@
   border-radius: 50%;
 }
 .products__item-price {
-  color: #010101;
+  color: var(--black);
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11; /* 111.111% */
+}
+
+.popular__title {
+  margin-top: 80px;
+  color: var(--black);
+  font-family: Neue Montreal;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px; /* 116.667% */
+}
+.popular__list {
+  margin-top: 20px;
+  gap: 14px;
+}
+.popular__item {
+  border-radius: 10px;
+
+  display: flex;
+  max-width: 335px;
+  padding: 12px;
+  background-color: var(--card-background);
+}
+.popular__item-img {
+  width: 74px;
+  object-fit: cover;
+  height: 74px;
+  background-color: var(--card-background);
+  border-radius: 10px;
+  margin-right: 10px;
+}
+.popular__item-buy {
+  display: flex;
+  justify-content: space-between;
+}
+
+.popular__item-title {
+  color: var(--black);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11; /* 111.111% */
+}
+.popular__item-link {
+  width: 20px;
+  height: 20px;
+
+  background-color: var(--light-grey);
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popular__item-svg {
+  fill: var(--green);
+}
+
+.popular__item-info {
+  margin-top: 12px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.popular__item-label,
+.popular__item-text {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17; /* 116.667% */
+}
+
+.popular__item-label {
+  color: rgba(1, 1, 1, 0.3);
+}
+.popular__item-text {
+  margin-left: 4px;
+}
+.popular__item-info-top {
+  display: flex;
+}
+.popular__item-info-bottom {
+  display: flex;
+  margin-top: 9px;
+}
+.popular__item-info-bottom .popular__item-label:not(:first-child) {
+  margin-left: 9px;
 }

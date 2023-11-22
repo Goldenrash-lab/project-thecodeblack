@@ -1,0 +1,29 @@
+.container-header {
+  margin-bottom: 72px;
+  margin-top: 18px;
+}
+.css-a-link-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.css-div-icon-header {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #4d5ae5;
+  color: #f4f4fd;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.css-span-link-text {
+  color: #010101;
+  font-family: FONTSPRING DEMO - Quincy CF Black;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 1.11;
+  letter-spacing: 0.02em;
+}

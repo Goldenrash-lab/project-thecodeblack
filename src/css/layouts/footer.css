@@ -2,18 +2,35 @@
   padding: 40 0 20 0;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
   .footer__wrapper {
-
+display: flex;
+gap: 78px;
     }
 }
 @media only screen and (min-width: 1280px) {
   .footer__wrapper {
     display:flex;
-    justify-content: space-between ;
+    justify-content: space-between;
     }
 }
 
+@media screen and (min-width: 769px) and (max-width: 1279px) {
+  .footer-tablet{
+    display: flex;
+    flex-direction: column;
+      }
+}
+
+@media only screen and (min-width: 1280px) {
+  .footer-tablet{
+display: flex;
+gap: 149px;
+  }
+  
+}
+
+/* ---Social---*/
 .footer-social {
 display: flex;
 flex-direction: column;
@@ -31,9 +48,6 @@ gap: 20px;
   width: 197px;
   height: 32px;
 }
-
-
-
 
 
 .footer-social__list{
@@ -62,7 +76,7 @@ fill: #E8E8E2;
 }
 
 
-
+/* ---Info--- */
 @media only screen and (max-width: 767px) {
   .footer-info {
 margin-top: 20px;
@@ -131,17 +145,25 @@ flex-direction: column;
 
 
 
-
+/* ---Form--- */
 @media only screen and (max-width: 767px) {
   .footer-form {
 margin-top: 80px;
   }
   }
+  @media only screen and (min-width: 768px) and (max-width: 1279px) {
+    .footer-form{
+    margin-top: 68px;
+  }
+}
 .footer-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
+
+
 @media only screen and (max-width: 767px) {
   .footer-form__text {
     font-family: Neue Montreal;
@@ -167,10 +189,12 @@ margin-top: 80px;
       }
     }
 
+
+
 .fotter-info__input {
 padding-left: 20px;
 cursor: pointer;
-
+width: 336px;
 height: 48px;
 border-radius: 30px;
 border: 1px solid #E8E8E2;
@@ -202,7 +226,7 @@ line-height: 24px;
 }
 
 
-
+/* ---Copyrights--- */
 @media only screen and (max-width: 767px) {
 .footer-cop__wrapper {
 display: flex;

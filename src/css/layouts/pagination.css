@@ -1,3 +1,21 @@
+.pagination {
+  min-width: 288px;
+
+}
+
+@media only screen and (min-width: 768px) {
+  .pagination {
+    width: 736px;
+  }
+}
+
+@media only screen and (min-width: 1272px) {
+  .pagination {
+    width: 925px;
+
+  }
+}
+
 
 /*!
  * TOAST UI Pagination
@@ -6,7 +24,7 @@
  * @license MIT
  */
 
- .tui-pagination * {
+.tui-pagination * {
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -33,7 +51,7 @@
   display: inline-block;
   position: relative;
   width: 28px;
-  padding: 8px 0 6px;
+  padding: 8px;
   margin-left: 0;
   color: #a3a3a3;
   font-size: 12px;
@@ -89,8 +107,8 @@
   line-height: 26px;
   white-space: nowrap;
   font-weight: normal;
-  background: #FAFAFA;
-  border: 1px solid #FAFAFA;
+  background: #fafafa;
+  border: 1px solid #fafafa;
 }
 
 .tui-pagination .tui-prev-is-ellip {
@@ -165,7 +183,7 @@
 }
 
 .tui-pagination .tui-is-disabled:hover {
-    background: #6D8434;
+  background: #6d8434;
   cursor: default;
 }
 
@@ -212,4 +230,20 @@
   height: 12px;
   padding: 8px 0 6px;
   vertical-align: top;
+}
+
+.tui-first {
+  display: none !important;
+}
+
+.tui-last {
+  display: none !important;
+}
+
+.tui-next-is-ellip {
+  display: none !important;
+}
+
+.tui-prev-is-ellip {
+  display: none !important;
 }

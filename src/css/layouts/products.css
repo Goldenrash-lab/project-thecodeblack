@@ -15,13 +15,7 @@
   background-color: var(--card-background);
   border-radius: 20px;
 }
-.products__item-wrapper {
-  display: flex;
-  margin-bottom: 9px;
-}
-.products__item-info > .products__item-label {
-  margin-left: 0;
-}
+
 .products__item-img {
   border-radius: 10px;
 }
@@ -32,6 +26,9 @@
 
   color: var(--black);
   margin-top: 20px;
+}
+.products__item-wrapper {
+  display: flex;
 }
 .products__item-info {
   margin-top: 10px;
@@ -280,6 +277,12 @@
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 40px;
     column-gap: 20px;
+  }
+  .products__item-info > .products__item-label {
+    margin-left: 0;
+  }
+  .products__item-wrapper {
+    margin-bottom: 9px;
   }
   .products__item {
     max-width: 295px;

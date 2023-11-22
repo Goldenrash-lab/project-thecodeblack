@@ -1,1 +1,1 @@
-import './plagination/pagination'
+import './pagination/pagination';

@@ -57,17 +57,20 @@
   overflow: hidden;
   margin-left: 16px;
   margin-right: 16px;
+  max-width: 335px;
 }
 @media only screen and (min-width: 768px) {
   .hero-img {
     border-radius: 60px;
     margin-left: 16px;
     margin-right: 16px;
+    max-width: 704px;
   }
 }
 @media only screen and (min-width: 1272px) {
   .hero-img {
     margin-left: 100px;
     margin-right: 100px;
+    max-width: 1240px;
   }
 }

@@ -1,0 +1,60 @@
+.footer {background-color: #6D8434;
+}
+
+.container {
+
+}
+
+.footer__wrapper {
+}
+
+.footer-social {
+display:flex
+}
+
+.footer-social__logo {
+}
+
+.footer-social__text {
+}
+
+.footer-social__links {
+  list-style: none;
+}
+
+.footer-social__face {
+}
+
+.footer-info {
+}
+
+.fotter-info__variety {
+}
+
+.fotter-info__description {
+}
+
+.footer-form {
+}
+
+.footer-form__text {
+}
+
+.fotter-info__input {
+}
+
+.footer-form__button {
+}
+
+.footer-cop__wrapper {
+  display: flex;
+}
+
+.footer-cop__rights {
+}
+
+.footer-cop__terms {
+
+}
+
+

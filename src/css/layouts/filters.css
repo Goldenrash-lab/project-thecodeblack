@@ -17,6 +17,8 @@ line-height: 18px; /* 128.571% */
 }
 .search-input, .category-choice, .sort-by {
     display: flex;
+    background-color: inherit;
+    outline: transparent;
     min-width: 100%;
     border-radius: 30px;
     border: 1px solid var(--card-fields);

@@ -21,17 +21,37 @@ padding-bottom: 40px;
         flex-direction: row;
     }
   }
-.search-input, .category-choice, .sort-by {
-    /* display: flex; */
+  .search {
+    display: flex;
+    min-width: 100%;
+  }
+  @media only screen and (min-width: 768px) {
+    .search {
+        min-width: 269px;
+    }
+  }
+.search-input {
+    flex-grow: 1;
+    background-color: inherit;
+    outline: transparent;
+    border-radius: 30px 0px 0px 30px;
+    border: 1px solid var(--card-fields);
+    border-right: none;
+    padding: 14px 20px;
+    color: var(--black);
+font-family: Neue Montreal;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.29; /* 128.571% */
+}
+.category-choice, .sort-by {
     background-color: inherit;
     outline: transparent;
     min-width: 100%;
     border-radius: 30px;
     border: 1px solid var(--card-fields);
     padding: 14px 20px;
-    /* justify-content: center;
-    align-items: center; */
-    /* gap: 209px; */
     color: var(--black);
 font-family: Neue Montreal;
 font-size: 14px;
@@ -50,11 +70,7 @@ font-style: normal;
 font-weight: 400;
 line-height: 1.29; /* 128.571% */
 }
-@media only screen and (min-width: 768px) {
-    .search-input  {
-        min-width: 269px;
-    }
-  }
+
   @media only screen and (min-width: 768px) {
     .category-choice {
         min-width: 189px;
@@ -66,28 +82,17 @@ line-height: 1.29; /* 128.571% */
     }
   }
 .search-submit {
-position: absolute;
-top: 15px;
-right: 15px;
-border: none;
+justify-content: center;
+    align-items: center;
+width: 70px;
+border-radius: 0px 30px 30px 0px;
+    border: 1px solid var(--card-fields);
+    border-left: none;
 background-color: transparent;
-
+cursor: pointer; 
 }
-@media only screen and (min-width: 768px) {
-    .search-submit  {
-        /* top: 15px; */
-        right: 450px;
-  }
-}
-@media only screen and (min-width: 1272px) {
-    .search-submit  {
-        /* top: 15px; */
-        left: -315px;
-  }
-}
-.search-submit:hover, .search-submit:focus {
-    cursor: pointer; 
-}
-.category-choice, .sort-by {
-
+.category-choice option, .sort-by option {
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0px 4px 11.2125px 0px rgba(0, 0, 0, 0.04), 0px 20px 69px 0px rgba(0, 0, 0, 0.07);
 }

@@ -3,6 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .hero-title {
@@ -58,6 +60,7 @@
   margin-left: 16px;
   margin-right: 16px;
   max-width: 335px;
+  margin: 0 auto;
 }
 @media only screen and (min-width: 768px) {
   .hero-img {
@@ -69,8 +72,8 @@
 }
 @media only screen and (min-width: 1272px) {
   .hero-img {
-    margin-left: 100px;
-    margin-right: 100px;
+    /* margin-left: 100px;
+    margin-right: 100px; */
     max-width: 1240px;
   }
 }

@@ -3,7 +3,7 @@
     <div class="filters">
       <include src="./partials/filters.html"></include>
     </div>
-    <h4>PRODUCTS</h4>
+    <h4 class="visually-hidden">PRODUCTS</h4>
     <div class="products__inner">
       <ul class="products__list">
         <li class="products__item">
@@ -143,6 +143,41 @@
           </div>
         </li>
       </ul>
+      <div class="products__box">
+        <h3 class="popular__title">Popular products</h3>
+        <ul class="popular__list">
+          <li class="popular__item">
+            <img
+              src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?q=80&w=1375&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              width="74"
+              alt=""
+              class="popular__item-img"
+            />
+            <div class="popular__item-box">
+              <div class="popular__item-buy">
+                <h4 class="popular__item-title">Ackee</h4>
+                <a href="#" class="popular__item-link">
+                  <svg class="popular__item-svg" width="12" height="12">
+                    <use href="./images/icons.svg#icon-cart-icon"></use>
+                  </svg>
+                </a>
+              </div>
+              <div class="popular__item-info">
+                <div class="popular__item-info-top">
+                  <h5 class="popular__item-label">Category:</h5>
+                  <p class="popular__item-text">Fresh Produce</p>
+                </div>
+                <div class="popular__item-info-bottom">
+                  <h5 class="popular__item-label">Size:</h5>
+                  <p class="popular__item-text">Each</p>
+                  <h5 class="popular__item-label">Popularity:</h5>
+                  <p class="popular__item-text">0</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <div class="pagination">

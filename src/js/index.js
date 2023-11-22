@@ -1,1 +1,3 @@
-import './plagination/pagination'
+import './pagination/pagination';
+import './templates/filters';
+import './modal';

@@ -1,3 +1,12 @@
+.filters-title {
+    color: var(--card-fields);
+    margin-bottom: 8px;
+font-family: Neue Montreal;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.29; /* 128.571% */
+}
 .filters__form {
 position: relative;
 display: flex;
@@ -7,25 +16,28 @@ align-items: flex-start;
 gap: 8px;
 padding-bottom: 40px;
 }
-.filters-title {
-    color: var(--card-fields);
-font-family: Neue Montreal;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 18px; /* 128.571% */
-}
-.search-input, .category-choice, .sort-by {
+@media only screen and (min-width: 768px) {
+    .filters__form  {
+        flex-direction: row;
+    }
+  }
+  .search {
     display: flex;
+    min-width: 100%;
+  }
+  @media only screen and (min-width: 768px) {
+    .search {
+        min-width: 269px;
+    }
+  }
+.search-input {
+    flex-grow: 1;
     background-color: inherit;
     outline: transparent;
-    min-width: 100%;
-    border-radius: 30px;
+    border-radius: 30px 0px 0px 30px;
     border: 1px solid var(--card-fields);
+    border-right: none;
     padding: 14px 20px;
-    justify-content: center;
-    align-items: center;
-    gap: 209px;
     color: var(--black);
 font-family: Neue Montreal;
 font-size: 14px;
@@ -33,6 +45,23 @@ font-style: normal;
 font-weight: 400;
 line-height: 1.29; /* 128.571% */
 }
+.category-choice, .sort-by {
+    background-color: inherit;
+    outline: transparent;
+    min-width: 100%;
+    border-radius: 30px;
+    border: 1px solid var(--card-fields);
+    padding: 14px 20px;
+    color: var(--black);
+font-family: Neue Montreal;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.29; /* 128.571% */
+}
+.sort-by {
+    background-color: var(--card-background);
+} 
 .search-input::placeholder {
     color: var(--black);
 font-family: Neue Montreal;
@@ -42,17 +71,28 @@ font-weight: 400;
 line-height: 1.29; /* 128.571% */
 }
 
+  @media only screen and (min-width: 768px) {
+    .category-choice {
+        min-width: 189px;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    .sort-by  {
+        min-width: 200px;
+    }
+  }
 .search-submit {
-position: absolute;
-top: 40px;
-right: 15px;
-border: none;
+justify-content: center;
+    align-items: center;
+width: 70px;
+border-radius: 0px 30px 30px 0px;
+    border: 1px solid var(--card-fields);
+    border-left: none;
 background-color: transparent;
-
+cursor: pointer; 
 }
-.search-submit:hover, .search-submit:focus {
-    cursor: pointer; 
-}
-.category-choice, .sort-by {
-
+.category-choice option, .sort-by option {
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0px 4px 11.2125px 0px rgba(0, 0, 0, 0.04), 0px 20px 69px 0px rgba(0, 0, 0, 0.07);
 }

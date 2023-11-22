@@ -1,3 +1,22 @@
+/* Variables */
+:root {
+    /* Fonts */
+        --main-font: 'Roboto', sans-serif;
+    /* Colors */
+    --grey: rgba(1, 1, 1, 0.70);
+    --black: #010101;
+    --light-grey: #E8E8E2;
+    --cancel-grey: rgba(1, 1, 1, 0.07);
+    --tagline-grey: rgba(1, 1, 1, 0.80);
+    --green: #6D8434;
+    --green-accent: #586F1F;
+    --card-fields: rgba(1, 1, 1, 0.80);
+    --card-background: #FAFAFA;
+    --footer-color: rgba(232, 232, 226, 0.70);
+    
+} 
+
+
 body {
   background-color: #e8e8e2;
 }

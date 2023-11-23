@@ -76,6 +76,9 @@
   align-items: flex-end;
 }
 .products__item-link {
+  border: none;
+  cursor: pointer;
+  outline: transparent;
   background-color: var(--green);
   width: 34px;
   height: 34px;

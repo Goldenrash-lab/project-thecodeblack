@@ -101,7 +101,7 @@ function createProducts(arr) {
           </div>
           <div class="products__item-buy">
             <p class="products__item-price">$${price}</p>
-            <a href="#" class="products__item-link">
+            <button type="button" class="products__item-link">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
@@ -114,7 +114,7 @@ function createProducts(arr) {
                   fill="#E8E8E2"
                 />
               </svg>
-            </a>
+            </button>
           </div>
         </li>
     `;

@@ -1,1 +1,2 @@
-import './plagination/pagination'
+import './plagination/pagination';
+import './footer-validation';

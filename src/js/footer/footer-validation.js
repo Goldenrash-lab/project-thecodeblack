@@ -41,19 +41,19 @@ populateTextarea();
 const BASE_URL = 'https://food-boutique.b.goit.study/api';
 // contenttype apl json
 
-// const makeSubscription = () => {
-//   return fetch(`${BASE_URL}/products/categories`).then(response => {
-//     if (!response.ok) {
-//       throw new Error(response.status);
-//     }
-//     console.log(response);
-//   });
-// };
+const makeSubscription = () => {
+  return fetch(`${BASE_URL}/products/categories`).then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    console.log(response);
+  });
+};
 
-// makeSubscription()
-//   .then(data => {
-//     console.log(data);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
+makeSubscription()
+  .then(data => {
+    console.log(data);
+  })
+  .catch(err => {
+    console.log(err);
+  });

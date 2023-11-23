@@ -49,6 +49,9 @@ body{
 
     gap: 14px;
     margin: 0 12px 13px 0;
+
+    
+    cursor: pointer;
 }
 
 .delete-button{
@@ -97,6 +100,7 @@ body{
     width: 18px;
     height: 18px;
 
+    cursor: pointer;
 }
 
 .product-item-img{

@@ -19,10 +19,39 @@ function onFormElSubmit(e) {
   const keyword = e.target.elements['search-input'].value;
   console.log(keyword);
 
-  productAPI.getProductsByCat();
+  const obj = loadToLS('PARAMS');
+  obj.keyword = keyword;
+  saveToLS('PARAMS', obj);
+
+  productAPI.getProductsByCat(obj).then(res => {
+    console.log(res.results);
+    renderProducts(res.results);
+  });
 }
 
 function onDocumentLoad() {
+  // DEFAULT LStorage
+  let localStorage = loadToLS('PARAMS');
+
+  if (Object.keys(localStorage).length === 0) {
+    localStorage = {
+      keyword: '',
+      category: '',
+      page: 1,
+      limit: 9,
+    };
+  }
+
+  saveToLS('PARAMS', localStorage);
+
+  // _______
+
+  // refs.formEl.elements['search-input'].value = localStorage.keyword;
+  // console.log(refs.selectEl.children);
+  // const options = refs.selectEl.children;
+  // options.forEach(element => {});
+  // refs.selectEl.value = localStorage.category;
+
   productAPI.getCategories().then(res => {
     renderOption(res);
   });
@@ -35,6 +64,7 @@ function createOption(arr) {
         `;
   });
 }
+
 function renderOption(arr) {
   const markup = createOption(arr).join('');
   refs.selectEl.innerHTML = markup;
@@ -42,15 +72,17 @@ function renderOption(arr) {
 
 function onSelectElChange() {
   const value = refs.selectEl.value;
-  console.log(value);
+
   const obj = loadToLS('PARAMS');
   obj.category = value;
-  console.log(obj);
+  saveToLS('PARAMS', obj);
 
   productAPI.getProductsByCat(obj).then(res => {
+    console.log(res);
     renderProducts(res.results);
   });
 }
+
 function createProducts(arr) {
   return arr.map(el => {
     const { category, img, name, popularity, price, size, _id } = el;
@@ -96,6 +128,7 @@ function createProducts(arr) {
     `;
   });
 }
+
 function renderProducts(arr) {
   const markup = createProducts(arr).join('');
   refs.productListEl.innerHTML = markup;

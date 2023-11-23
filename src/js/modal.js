@@ -1,32 +1,34 @@
-const itemEls = document.querySelectorAll('.products__item');
 const modal = document.querySelector('.modal');
+const productList = document.querySelector('.products__list');
 
-
-modal.addEventListener('click', onCloseModal);
-itemEls.forEach(itemEl => {
-    itemEl.addEventListener('click', onModalOpen)
-});
-
-// console.log(itemEls);
-
-function onCloseModal(e) { 
-    if (e.code === 'Escape' || e.target === modal || e.target.closest('.modal__close')) {
-        modal.classList.remove('open');
-        window.removeEventListener('keydown', onDocumentKeyPress)
+productList.addEventListener('click', e => {
+    const targetEl = e.target.closest('.products__item')
+    if (targetEl) {
+        onModalOpen();
     }
 
+});
+
+function onCloseModal(e) { 
+        modal.classList.remove('open');
+        window.removeEventListener('keydown', onDocumentKeyPress)
 };
 
 function onModalOpen(e) {
-    e.preventDefault();
+    // e.preventDefault();
     modal.classList.add('open');
-
     window.addEventListener('keydown', onDocumentKeyPress);
 };
 
-const onDocumentKeyPress = ({code}) => {
-    if (code === 'Escape') {
-        onCloseModal({ code: 'Escape'});
+function onDocumentKeyPress(e) {
+    if (e.code === 'Escape') {
+        onCloseModal();
     }
-};
+}
+
+modal.addEventListener('click', e => {
+    if (e.target === modal || e.target.closest('.modal__close')) {
+        onCloseModal()
+    }
+});
 

@@ -8,12 +8,12 @@
     transition: .4s ease-in-out;
 }
 
+
 .modal.open {
     display: flex;
     /* transform: translateY(0%) scale(100%); */
     background-color: rgba(1, 1, 1, 0.40)
 }
-
 
 
 .modal__inner {

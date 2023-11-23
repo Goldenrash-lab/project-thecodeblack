@@ -5,8 +5,15 @@
   justify-content: space-between;
   align-items: center;
   align-content: center;
-  min-width: 375px;
+  min-width: 320px;
 }
+
+@media only screen and (max-width: 767px) {
+  .container-header {
+    width: 335px;
+  }
+}
+
 .css-a-link-icon {
   display: flex;
   align-items: center;

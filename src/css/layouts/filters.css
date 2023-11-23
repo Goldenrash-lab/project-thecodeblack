@@ -7,24 +7,41 @@ font-style: normal;
 font-weight: 400;
 line-height: 1.29; /* 128.571% */
 }
+
 .filters__form {
 position: relative;
 display: flex;
-min-width: 280px;
+min-width: 303px;
 flex-direction: column;
 align-items: flex-start;
 gap: 8px;
 padding-bottom: 40px;
 }
+@media only screen and (max-width: 375px) {
+    .filters__form  {
+        max-width: 280px;
+    }
+  }
+  
+
 @media only screen and (min-width: 768px) {
     .filters__form  {
         flex-direction: row;
     }
   }
+
   .search {
     display: flex;
-    min-width: 100%;
+    max-width: 100%;
   }
+
+  @media only screen and (max-width: 375px) {
+    .search {
+        max-width: 100%;
+        min-width: none;
+    }
+  }
+
   @media only screen and (min-width: 768px) {
     .search {
         min-width: 269px;

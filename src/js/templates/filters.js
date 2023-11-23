@@ -3,15 +3,48 @@ import { ProductAPI } from '../products/API';
 const refs = {
   selectEl: document.querySelector('.category-choice'),
   productListEl: document.querySelector('.products__list'),
+  formEl: document.querySelector('.filters__form'),
 };
 
 document.addEventListener('DOMContentLoaded', onDocumentLoad);
 refs.selectEl.addEventListener('change', onSelectElChange);
+refs.formEl.addEventListener('submit', onFormElSubmit);
 
 const productAPI = new ProductAPI();
-console.log(productAPI.getCategories());
+
+function onFormElSubmit(e) {
+  e.preventDefault();
+
+  const keyword = e.target.elements['search-input'].value;
+
+  const obj = loadToLS('PARAMS');
+  obj.keyword = keyword;
+  saveToLS('PARAMS', obj);
+
+  productAPI.getProductsByCat(obj).then(res => {
+    console.log(res.results);
+    renderProducts(res.results);
+  });
+}
 
 function onDocumentLoad() {
+  // DEFAULT LStorage
+
+  const localStorage = {
+    keyword: '',
+    category: '',
+    page: 1,
+    limit: 9,
+  };
+
+  saveToLS('PARAMS', localStorage);
+
+  // _______
+
+  productAPI.getProductsByCat(localStorage).then(res => {
+    renderProducts(res.results);
+  });
+
   productAPI.getCategories().then(res => {
     renderOption(res);
   });
@@ -24,19 +57,24 @@ function createOption(arr) {
         `;
   });
 }
+
 function renderOption(arr) {
   const markup = createOption(arr).join('');
-  refs.selectEl.innerHTML = markup;
+  refs.selectEl.insertAdjacentHTML('afterbegin', markup);
 }
 
 function onSelectElChange() {
   const value = refs.selectEl.value;
-  console.log(value);
 
-  productAPI.getProductsByCat(value).then(res => {
+  const obj = loadToLS('PARAMS');
+  obj.category = value;
+  saveToLS('PARAMS', obj);
+
+  productAPI.getProductsByCat(obj).then(res => {
     renderProducts(res.results);
   });
 }
+
 function createProducts(arr) {
   return arr.map(el => {
     const { category, img, name, popularity, price, size, _id } = el;
@@ -63,7 +101,7 @@ function createProducts(arr) {
           </div>
           <div class="products__item-buy">
             <p class="products__item-price">$${price}</p>
-            <a href="#" class="products__item-link">
+            <button type="button" class="products__item-link">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
@@ -76,13 +114,32 @@ function createProducts(arr) {
                   fill="#E8E8E2"
                 />
               </svg>
-            </a>
+            </button>
           </div>
         </li>
     `;
   });
 }
+
 function renderProducts(arr) {
   const markup = createProducts(arr).join('');
   refs.productListEl.innerHTML = markup;
+}
+
+// LOCALSTORAGE
+
+function saveToLS(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+function loadToLS(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) || {};
+  } catch (error) {
+    console.log(error.message);
+    return localStorage.getItem(key);
+  }
 }

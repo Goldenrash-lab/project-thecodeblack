@@ -10,7 +10,7 @@
     <include src="./partials/header.html"></include>
 
     <section class="section-wrapper">
-      <div class="container">
+      <div class="cart-container container">
         <div class="heading-container">
           <svg
             class="cart-icon"
@@ -25,12 +25,12 @@
               fill="#E8E8E2"
             />
           </svg>
-          <h1 class="cart-header section-header">CART (3)</h1>
+          <h1 class="cart-header section-header" id="cart-heading">CART (3)</h1>
         </div>
 
-        <div class="content-container">
+        <div class="content-container" id="cart-base-container">
           <div class="product-list-container">
-            <div class="button-wrapper">
+            <div class="button-wrapper" id="button-wrapper">
               <button class="delete-button section-text" type="button">
                 Delete all
               </button>
@@ -39,102 +39,8 @@
               </svg>
             </div>
 
-            <ul class="product-list">
+            <ul class="product-list" id="cart-product-list">
               <!-- Template card -->
-              <li class="product-item">
-                <img
-                  class="product-item-img"
-                  src="./images/cart/image1-mob.jpg"
-                  alt=""
-                />
-
-                <div class="product-item-content">
-                  <div class="characteristic-wrapper">
-                    <h3 class="product-item-heading product-bold">Avocado</h3>
-                    <div class="charactetistic-text-container">
-                      <span class="product-item-text">
-                        <span class="key-span">Category:</span>
-                        Fresh Produce
-                      </span>
-                      <span class="product-item-text">
-                        <span class="key-span">Size:</span>
-                        Each
-                      </span>
-                    </div>
-                  </div>
-
-                  <p class="product-price">&#36;1.99</p>
-
-                  <button type="button" class="close-button product-bold">
-                    <svg class="close-icon" width="16" height="16">
-                      <use href="./images/icons.svg#icon-close"></use>
-                    </svg>
-                  </button>
-                </div>
-              </li>
-              <li class="product-item">
-                <img
-                  class="product-item-img"
-                  src="./images/cart/image2-mob.jpg"
-                  alt=""
-                />
-
-                <div class="product-item-content">
-                  <div class="characteristic-wrapper">
-                    <h3 class="product-item-heading product-bold">
-                      Chestnut Mushroom
-                    </h3>
-                    <div class="charactetistic-text-container">
-                      <span class="product-item-text">
-                        <span class="key-span">Category:</span>
-                        Fresh Produce
-                      </span>
-                      <span class="product-item-text">
-                        <span class="key-span">Size:</span>
-                        8oz pac
-                      </span>
-                    </div>
-                  </div>
-
-                  <p class="product-price">&#36;2.49</p>
-
-                  <button type="button" class="close-button product-bold">
-                    <svg class="close-icon" width="16" height="16">
-                      <use href="./images/icons.svg#icon-close"></use>
-                    </svg>
-                  </button>
-                </div>
-              </li>
-              <li class="product-item">
-                <img
-                  class="product-item-img"
-                  src="./images/cart/image3-mob.jpg"
-                  alt=""
-                />
-
-                <div class="product-item-content">
-                  <div class="characteristic-wrapper">
-                    <h3 class="product-item-heading product-bold">Cabbage</h3>
-                    <div class="charactetistic-text-container">
-                      <span class="product-item-text">
-                        <span class="key-span">Category:</span>
-                        Fresh Produce
-                      </span>
-                      <span class="product-item-text">
-                        <span class="key-span">Size:</span>
-                        Per head
-                      </span>
-                    </div>
-                  </div>
-                  <p class="product-price">&#36;1.99</p>
-
-                  <button type="button" class="close-button product-bold">
-                    <svg class="close-icon" width="16" height="16">
-                      <use href="./images/icons.svg#icon-close"></use>
-                    </svg>
-                  </button>
-                </div>
-              </li>
             </ul>
           </div>
           <div class="order-total-container">
@@ -142,7 +48,7 @@
             <div class="total-container">
               <p class="product-bold">Total</p>
 
-              <div class="total-number">
+              <div class="total-number" id="total-wrapper">
                 <span class="key-span">Sum:</span>
                 <span class="price-text">&#36;12,94</span>
               </div>
@@ -152,7 +58,8 @@
               <div class="input-wrapper">
                 <input
                   class="order-input"
-                  type="text"
+                  type="email"
+                  pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
                   placeholder="Enter your email"
                 />
                 <span class="placeholder-span">Mail:</span>
@@ -165,7 +72,7 @@
       </div>
 
       <!-- Empty cart Template -->
-      <div class="warning-container visually-hidden">
+      <div class="warning-container visually-hidden" id="warning-container">
         <img class="warning-image" src="./images/cart/basket.png" alt="" />
         <div class="warning-text-content">
           <p class="warning-descr">

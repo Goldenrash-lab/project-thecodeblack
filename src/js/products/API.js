@@ -5,7 +5,12 @@ axios.defaults.baseURL = 'https://food-boutique.b.goit.study/api/';
 export class ProductAPI {
   constructor() {}
 
-  getProducts() {
+  getCategories() {
     return axios.get('products/categories').then(res => res.data);
+  }
+  getProductsByCat(cat) {
+    return axios
+      .get(`products?keyword=Ac&category=${cat}&page=1&limit=9`)
+      .then(res => res.data);
   }
 }

@@ -1,2 +1,4 @@
-import './plagination/pagination';
-import './footer/footer-validation';
+import './pagination/pagination';
+import './templates/filters';
+import './modal';
+import './templates/discount';

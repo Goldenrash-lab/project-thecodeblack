@@ -1,0 +1,122 @@
+.filters-title {
+  color: var(--card-fields);
+  margin-bottom: 8px;
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.29; /* 128.571% */
+}
+
+.filters__form {
+  position: relative;
+  display: flex;
+  min-width: 303px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding-bottom: 40px;
+}
+/* @media only screen and (max-width: 375px) {
+    .filters__form  {
+        max-width: 280px;
+    }
+  } */
+
+@media only screen and (min-width: 768px) {
+  .filters__form {
+    flex-direction: row;
+  }
+}
+
+.search {
+  display: flex;
+  min-width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .search {
+    min-width: 269px;
+  }
+}
+.search-input {
+  flex-grow: 1;
+  background-color: inherit;
+  outline: transparent;
+  border-radius: 30px 0px 0px 30px;
+  border: 1px solid var(--card-fields);
+  border-right: none;
+  padding: 14px 20px;
+  color: var(--black);
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.29; /* 128.571% */
+}
+.category-choice,
+.sort-by {
+  background-color: inherit;
+  outline: transparent;
+  min-width: 100%;
+  border-radius: 30px;
+  border: 1px solid var(--card-fields);
+  padding: 14px 20px;
+  color: var(--black);
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.29; /* 128.571% */
+}
+@media only screen and (max-width: 375px) {
+  .search,
+  .category-choice,
+  .sort-by {
+    width: 280px;
+    min-width: 0;
+  }
+  .filters__form {
+    min-width: 280px;
+  }
+}
+.sort-by {
+  background-color: var(--card-background);
+}
+.search-input::placeholder {
+  color: var(--black);
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.29; /* 128.571% */
+}
+
+@media only screen and (min-width: 768px) {
+  .category-choice {
+    min-width: 189px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .sort-by {
+    min-width: 200px;
+  }
+}
+.search-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  border-radius: 0px 30px 30px 0px;
+  border: 1px solid var(--card-fields);
+  border-left: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.category-choice option,
+.sort-by option {
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0px 4px 11.2125px 0px rgba(0, 0, 0, 0.04),
+    0px 20px 69px 0px rgba(0, 0, 0, 0.07);
+}

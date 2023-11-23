@@ -145,7 +145,7 @@
   width: 56px;
   height: 56px;
   object-fit: cover;
-  background-color: var(--card-background);
+
   border-radius: 10px;
 }
 .popular__item-buy {

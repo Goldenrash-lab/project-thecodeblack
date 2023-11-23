@@ -87,6 +87,20 @@
   justify-content: center;
   border-radius: 50%;
 }
+
+.products__item-link-popular {
+  border: none;
+  cursor: pointer;
+  outline: transparent;
+  background-color: #e8e8e2;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
 .products__item-price {
   color: var(--black);
   font-size: 18px;

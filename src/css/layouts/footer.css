@@ -89,7 +89,7 @@ flex-direction: column;
 @media only screen and (max-width: 767px) {
   .fotter-info__variety {
     margin-top: 40px;
-    width: 335px;
+    max-width: 335px;
     font-family: Neue Montreal;
     font-size: 24px;
     font-weight: 500;
@@ -115,7 +115,7 @@ flex-direction: column;
     }
     @media only screen and (max-width: 767px) {
       .fotter-info__description {
-        width: 335px;
+        max-width: 335px;
         height: 54px;
           
         font-family: Neue Montreal;
@@ -194,7 +194,7 @@ margin-top: 80px;
 .fotter-info__input {
 padding-left: 20px;
 cursor: pointer;
-width: 336px;
+max-width: 336px;
 height: 48px;
 border-radius: 30px;
 border: 1px solid #E8E8E2;
@@ -206,7 +206,7 @@ color:#E8E8E2 ;
 }
 .footer-form__button {
 cursor: pointer;
-width: 336px;
+max-width: 336px;
 height: 48px;
 
 border-radius: 30px;
@@ -227,7 +227,7 @@ line-height: 24px;
 
 
 /* ---Copyrights--- */
-@media only screen and (max-width: 767px) {
+ @media only screen and (max-width: 767px) {
 .footer-cop__wrapper {
 display: flex;
 flex-direction: column;

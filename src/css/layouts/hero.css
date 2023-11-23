@@ -16,20 +16,20 @@
   font-weight: 500;
   line-height: 1.09; /* 109.091% */
   letter-spacing: -0.02;
-  width: 335px;
+  max-width: 335px;
   margin-bottom: 16px;
 }
 @media only screen and (min-width: 768px) {
   .hero-title {
     font-size: 80px;
     line-height: 1; /* 100% */
-    width: 658px;
+    max-width: 658px;
     margin-bottom: 20px;
   }
 }
 @media only screen and (min-width: 1272px) {
   .hero-title {
-    width: 1081px;
+    max-width: 1081px;
   }
 }
 .hero-title-span {

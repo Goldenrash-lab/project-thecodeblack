@@ -8,9 +8,12 @@ export class ProductAPI {
   getCategories() {
     return axios.get('products/categories').then(res => res.data);
   }
-  getProductsByCat(cat) {
+  getProductsByCat(obj) {
+    const { keyword, category, page, limit } = obj;
     return axios
-      .get(`products?keyword=Ac&category=${cat}&page=1&limit=9`)
+      .get(
+        `products?keyword=${keyword}&category=${category}&page=${page}&limit=${limit}`
+      )
       .then(res => res.data);
   }
 }

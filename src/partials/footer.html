@@ -53,15 +53,16 @@
           </p>
         </div>
 
-        <div class="footer-form">
+        <form class="footer-form">
           <p class="footer-form__text">
             Subscribe and learn about new products!
           </p>
           <input
+          pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
             type="email"
-            name="user-email"
+            name="email"
             class="fotter-info__input"
-            id="user-email"
+            id="email"
             placeholder="Email"
           />
           <button
@@ -70,7 +71,7 @@
           >
             Send
           </button>
-        </div>
+        </form>
       </div>
     </div>
 

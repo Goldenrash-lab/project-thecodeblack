@@ -1,19 +1,20 @@
 .modal {
-    display: none;
+    display: none; 
     position: fixed;
     inset: 0;
-    background-color: rgba(1, 1, 1, 0.40);
+    background-color: transparent;
     cursor: pointer;
-    /* display: flex; 
-    overflow-y: auto; 
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 300ms ease-in-out; */
+    /* transform: translateY(-44.5%) scale(0); */
+    transition: .4s ease-in-out;
 }
+
 
 .modal.open {
     display: flex;
+    /* transform: translateY(0%) scale(100%); */
+    background-color: rgba(1, 1, 1, 0.40)
 }
+
 
 .modal__inner {
     position: relative;

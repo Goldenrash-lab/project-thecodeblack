@@ -1,21 +1,29 @@
 .pagination {
-  min-width: 288px;
+  width: 334px;
+  height: 40px;
 
+  margin-top: 40px;
+  margin-bottom: 80px;
+
+  display: flex;
+  justify-content: space-around;
 }
 
 @media only screen and (min-width: 768px) {
   .pagination {
-    width: 736px;
+    width: 704px;
+
+    margin-top: 50px;
+    margin-bottom: 100px;
   }
 }
 
 @media only screen and (min-width: 1272px) {
   .pagination {
-    width: 925px;
-
+    width: 472px;
+    height: 40px;
   }
 }
-
 
 /*!
  * TOAST UI Pagination
@@ -41,7 +49,6 @@
 
 .tui-pagination {
   height: 28px;
-  margin: 14px 0 12px;
   line-height: normal;
   text-align: center;
   font-size: 0;
@@ -53,11 +60,14 @@
   width: 28px;
   padding: 8px;
   margin-left: 0;
-  color: #a3a3a3;
-  font-size: 12px;
-  font-weight: normal;
-  line-height: 1;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
   text-decoration: none;
+  color: #a3a3a3;
+
   vertical-align: middle;
   border: 1px;
   border-width: 1px 0;
@@ -246,4 +256,36 @@
 
 .tui-prev-is-ellip {
   display: none !important;
+}
+
+.tui-prev {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.tiu-next {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.tui-page-btn {
+  width: 40px !important;
+  height: 40px !important;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tui-next:hover {
+  background: #6d8434;
+}
+
+.tui-prev:hover {
+  background: #6d8434;
+}
+
+.icon {
+background-color: black;
 }

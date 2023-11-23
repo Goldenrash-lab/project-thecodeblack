@@ -5,6 +5,7 @@
   justify-content: space-between;
   align-items: center;
   align-content: center;
+  min-width: 375px;
 }
 .css-a-link-icon {
   display: flex;

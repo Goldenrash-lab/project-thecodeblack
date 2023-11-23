@@ -10,7 +10,7 @@ line-height: 1.29; /* 128.571% */
 .filters__form {
 position: relative;
 display: flex;
-min-width: 303px;
+min-width: 280px;
 flex-direction: column;
 align-items: flex-start;
 gap: 8px;

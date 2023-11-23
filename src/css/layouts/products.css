@@ -202,6 +202,8 @@
   display: flex;
   gap: 20px;
   flex-direction: column;
+  height: 484px;
+  overflow: auto;
 }
 
 .discount__item {
@@ -315,8 +317,9 @@
   }
 
   .discount__list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
+    flex-direction: row;
     max-height: 232px;
     overflow: auto;
   }
@@ -365,8 +368,10 @@
     flex-direction: column;
   }
   .discount__list {
+    display: grid;
     grid-template-columns: 1fr;
-    max-height: 100%;
+    max-height: 484px;
+    overflow-y: scroll;
   }
   .products__box {
     margin-left: 40px;

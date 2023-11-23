@@ -266,7 +266,26 @@
 .discount__item-cartsvg {
   fill: var(--light-grey);
 }
-
+@media only screen and (max-width: 375px) {
+  .products__item {
+    max-width: 280px;
+  }
+  .products__item-inner {
+    width: 100%;
+  }
+  .popular__item {
+    max-width: 280px;
+  }
+  .discount__item {
+    max-width: 280px;
+  }
+  .discount__item-wrapper {
+    width: 100%;
+  }
+  .products__item-label {
+    font-size: 11px;
+  }
+}
 @media only screen and (min-width: 768px) {
   .products__list {
     grid-template-columns: 1fr 1fr;

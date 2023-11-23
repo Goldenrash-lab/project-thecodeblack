@@ -145,5 +145,7 @@ function scrollAdding(listLength) {
 }
 
 
+// function 
+
 refs.productList.addEventListener('click', clickDeleteElBtn);
 refs.deleteAllBtn.addEventListener('click', clickDeleteAllBtn);

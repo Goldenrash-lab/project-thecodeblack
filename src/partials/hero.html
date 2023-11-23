@@ -6,27 +6,33 @@
     With Food Boutique, you're not just subscribing to food, you're signing up
     for a fresher, fitter, and happier you.
   </p>
-  <picture class="hero-img">
-    <source
-      media="(max-width: 767px) and (min-resolution: 192dpi)"
-      srcset="/src/images/hero/hero_mobile@2x.png"
-    />
-    <source
-      media="(max-width: 1271px)"
-      srcset="/src/images/hero/hero_tab.png"
-    />
-    <source
-      media="(max-width: 1271px) and (min-resolution: 192dpi)"
-      srcset="/src/images/hero/hero_tab@2x.png"
-    />
-    <source
-      media="(min-width: 1272px)"
-      srcset="/src/images/hero/hero_desk.png"
-    />
-    <source
-      media="(min-width: 1272px) and (min-resolution: 192dpi)"
-      srcset="/src/images/hero/hero_desk@2x.png"
-    />
-    <img src="/src//images/hero/hero_mobile.png" alt="Bascket with food" />
-  </picture>
+  <div class="hero-picture">
+    <picture class="hero-img">
+      <source
+        media="(max-width: 767px)"
+        srcset="
+          /src/images/hero/hero_mobile.png    1x,
+          /src/images/hero/hero_mobile@2x.png 2x
+        "
+      />
+      <source
+        media="(max-width: 1271px)"
+        srcset="
+          /src/images/hero/hero_tab.png    1x,
+          /src/images/hero/hero_tab@2x.png 2x
+        "
+      />
+      <source
+        media="(min-width: 1272px)"
+        srcset="
+          /src/images/hero/hero_desk.png    1x,
+          /src/images/hero/hero_desk@2x.png 2x
+        "
+      />
+      <img src="/src//images/hero/hero_mobile.png" alt="Bascket with food" />
+    </picture>
+    <svg class="hero-icon" width="100px" height="100px">
+      <use href="/src/images/icons.svg#icon-organic-food"></use>
+    </svg>
+  </div>
 </section>

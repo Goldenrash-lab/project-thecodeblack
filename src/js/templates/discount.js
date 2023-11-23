@@ -40,7 +40,7 @@ const {_id, img, name, price} = product
                 <p class="discount__item-price">$${price}</p>
                 <a href="#" class="discount__item-link">
                   <svg class="discount__item-cartsvg" width="18" height="18">
-                    <use href="./images/icons.svg#icon-cart-icon"></use>
+                    <use href="${iconsPath}#icon-cart-icon"></use>
                   </svg>
                 </a>
               </div>

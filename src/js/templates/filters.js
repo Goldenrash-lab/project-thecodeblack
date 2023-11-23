@@ -11,13 +11,11 @@ refs.selectEl.addEventListener('change', onSelectElChange);
 refs.formEl.addEventListener('submit', onFormElSubmit);
 
 const productAPI = new ProductAPI();
-console.log(productAPI.getCategories());
 
 function onFormElSubmit(e) {
   e.preventDefault();
 
   const keyword = e.target.elements['search-input'].value;
-  console.log(keyword);
 
   const obj = loadToLS('PARAMS');
   obj.keyword = keyword;
@@ -31,26 +29,21 @@ function onFormElSubmit(e) {
 
 function onDocumentLoad() {
   // DEFAULT LStorage
-  let localStorage = loadToLS('PARAMS');
 
-  if (Object.keys(localStorage).length === 0) {
-    localStorage = {
-      keyword: '',
-      category: '',
-      page: 1,
-      limit: 9,
-    };
-  }
+  const localStorage = {
+    keyword: '',
+    category: '',
+    page: 1,
+    limit: 9,
+  };
 
   saveToLS('PARAMS', localStorage);
 
   // _______
 
-  // refs.formEl.elements['search-input'].value = localStorage.keyword;
-  // console.log(refs.selectEl.children);
-  // const options = refs.selectEl.children;
-  // options.forEach(element => {});
-  // refs.selectEl.value = localStorage.category;
+  productAPI.getProductsByCat(localStorage).then(res => {
+    renderProducts(res.results);
+  });
 
   productAPI.getCategories().then(res => {
     renderOption(res);
@@ -67,7 +60,7 @@ function createOption(arr) {
 
 function renderOption(arr) {
   const markup = createOption(arr).join('');
-  refs.selectEl.innerHTML = markup;
+  refs.selectEl.insertAdjacentHTML('afterbegin', markup);
 }
 
 function onSelectElChange() {
@@ -78,7 +71,6 @@ function onSelectElChange() {
   saveToLS('PARAMS', obj);
 
   productAPI.getProductsByCat(obj).then(res => {
-    console.log(res);
     renderProducts(res.results);
   });
 }

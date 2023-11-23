@@ -3,13 +3,24 @@ import { ProductAPI } from '../products/API';
 const refs = {
   selectEl: document.querySelector('.category-choice'),
   productListEl: document.querySelector('.products__list'),
+  formEl: document.querySelector('.filters__form'),
 };
 
 document.addEventListener('DOMContentLoaded', onDocumentLoad);
 refs.selectEl.addEventListener('change', onSelectElChange);
+refs.formEl.addEventListener('submit', onFormElSubmit);
 
 const productAPI = new ProductAPI();
 console.log(productAPI.getCategories());
+
+function onFormElSubmit(e) {
+  e.preventDefault();
+
+  const keyword = e.target.elements['search-input'].value;
+  console.log(keyword);
+
+  productAPI.getProductsByCat();
+}
 
 function onDocumentLoad() {
   productAPI.getCategories().then(res => {
@@ -32,8 +43,11 @@ function renderOption(arr) {
 function onSelectElChange() {
   const value = refs.selectEl.value;
   console.log(value);
+  const obj = loadToLS('PARAMS');
+  obj.category = value;
+  console.log(obj);
 
-  productAPI.getProductsByCat(value).then(res => {
+  productAPI.getProductsByCat(obj).then(res => {
     renderProducts(res.results);
   });
 }
@@ -85,4 +99,22 @@ function createProducts(arr) {
 function renderProducts(arr) {
   const markup = createProducts(arr).join('');
   refs.productListEl.innerHTML = markup;
+}
+
+// LOCALSTORAGE
+
+function saveToLS(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+function loadToLS(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) || {};
+  } catch (error) {
+    console.log(error.message);
+    return localStorage.getItem(key);
+  }
 }

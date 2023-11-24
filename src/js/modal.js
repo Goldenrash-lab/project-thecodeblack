@@ -1,13 +1,13 @@
 const modal = document.querySelector('.modal');
 const productList = document.querySelector('.products__list');
 
-productList.addEventListener('click', e => {
-    const targetEl = e.target.closest('.products__item')
-    if (targetEl) {
-        onModalOpen();
-    }
+// productList.addEventListener('click', e => {
+//     const targetEl = e.target.closest('.products__item')
+//     if (targetEl) {
+//         onModalOpen();
+//     }
 
-});
+// });
 
 function onCloseModal(e) { 
         modal.classList.remove('open');

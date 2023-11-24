@@ -1,5 +1,5 @@
 import { ProductAPI } from '../products/API';
-import { iconPath } from '../../images/icons.svg';
+import iconPath from '/src/images/icons.svg';
 
 const refs = {
   selectEl: document.querySelector('.category-choice'),
@@ -103,7 +103,7 @@ function createProducts(arr) {
           <div class="products__item-buy">
             <p class="products__item-price">$${price}</p>
             <button type="button" class="products__item-link">
-              <svg width="18" heigth="18">
+              <svg class="products__item-svg" width="18" heigth="18">
                 <use href="${iconPath}#icon-cart-icon">
                 </use>
               </svg>

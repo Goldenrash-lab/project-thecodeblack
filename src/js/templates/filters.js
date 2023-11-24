@@ -6,13 +6,20 @@ const refs = {
   selectEl: document.querySelector('.category-choice'),
   productListEl: document.querySelector('.products__list'),
   formEl: document.querySelector('.filters__form'),
+  sortEl: document.querySelector('.sort-by'),
 };
 
 document.addEventListener('DOMContentLoaded', onDocumentLoad);
 refs.selectEl.addEventListener('change', onSelectElChange);
 refs.formEl.addEventListener('submit', onFormElSubmit);
+refs.sortEl.addEventListener('change', onSortElChange);
 
 const productAPI = new ProductAPI();
+
+function onSortElChange(e) {
+  const value = e.target.value;
+  console.log(value);
+}
 
 function onFormElSubmit(e) {
   e.preventDefault();

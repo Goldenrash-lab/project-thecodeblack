@@ -22,7 +22,11 @@ function onProductsListCartClick(e) {
     return;
   }
   const id = e.target.closest('.products__item').dataset.id;
-  const svg = e.target.closest('.products__item-svg');
+//   const svg = e.target.closest('.products__item-svg');
+let svg = null;
+  if (e.target.nodeName === "BUTTON") {
+    svg = e.target.querySelector('.products__item-svg')
+  } else { svg = e.target.closest('.products__item-svg') }
   const localStorageItemParse = loadToLS('cartIds');
   
   if (!localStorageItemParse) {

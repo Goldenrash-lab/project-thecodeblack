@@ -448,6 +448,7 @@
 .checked {
   stroke: var(--light-grey);
     fill: transparent;
+    height:  18px;
 }
 @media only screen and (min-width: 1272px) {
     .popular__list {
@@ -455,4 +456,3 @@
       flex-direction: column;
     }
   }
-  

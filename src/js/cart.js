@@ -1,4 +1,6 @@
 import '../../node_modules/modern-normalize/modern-normalize.css';
+import './templates/footer-validation';
+import './templates/footer-postApi';
 
 // Связываем элементы и переменные
 const refs = {

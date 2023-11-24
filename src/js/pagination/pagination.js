@@ -17,46 +17,49 @@ export async function refreshPage() {
 }
 
 let params = loadToLS('PARAMS');
-let totalPages = 0;
 
-getProducts(params).then(res => {
-  totalPages = res.totalPages;
-
-  const instance = new Pagination(container, {
-    totalItems: totalPages * 9,
-    itemsPerPage: 9,
-    visiblePages: 4,
-    centerAlign: true,
-    firstItemClassName: 'tui-first-child',
-    lastItemClassName: 'tui-last-child',
-    template: {
-      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-      currentPage:
-        '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-      moveButton: `<a href="#" class="icon tui-page-btn tui-{{type}}">
+export const instance = new Pagination(container, {
+  itemsPerPage: 9,
+  visiblePages: 4,
+  centerAlign: true,
+  firstItemClassName: 'tui-first-child',
+  lastItemClassName: 'tui-last-child',
+  template: {
+    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+    currentPage:
+      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+    moveButton: `<a href="#" class="icon tui-page-btn tui-{{type}}">
       <span class="tui-ico-{{type}}">{{type}}>
       </span> 
       </a>`,
-      disabledMoveButton: `<span class="tui-page-btn tui-is-disabled tui-{{type}}">
+    disabledMoveButton: `<span class="tui-page-btn tui-is-disabled tui-{{type}}">
       <span class="tui-ico-{{type}}">{{type}}>
       </span>
       </span>`,
-      moreButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-        '<span class="tui-ico-ellip">...</span>' +
-        '</a>',
-    },
-  });
+    moreButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+      '<span class="tui-ico-ellip">...</span>' +
+      '</a>',
+  },
+});
 
-  instance.on('afterMove', event => {
-    params = loadToLS('PARAMS');
+getProducts(params).then(res => {
+  instance.reset(res.totalPages);
+  instance.setTotalItems(res.totalPages * 9);
+});
 
-    params.page = event.page;
+export function resetTotalPage(totalPages) {
+  instance.reset(totalPages);
+}
 
-    saveToLS('PARAMS', params);
+instance.on('afterMove', event => {
+  params = loadToLS('PARAMS');
 
-    refreshPage();
-  });
+  params.page = event.page;
+
+  saveToLS('PARAMS', params);
+
+  refreshPage();
 });
 
 // LOCALSTORAGE

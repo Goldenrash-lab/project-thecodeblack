@@ -1,6 +1,7 @@
 import { ProductAPI } from '../products/API';
 import iconPath from '/src/images/icons.svg';
 import { refreshPage } from '../pagination/pagination';
+import { resetTotalPage } from '../pagination/pagination';
 
 const refs = {
   selectEl: document.querySelector('.category-choice'),
@@ -19,6 +20,34 @@ const productAPI = new ProductAPI();
 function onSortElChange(e) {
   const value = e.target.value;
   console.log(value);
+  let sortType = '';
+  switch (value) {
+    case 'atoz':
+      sortType = 'byABC=true';
+      break;
+    case 'ztoa':
+      sortType = 'byABC=false';
+      break;
+    case 'priceup':
+      sortType = 'byPrice=true';
+      break;
+    case 'pricedown':
+      sortType = 'byPrice=false';
+      break;
+    case 'popularityup':
+      sortType = 'byPopularity=true';
+      break;
+    case 'popularitydown':
+      sortType = 'byPopularity=false';
+      break;
+  }
+  const obj = loadToLS('PARAMS');
+  obj.sort = sortType;
+  saveToLS('PARAMS', obj);
+  productAPI.getProductsByCat(obj).then(res => {
+    renderProducts(res.results);
+    resetTotalPage(res.totalPages);
+  });
 }
 
 function onFormElSubmit(e) {
@@ -33,6 +62,7 @@ function onFormElSubmit(e) {
 
   productAPI.getProductsByCat(obj).then(res => {
     renderProducts(res.results);
+    resetTotalPage(res.totalPages);
   });
 }
 
@@ -44,6 +74,7 @@ function onDocumentLoad() {
     category: '',
     page: 1,
     limit: 9,
+    sort: 'ByABC=true',
   };
 
   saveToLS('PARAMS', localStorage);
@@ -82,6 +113,7 @@ function onSelectElChange() {
 
   productAPI.getProductsByCat(obj).then(res => {
     renderProducts(res.results);
+    resetTotalPage(res.totalPages);
   });
 }
 

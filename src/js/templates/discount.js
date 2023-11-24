@@ -75,19 +75,26 @@ function onDiscListCartClick(e) {
     svg = e.target.querySelector('.discount__item-cartsvg')
   } else { svg = e.target.closest('.discount__item-cartsvg') }
   
-  const localStorageItem = localStorage.getItem("cartIds");
-  if (!localStorageItem) {
-        localStorage.setItem("cartIds", JSON.stringify([id]));
-    }
-
-  if (JSON.parse(localStorage.getItem("cartIds")).includes(id)) {
-    svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`
-  }
-   else   {
-        const ids = JSON.parse(localStorage.getItem("cartIds"));
+  const localStorageItem = JSON.parse(localStorage.getItem("cartIds"));
+  console.log(localStorageItem);
+  console.log(localStorageItem.length);
+  
+  svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
+  
+    if (localStorageItem.includes(id)) {
+      return      
+    } else {
+      const ids = JSON.parse(localStorage.getItem("cartIds"));
         ids.push(id);
         localStorage.setItem("cartIds", JSON.stringify(ids));
-    } 
+    }
+    }
+      
+    // } else {
+    //     const ids = JSON.parse(localStorage.getItem("cartIds"));
+    //     ids.push(id);
+    //     localStorage.setItem("cartIds", JSON.stringify(ids));
+    // }
 
-}
+
 

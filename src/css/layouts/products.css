@@ -87,6 +87,9 @@
   justify-content: center;
   border-radius: 50%;
 }
+.products__item-svg {
+  fill: var(--light-grey);
+}
 
 .products__item-link-popular {
   border: none;

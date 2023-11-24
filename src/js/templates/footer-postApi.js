@@ -11,12 +11,18 @@ const makeSubscription = savedData => {
     .post('/subscription', savedData)
     .then(response => {
       Notiflix.Notify.success(
-        "Welcome to the Food Boutique! 🥦🍓 With Food Boutique, you're not just subscribing to food, you're signing up for a fresher, fitter, and happier you. Get ready to elevate your wellness journey, one bite at a time!"
+        'Thanks for subscription. Welcome to the Food Boutique! 🥦🍓 '
       );
-      // "
     })
     .catch(err => {
+      if (err.response.status === 409) {
+        Notiflix.Notify.warning('Sorry, this email already subscribed');
+      }
+      if (err.response.status === 400) {
+        Notiflix.Notify.failure('Please write email in formal (a-z@.a-z.com)');
+      }
       console.log(err);
+      console.log(err.response.status);
     });
 };
 

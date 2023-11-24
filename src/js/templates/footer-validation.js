@@ -9,7 +9,7 @@ let value = '';
 
 form.addEventListener('input', throttle(onDataInput, 400));
 
-const userData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+const userData = localStorage.getItem(STORAGE_KEY) || {};
 
 function onDataInput(e) {
   userData[e.target.name] = e.target.value;

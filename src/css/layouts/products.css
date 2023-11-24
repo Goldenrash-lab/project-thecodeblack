@@ -173,9 +173,12 @@
   justify-content: center;
   align-items: center;
   border: none;
+  padding: 0;
 }
 .popular__item-svg {
   fill: var(--green);
+  width: 12px;
+  height: 12px;
 }
 .popular__item-box {
   display: flex;
@@ -346,6 +349,7 @@
     grid-template-columns: 1fr 1fr;
     
   }
+}
   @media only screen and (max-width: 768px) {
   .products__list {
     width: 563px;
@@ -370,6 +374,9 @@
 }
 
 @media only screen and (min-width: 1272px) {
+  .products {
+    padding-bottom: 0;
+  }
   .products__inner {
     display: flex;
     align-items: flex-start;

@@ -2,7 +2,7 @@ import './pagination/pagination';
 import './templates/filters';
 import './modal';
 
-import './templates/localStorage';
+import './templates/addToCart';
 import './templates/discount';
 import './templates/footer-validation';
 import './templates/footer-postApi';

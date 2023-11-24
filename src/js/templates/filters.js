@@ -171,14 +171,14 @@ export function renderProducts(arr) {
 
 // LOCALSTORAGE
 
-function saveToLS(key, value) {
+export function saveToLS(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
     console.log(error.message);
   }
 }
-function loadToLS(key) {
+export function loadToLS(key) {
   try {
     return JSON.parse(localStorage.getItem(key)) || {};
   } catch (error) {

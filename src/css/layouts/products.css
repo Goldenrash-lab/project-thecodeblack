@@ -329,7 +329,16 @@
 
   .popular__list {
     flex-direction: row;
-    overflow: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 563px;
+  }
+
+  @media only screen and (min-width: 1272px) {
+    .popular__list {
+      display: flex;
+      flex-direction: column;
+    }
   }
   .popular__item {
     width: 275px;
@@ -384,9 +393,7 @@
     max-width: 198px;
     flex-wrap: wrap;
   }
-  .popular__list {
-    flex-direction: column;
-  }
+
   .discount__list {
     display: grid;
     grid-template-columns: 1fr;

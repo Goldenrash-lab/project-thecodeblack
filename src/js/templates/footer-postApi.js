@@ -19,10 +19,8 @@ const makeSubscription = savedData => {
         Notiflix.Notify.warning('Sorry, this email already subscribed');
       }
       if (err.response.status === 400) {
-        Notiflix.Notify.failure('Please write email in formal (a-z@.a-z.com)');
+        Notify.info('Please write your email :)');
       }
-      console.log(err);
-      console.log(err.response.status);
     });
 };
 

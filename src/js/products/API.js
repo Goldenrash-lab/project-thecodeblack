@@ -11,23 +11,11 @@ export class ProductAPI {
     return axios.get('products/categories').then(res => res.data);
   }
   getProductsByCat(obj) {
-    const { keyword, category, page, limit } = obj;
+    const { keyword, category, page, limit, sort } = obj;
     return axios
       .get(
-        `products?keyword=${keyword}&category=${category}&page=${page}&limit=${limit}`
+        `products?keyword=${keyword}&category=${category}&page=${page}&limit=${limit}&${sort}`
       )
       .then(res => res.data);
-  }
-  async getProducts(params) {
-    try {
-      const response = await axios.get(
-        'https://food-boutique.b.goit.study/api/products',
-        { params }
-      );
-      return response.data;
-    } catch (err) {
-      console.error(err);
-      throw err;
-    }
   }
 }

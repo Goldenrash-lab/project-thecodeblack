@@ -11,7 +11,7 @@ body{
 }
 
 .section-wrapper{
-    padding: 0  20px 200px;
+    padding: 0 0 200px;
 }
 
 .section-header{
@@ -186,7 +186,7 @@ body{
 
 .order-input{
     width: 100%; 
-    max-width: 335px;
+    /* max-width: 335px; */
     padding:  12px 20px 12px 54px;
     margin-bottom: 14px;
     border-radius: 30px;
@@ -209,7 +209,7 @@ body{
 
 .placeholder-span{
     position: absolute;
-    top: 11.5px;
+    top: 14.5px;
     left: 20px;
     color: rgba(1, 1, 1, 0.50);
     font-size: 14px;
@@ -227,7 +227,7 @@ body{
     padding: 12px;
 
     width: 100%;
-    max-width: 335px;
+    /* max-width: 335px; */
 
 }
 
@@ -238,13 +238,9 @@ body{
 }
 
 .warning-container{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
     text-align: center;
     width:279px;
+    margin: 0 auto
 }
 
 .warning-image{
@@ -400,7 +396,7 @@ body{
     }
 
     .scroll-adding {
-        height: 520px;
+        height: 580px;
         overflow: auto;
     }
 
@@ -449,7 +445,7 @@ body{
 
     .product-list-container{
         width: 500px;
-        height: 520px;
+        height: 590px;
     }
 
     .section-wrapper .cart-container .content-container{

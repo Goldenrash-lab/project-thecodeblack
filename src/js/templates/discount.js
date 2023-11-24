@@ -76,13 +76,14 @@ function onDiscListCartClick(e) {
   } else { svg = e.target.closest('.discount__item-cartsvg') }
   
   const localStorageItem = localStorage.getItem("cartIds");
+  if (!localStorageItem) {
+        localStorage.setItem("cartIds", JSON.stringify([id]));
+    }
 
   if (JSON.parse(localStorage.getItem("cartIds")).includes(id)) {
     svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`
   }
-  if (!localStorageItem) {
-        localStorage.setItem("cartIds", JSON.stringify([id]));
-    } else   {
+   else   {
         const ids = JSON.parse(localStorage.getItem("cartIds"));
         ids.push(id);
         localStorage.setItem("cartIds", JSON.stringify(ids));

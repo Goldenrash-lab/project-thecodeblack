@@ -5,19 +5,23 @@ body.modal-open {
 .modal {
     position: fixed;
     inset: 0;
+    margin: auto;
     background-color: transparent;
     cursor: pointer;
     overflow-y: auto;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease-in-out;
+    transform: scale(.2);
+    transition: all 0.2s linear;
 }
 
 .modal.open {
     display: flex;
     opacity: 1;
     visibility: visible;
-    background-color: rgba(1, 1, 1, 0.40);
+    background-color:  rgba(1, 1, 1, 0.40);
+    transform: scale(1);
+    transition: background-color 0.3s ease-in-out;
 }
 
 .modal__inner {

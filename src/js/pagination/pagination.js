@@ -17,6 +17,7 @@ export async function refreshPage() {
 }
 
 let params = loadToLS('PARAMS');
+console.log(params);
 
 export const instance = new Pagination(container, {
   itemsPerPage: 9,
@@ -45,11 +46,13 @@ export const instance = new Pagination(container, {
 
 getProducts(params).then(res => {
   instance.reset(res.totalPages);
+  // instance.movePageTo(params.page);
   instance.setTotalItems(res.totalPages * 9);
 });
 
 export function resetTotalPage(totalPages) {
   instance.reset(totalPages);
+  // instance.movePageTo(params.page);
 }
 
 instance.on('afterMove', event => {

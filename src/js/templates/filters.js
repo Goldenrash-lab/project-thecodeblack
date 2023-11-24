@@ -66,8 +66,11 @@ function onFormElSubmit(e) {
     container.classList.remove('visually-hidden');
     renderProducts(res.results);
     resetTotalPage(res.totalPages);
-    if (res.totalPages === 1) {
+    if (res.totalPages === 1 || res.totalPages === 0) {
       container.classList.add('visually-hidden');
+    }
+    if (!res.totalPages) {
+      refs.productListEl.innerHTML = '<h2>Products not found!</h2>';
     }
   });
 }

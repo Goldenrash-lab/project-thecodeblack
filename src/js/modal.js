@@ -1,4 +1,4 @@
-import { functions } from "lodash";
+// import { functions } from "lodash";
 import iconPath from "../images/icons.svg";
 import axios from "axios";
 

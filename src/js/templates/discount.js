@@ -38,11 +38,11 @@ const {_id, img, name, price} = product
               <h4 class="discount__item-label">${name}</h4>
               <div class="discount__item-box">
                 <p class="discount__item-price">$${price}</p>
-                <a href="#" class="discount__item-link">
+                <button type="button" class="discount__item-link">
                   <svg class="discount__item-cartsvg" width="18" height="18">
                     <use href="${iconsPath}#icon-cart-icon"></use>
                   </svg>
-                </a>
+                </button>
               </div>
             </div>
           </li>`

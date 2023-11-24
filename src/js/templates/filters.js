@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', onDocumentLoad);
 refs.selectEl.addEventListener('change', onSelectElChange);
 refs.formEl.addEventListener('submit', onFormElSubmit);
 refs.sortEl.addEventListener('change', onSortElChange);
+const container = document.querySelector('#tui-pagination-container');
 
 const productAPI = new ProductAPI();
 
@@ -43,6 +44,7 @@ function onSortElChange(e) {
   }
   const obj = loadToLS('PARAMS');
   obj.sort = sortType;
+  obj.page = 1;
   saveToLS('PARAMS', obj);
   productAPI.getProductsByCat(obj).then(res => {
     renderProducts(res.results);
@@ -61,8 +63,12 @@ function onFormElSubmit(e) {
   saveToLS('PARAMS', obj);
 
   productAPI.getProductsByCat(obj).then(res => {
+    container.classList.remove('visually-hidden');
     renderProducts(res.results);
     resetTotalPage(res.totalPages);
+    if (res.totalPages === 1) {
+      container.classList.add('visually-hidden');
+    }
   });
 }
 

@@ -1,14 +1,27 @@
 import Pagination from 'tui-pagination';
 import icon from '../../images/icons.svg';
-
-console.log(icon);
+import { getProducts } from './pagination_Api';
+import { createProducts, renderProducts } from '../templates/filters';
 
 const container = document.querySelector('#tui-pagination-container');
+const products = document.querySelector('.products__list');
 
-const instance = new Pagination(container, {
-  totalItems: 41,
-  itemsPerPage: 3,
-  visiblePages: 3,
+window.addEventListener('DOMContentLoaded', refreshPage);
+
+export async function refreshPage() {
+  products.innerHTML = '';
+
+  const product = await getProducts(params);
+
+  renderProducts(product.results);
+}
+
+let params = loadToLS('PARAMS');
+console.log(params);
+
+export const instance = new Pagination(container, {
+  itemsPerPage: 9,
+  visiblePages: 4,
   centerAlign: true,
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
@@ -18,7 +31,7 @@ const instance = new Pagination(container, {
       '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
     moveButton: `<a href="#" class="icon tui-page-btn tui-{{type}}">
       <span class="tui-ico-{{type}}">{{type}}>
-     </span> 
+      </span> 
       </a>`,
     disabledMoveButton: `<span class="tui-page-btn tui-is-disabled tui-{{type}}">
       <span class="tui-ico-{{type}}">{{type}}>
@@ -31,6 +44,41 @@ const instance = new Pagination(container, {
   },
 });
 
-/* <svg class="" width="10" height="10">
-    <use href="${icon}#icon-nav_button_{{type}}_big"></use>
-  </svg> */
+getProducts(params).then(res => {
+  instance.reset(res.totalPages);
+  // instance.movePageTo(params.page);
+  instance.setTotalItems(res.totalPages * 9);
+});
+
+export function resetTotalPage(totalPages) {
+  instance.reset(totalPages);
+  // instance.movePageTo(params.page);
+}
+
+instance.on('afterMove', event => {
+  params = loadToLS('PARAMS');
+
+  params.page = event.page;
+
+  saveToLS('PARAMS', params);
+
+  refreshPage();
+});
+
+// LOCALSTORAGE
+
+function saveToLS(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+function loadToLS(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) || {};
+  } catch (error) {
+    console.log(error.message);
+    return localStorage.getItem(key);
+  }
+}

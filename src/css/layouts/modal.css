@@ -5,19 +5,23 @@ body.modal-open {
 .modal {
     position: fixed;
     inset: 0;
+    margin: auto;
     background-color: transparent;
     cursor: pointer;
     overflow-y: auto;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease-in-out;
+    transform: scale(.2);
+    transition: all 0.2s linear;
 }
 
 .modal.open {
     display: flex;
     opacity: 1;
     visibility: visible;
-    background-color: rgba(1, 1, 1, 0.40);
+    background-color:  rgba(1, 1, 1, 0.40);
+    transform: scale(1);
+    transition: background-color 0.3s ease-in-out;
 }
 
 .modal__inner {
@@ -61,13 +65,13 @@ body.modal-open {
 }
 
 @media only screen and (min-width: 768px) {
-  .modal__product-info{
-      display: flex;
-      gap: 24px;
-  } 
+    .modal__product-info {
+        display: flex;
+        gap: 24px;
+    }
 }
 
-.modal__img-box{
+.modal__img-box {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,11 +115,17 @@ body.modal-open {
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
-    max-width: 295px;
+    
 }
 
-.modal__product-item-info > .modal__product-label:nth-child(3){
+.modal__product-item-info>.modal__product-label:nth-child(3) {
     margin-left: 8px;
+}
+
+@media only screen and (min-width: 480px) {
+   .modal__product-item-info{
+    max-width: 295px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -143,24 +153,40 @@ body.modal-open {
     color: var(--grey);
     font-size: 14px;
     font-weight: 400;
-    line-height: 1.29;
     margin-top: 20px;
-
-    width: 295px;
-    max-height: 54px;
+    line-height: 1.29;
+    min-height: 54px;
+    max-width: 295px;
     overflow-y: auto;
+}
+
+@media only screen and (min-width: 320px) {
+    .modal__product-descr {
+        max-height: 54px;
+    }
 }
 
 @media only screen and (min-width: 768px) {
     .modal__product-descr {
         font-size: 16px;
         width: 256px;
-        min-height: 80px;
+        max-height: 80px;
         line-height: 1.25;
         margin-top: 24px;
         max-height: 80px;
     }
 }
+
+.modal__product-descr::-webkit-scrollbar {
+    width: 5px;
+    background-color: transparent;
+}
+
+.modal__product-descr::-webkit-scrollbar-thumb {
+    background: var(--cancel-grey);
+    border-radius: 20px;
+}
+
 
 .modal__product-buy {
     display: inline-flex;
@@ -210,7 +236,7 @@ body.modal-open {
 }
 
 .modal__buy-btn:hover,
-.modal__buy-btn:focus{
+.modal__buy-btn:focus {
     background-color: var(--green-accent);
 }
 
@@ -234,6 +260,6 @@ body.modal-open {
     }
 }
 
-.modal__cart-icon{
+.modal__cart-icon {
     fill: var(--light-grey);
 }

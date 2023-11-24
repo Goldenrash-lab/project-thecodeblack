@@ -49,7 +49,6 @@ productsContainers.forEach(container => {
 // });
 
 
-
 function onCloseModal() { 
     modal.classList.remove('open');
     window.removeEventListener('keydown', onDocumentKeyPress)
@@ -64,6 +63,7 @@ function onModalOpen(productData) {
 
     const productInfoHTML = fetchProductInfo(productData);
     modal.insertAdjacentHTML('beforeend', productInfoHTML);
+    handleScrolling();
 };
 
 function onDocumentKeyPress(e) {
@@ -116,6 +116,14 @@ function fetchProductInfo(product) {
                 </div>
     `;
 }
+
+function handleScrolling() {
+    const productDescr = document.querySelector('.modal__product-descr');
+    const maxHeight = 54;
+    if (productDescr.scrollHeight > maxHeight) {
+        productDescr.classList.add('scroll-adding');
+    }
+};
 
 /**
   |============================

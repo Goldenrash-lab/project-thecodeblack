@@ -76,8 +76,6 @@ function onDiscListCartClick(e) {
   } else { svg = e.target.closest('.discount__item-cartsvg') }
   
   const localStorageItem = JSON.parse(localStorage.getItem("cartIds"));
-  console.log(localStorageItem);
-  console.log(localStorageItem.length);
   
   svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
   

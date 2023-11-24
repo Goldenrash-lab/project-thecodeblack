@@ -34,11 +34,11 @@ function createPopular(arr) {
                 <div class="popular__item-buy">
                   <h4 class="popular__item-title">${name}</h4>
 
-                  <a href="#" class="popular__item-link">
+                  <button type="button" class="popular__item-link">
                     <svg class="popular__item-svg" width="12" height="12">
                       <use href="${iconsPath}#icon-cart-icon"></use>
                     </svg>
-                  </a>
+                  </button>
 
                 </div>
                 <div class="popular__item-info">

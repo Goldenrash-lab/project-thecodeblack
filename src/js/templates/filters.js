@@ -1,17 +1,25 @@
 import { ProductAPI } from '../products/API';
 import iconPath from '/src/images/icons.svg';
+import { refreshPage } from '../pagination/pagination';
 
 const refs = {
   selectEl: document.querySelector('.category-choice'),
   productListEl: document.querySelector('.products__list'),
   formEl: document.querySelector('.filters__form'),
+  sortEl: document.querySelector('.sort-by'),
 };
 
 document.addEventListener('DOMContentLoaded', onDocumentLoad);
 refs.selectEl.addEventListener('change', onSelectElChange);
 refs.formEl.addEventListener('submit', onFormElSubmit);
+refs.sortEl.addEventListener('change', onSortElChange);
 
 const productAPI = new ProductAPI();
+
+function onSortElChange(e) {
+  const value = e.target.value;
+  console.log(value);
+}
 
 function onFormElSubmit(e) {
   e.preventDefault();
@@ -20,10 +28,10 @@ function onFormElSubmit(e) {
 
   const obj = loadToLS('PARAMS');
   obj.keyword = keyword;
+  obj.page = 1;
   saveToLS('PARAMS', obj);
 
   productAPI.getProductsByCat(obj).then(res => {
-    console.log(res.results);
     renderProducts(res.results);
   });
 }
@@ -69,6 +77,7 @@ function onSelectElChange() {
 
   const obj = loadToLS('PARAMS');
   obj.category = value;
+  obj.page = 1;
   saveToLS('PARAMS', obj);
 
   productAPI.getProductsByCat(obj).then(res => {
@@ -76,7 +85,7 @@ function onSelectElChange() {
   });
 }
 
-function createProducts(arr) {
+export function createProducts(arr) {
   return arr.map(el => {
     const { category, img, name, popularity, price, size, _id } = el;
     return `
@@ -114,7 +123,7 @@ function createProducts(arr) {
   });
 }
 
-function renderProducts(arr) {
+export function renderProducts(arr) {
   const markup = createProducts(arr).join('');
   refs.productListEl.innerHTML = markup;
 }

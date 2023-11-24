@@ -52,9 +52,9 @@ gap: 12px;
 .footer-social__link {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 44px;
   height: 44px;
-  padding: 8px;
   border-radius: 10px;
   border: 1px solid #E8E8E24D; 
 }

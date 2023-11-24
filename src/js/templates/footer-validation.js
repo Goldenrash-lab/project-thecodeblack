@@ -26,7 +26,6 @@ function onSubmit(e) {
     return Notify.info('Please write your email :)');
   }
   const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  console.log(savedData);
   e.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
   makeSubscription(savedData);

@@ -1,4 +1,6 @@
 import '../../node_modules/modern-normalize/modern-normalize.css';
+import './templates/footer-validation';
+import './templates/footer-postApi';
 
 const BASE_URL = `https://food-boutique.b.goit.study/api/products`;
 

@@ -62,10 +62,11 @@ function onModalOpen(productData) {
 
     addToCartBtn.addEventListener('click', (e) => {
         let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const productId = productData.id;
 
-        const itemIndex = cartItems.findIndex(item => item.id === productData.id);
+        const itemIndex = cartItems.findIndex(item => item === productId);
         if (itemIndex === -1) {
-            cartItems.push(productData);
+            cartItems.push(productId);
             addToCartBtn.querySelector('.modal__buy-btn-text').textContent = 'Remove from';
         } else {
             cartItems.splice(itemIndex, 1);

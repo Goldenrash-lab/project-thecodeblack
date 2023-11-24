@@ -10,12 +10,11 @@ async function getProductsById(id) {
     try {
         const response = await axios.get(`${BASE_URL}/${id}`);
         return response.data;
-    }
-    catch (error) {
+    } catch (error) {
         console.error('Error fetching product by ID:', error);
         throw error;
     }
-};
+}
 
 const productsContainers = document.querySelectorAll('.products__list, .discount__list, .popular__list');
 
@@ -24,7 +23,7 @@ productsContainers.forEach(container => {
         const isBuyBtn = e.target.closest('.products__item-link');
         const isBuyBtnDisc = e.target.closest('.discount__item-link');
         const isBuyBtnPopular = e.target.closest('.popular__item-link');
-        if (isBuyBtn||isBuyBtnDisc||isBuyBtnPopular) {
+        if (isBuyBtn || isBuyBtnDisc || isBuyBtnPopular) {
             return;
         }
 
@@ -39,7 +38,7 @@ productsContainers.forEach(container => {
                 console.error('Error getting product data:', error);
             }
         }
-    })
+    });
 });
 
 function onCloseModal() { 
@@ -59,12 +58,13 @@ function onModalOpen(productData) {
     handleScrolling();
 
     const addToCartBtn = document.querySelector('.modal__buy-btn');
+    const productId = productData.id;
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const isInCart = cartItems.includes(productId);
+    addToCartBtn.querySelector('.modal__buy-btn-text').textContent = isInCart ? 'Remove from' : 'Add to';
 
-    addToCartBtn.addEventListener('click', (e) => {
-        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        const productId = productData.id;
-
-        const itemIndex = cartItems.findIndex(item => item === productId);
+    addToCartBtn.addEventListener('click', () => {
+        const itemIndex = cartItems.indexOf(productId);
         if (itemIndex === -1) {
             cartItems.push(productId);
             addToCartBtn.querySelector('.modal__buy-btn-text').textContent = 'Remove from';
@@ -72,10 +72,9 @@ function onModalOpen(productData) {
             cartItems.splice(itemIndex, 1);
             addToCartBtn.querySelector('.modal__buy-btn-text').textContent = 'Add to';
         }
-
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     });
-};
+}
 
 function onDocumentKeyPress(e) {
     if (e.code === 'Escape') {
@@ -92,7 +91,7 @@ modal.addEventListener('click', e => {
 function fetchProductInfo(product) {
     const { img, name, category, size, popularity, desc, price } = product;
 
-    const isInCart = JSON.parse(localStorage.getItem('cartItems'))?.some(item => item.id === product.id);
+    const isInCart = JSON.parse(localStorage.getItem('cartItems'))?.indexOf(product.id) !== -1;
     const addToCartBtnText = isInCart ? 'Remove from' : 'Add to';
 
     return `

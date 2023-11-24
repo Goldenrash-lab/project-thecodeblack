@@ -223,6 +223,16 @@
   overflow: auto;
 }
 
+.discount__list::-webkit-scrollbar {
+  width: 9px;
+  background: transparent;
+}
+
+.discount__list::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background: rgba(1, 1, 1, 0.08);
+}
+
 .discount__item {
   max-width: 335px;
   padding: 16px;
@@ -275,6 +285,8 @@
   align-items: center;
 }
 .discount__item-link {
+  border: none;
+  cursor: pointer;
   background-color: var(--green);
   width: 34px;
   height: 34px;

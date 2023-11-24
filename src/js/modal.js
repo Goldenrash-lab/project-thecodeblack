@@ -22,7 +22,9 @@ const productsContainers = document.querySelectorAll('.products__list, .discount
 productsContainers.forEach(container => {
     container.addEventListener('click', async (e) => {
         const isBuyBtn = e.target.closest('.products__item-link');
-        if (isBuyBtn) {
+        const isBuyBtnDisc = e.target.closest('.discount__item-link');
+        const isBuyBtnPopular = e.target.closest('.popular__item-link');
+        if (isBuyBtn||isBuyBtnDisc||isBuyBtnPopular) {
             return;
         }
 

@@ -114,7 +114,7 @@ body.modal-open {
     max-width: 295px;
 }
 
-.modal__product-item-info .modal__product-label:nth-child(3){
+.modal__product-item-info > .modal__product-label:nth-child(3){
     margin-left: 8px;
 }
 

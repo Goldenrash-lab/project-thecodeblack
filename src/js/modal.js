@@ -1,3 +1,4 @@
+import { functions } from "lodash";
 import iconPath from "../images/icons.svg";
 import axios from "axios";
 
@@ -67,12 +68,6 @@ modal.addEventListener('click', e => {
     }
 });
 
-/**
-  |============================
-  | productData
-  |============================
-*/
-
 function fetchProductInfo(product) {
     const { img, name, category, size, popularity, desc, price } = product;
 
@@ -111,17 +106,40 @@ function fetchProductInfo(product) {
                 </div>
     `;
 }
+
 /**
- |============================
-  | cart__btn-controller
   |============================
-  */
+  | card-btn
+  |============================
+*/
 
- // const addToCartBtn = document.querySelector('.modal__buy-btn');
-// const cartBtnText = document.querySelector('.modal__buy-btn-text');
+// function isProductInCart(productId) {
+//     const cart = JSON.parse(localStorage.getItem('cart' || []));
+//     return cart.includes(productId);
+// };
 
-// addToCartBtn.addEventListener('click', () => {
-    
-    // })
+// function addToCart(productId) {
+//     let cart = JSON.parse(localStorage.getItem('cart' || []));
+//     if (!cart.includes(productId)) {
+//         cart.push(productId);
+//         localStorage.setItem('cart', JSON.stringify(cart));
+//     }
+// };
+
+// function removeFromCart(productId) {
+//     let cart = JSON.parse(localStorage.getItem('cart' || []));
+//     const index = cart.indexOf(productId);
+//     if (index === -1) {
+//         cart.splice(index, 1);
+//     }
+// }
 
 
+//     const addToCartBtn = document.querySelector('.modal__buy-btn');
+//     const cartBtnText = document.querySelector('.modal__buy-btn-text');
+
+//     addToCartBtn.addEventListener('click', (e) => {
+//         if () {
+            
+//         }
+// });

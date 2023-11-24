@@ -1,68 +1,61 @@
+import '../../node_modules/modern-normalize/modern-normalize.css';
+
 const BASE_URL = `https://food-boutique.b.goit.study/api/products`;
 
-
 const refs = {
-    cartHeading: document.querySelector('#cart-heading'),
-    productList: document.querySelector('#cart-product-list'),
-    warningContainer: document.querySelector('#warning-container'),
-    baseContainer: document.querySelector('#cart-base-container'),
-    closeButton: document.querySelector('.close-button'),
-    deleteAllBtn: document.querySelector('#button-wrapper'),
-    totalWrapper: document.querySelector('#total-wrapper')
-}
-
-
+  cartHeading: document.querySelector('#cart-heading'),
+  productList: document.querySelector('#cart-product-list'),
+  warningContainer: document.querySelector('#warning-container'),
+  baseContainer: document.querySelector('#cart-base-container'),
+  closeButton: document.querySelector('.close-button'),
+  deleteAllBtn: document.querySelector('#button-wrapper'),
+  totalWrapper: document.querySelector('#total-wrapper'),
+};
 
 function fetchProducts() {
-    const END_POINT = `?keyword=Ac&page=1&limit=100`;
-    const url = `${BASE_URL}${END_POINT}`;
+  const END_POINT = `?keyword=Ac&page=1&limit=100`;
+  const url = `${BASE_URL}${END_POINT}`;
 
-    const options = {
-        headers: {
-            "content-type": "application/json"
-        }
-    }
+  const options = {
+    headers: {
+      'content-type': 'application/json',
+    },
+  };
 
-    return fetch(url, options)
-        .then(res => {
-            if (!res.ok) {
-                throw new Error(`HTTP error! Status: ${res.status}`);
-            }
+  return fetch(url, options)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
 
-            // console.log(res.json())
-            return res.json();
-        })
-        .catch(err => {
-            console.error('Error fetching products:', err);
-            throw err;
-        });
+      // console.log(res.json())
+      return res.json();
+    })
+    .catch(err => {
+      console.error('Error fetching products:', err);
+      throw err;
+    });
 }
 
 fetchProducts()
-    .then(results => {
-        // console.log(results)
-        // results.results = [];
-        scrollAdding(results.results.length)
-        cartLargeNumber(results.results.length);
-        renderProductsCart(results.results);
-        countTotalPrice(results.results);
-    })
-    .catch(error => {
-        console.error('Error fetching products:', error);
-    });
+  .then(results => {
+    // console.log(results)
+    // results.results = [];
+    scrollAdding(results.results.length);
+    cartLargeNumber(results.results.length);
+    renderProductsCart(results.results);
+    countTotalPrice(results.results);
+  })
+  .catch(error => {
+    console.error('Error fetching products:', error);
+  });
 
 function renderProductsCart(products) {
-    const markup = products.map(el => {
-        const {
-            category,
-            img,
-            name,
-            price,
-            size,
-            _id
-        } = el;
+  const markup = products
+    .map(el => {
+      const { category, img, name, price, size, _id } = el;
 
-        return `<li class="product-item">
+      return `<li class="product-item">
             <img
               class="product-item-img"
               src="${img}"
@@ -92,60 +85,60 @@ function renderProductsCart(products) {
                 </svg>
               </button>
           </li>`;
-    }).join('')
+    })
+    .join('');
 
-    return refs.productList.innerHTML = markup;
+  return (refs.productList.innerHTML = markup);
 }
 
 function cartLargeNumber(number) {
-    if (number === 0) {
-        refs.warningContainer.classList.remove('visually-hidden');
-        refs.baseContainer.classList.add('visually-hidden');
-    }
+  if (number === 0) {
+    refs.warningContainer.classList.remove('visually-hidden');
+    refs.baseContainer.classList.add('visually-hidden');
+  }
 
-    refs.cartHeading.innerHTML = `CART (${number})`;
+  refs.cartHeading.innerHTML = `CART (${number})`;
 }
 
 function countTotalPrice(priceArray) {
-    let totalPrice = 0;
+  let totalPrice = 0;
 
-    priceArray.map(el => {
-        return totalPrice += el.price;
-    })
+  priceArray.map(el => {
+    return (totalPrice += el.price);
+  });
 
-    return refs.totalWrapper.innerHTML = `
+  return (refs.totalWrapper.innerHTML = `
         <span class="key-span">Sum:</span>
         <span class="price-text">&#36;${totalPrice.toFixed(2)}</span>
-    `
+    `);
 }
 
 function clickDeleteElBtn(event) {
-    const btn = event.target.closest('.close-button');
-    if (!btn) {
-        return;
-    }
+  const btn = event.target.closest('.close-button');
+  if (!btn) {
+    return;
+  }
 
-    cartLargeNumber();
+  cartLargeNumber();
 
-    btn.parentElement.remove();
+  btn.parentElement.remove();
 }
 
 function clickDeleteAllBtn() {
-    // refs.productList.classList.add('visually-hidden');
+  // refs.productList.classList.add('visually-hidden');
 
-    refs.cartHeading.innerHTML = 'CART (0)'
-    refs.warningContainer.classList.remove('visually-hidden');
-    refs.baseContainer.innerHTML = '';
+  refs.cartHeading.innerHTML = 'CART (0)';
+  refs.warningContainer.classList.remove('visually-hidden');
+  refs.baseContainer.innerHTML = '';
 }
 
 function scrollAdding(listLength) {
-    if (listLength > 3 && window.innerWidth >= 768) {
-        refs.productList.classList.add('scroll-adding')
-    }
+  if (listLength > 3 && window.innerWidth >= 768) {
+    refs.productList.classList.add('scroll-adding');
+  }
 }
 
-
-// function 
+// function
 
 refs.productList.addEventListener('click', clickDeleteElBtn);
 refs.deleteAllBtn.addEventListener('click', clickDeleteAllBtn);

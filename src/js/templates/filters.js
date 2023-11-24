@@ -1,5 +1,6 @@
 import { ProductAPI } from '../products/API';
 import iconPath from '/src/images/icons.svg';
+import { refreshPage } from '../pagination/pagination';
 
 const refs = {
   selectEl: document.querySelector('.category-choice'),
@@ -20,10 +21,10 @@ function onFormElSubmit(e) {
 
   const obj = loadToLS('PARAMS');
   obj.keyword = keyword;
+  obj.page = 1;
   saveToLS('PARAMS', obj);
 
   productAPI.getProductsByCat(obj).then(res => {
-    console.log(res.results);
     renderProducts(res.results);
   });
 }
@@ -69,6 +70,7 @@ function onSelectElChange() {
 
   const obj = loadToLS('PARAMS');
   obj.category = value;
+  obj.page = 1;
   saveToLS('PARAMS', obj);
 
   productAPI.getProductsByCat(obj).then(res => {
@@ -76,7 +78,7 @@ function onSelectElChange() {
   });
 }
 
-function createProducts(arr) {
+export function createProducts(arr) {
   return arr.map(el => {
     const { category, img, name, popularity, price, size, _id } = el;
     return `
@@ -114,7 +116,7 @@ function createProducts(arr) {
   });
 }
 
-function renderProducts(arr) {
+export function renderProducts(arr) {
   const markup = createProducts(arr).join('');
   refs.productListEl.innerHTML = markup;
 }

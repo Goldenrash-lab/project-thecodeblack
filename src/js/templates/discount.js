@@ -2,7 +2,7 @@ import { ProductDiscountAPI } from "../products/API_discount";
 import iconsPath from '/src/images/icons.svg'
 const refs = {
     buttonEl: document.querySelector('.hero-icon'),
-listPopularProductsEl: document.querySelector('.discount__list')}
+listDiscountProductsEl: document.querySelector('.discount__list')}
 const productDiscountAPI = new ProductDiscountAPI();
 
 
@@ -60,6 +60,33 @@ function discountProducts(products) {
 //рендеримо розмітку
 function createPopularList(products) {
     const markup = discountProducts(products);
-    refs.listPopularProductsEl.innerHTML = markup;
+    refs.listDiscountProductsEl.innerHTML = markup;
+}
+
+// =============додавання в LS=================
+refs.listDiscountProductsEl.addEventListener('click', onDiscListCartClick)
+
+function onDiscListCartClick(e) {  
+  if(e.target.nodeName !== "use" && e.target.nodeName !== "svg" && e.target.nodeName !== "BUTTON"){return}
+ 
+  const id = e.target.closest('.discount__item').dataset.id;
+  let svg = null;
+  if (e.target.nodeName === "BUTTON") {
+    svg = e.target.querySelector('.discount__item-cartsvg')
+  } else { svg = e.target.closest('.discount__item-cartsvg') }
+  
+  const localStorageItem = localStorage.getItem("cartIds");
+
+  if (JSON.parse(localStorage.getItem("cartIds")).includes(id)) {
+    svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`
+  }
+  if (!localStorageItem) {
+        localStorage.setItem("cartIds", JSON.stringify([id]));
+    } else   {
+        const ids = JSON.parse(localStorage.getItem("cartIds"));
+        ids.push(id);
+        localStorage.setItem("cartIds", JSON.stringify(ids));
+    } 
+
 }
 

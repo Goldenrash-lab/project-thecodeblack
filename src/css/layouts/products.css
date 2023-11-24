@@ -172,6 +172,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
 }
 .popular__item-svg {
   fill: var(--green);
@@ -341,8 +342,16 @@
 
   .popular__list {
     flex-direction: row;
-    overflow: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
   }
+  @media only screen and (max-width: 768px) {
+  .products__list {
+    width: 563px;
+  }
+
+  
   .popular__item {
     width: 275px;
     min-width: 275px;
@@ -396,9 +405,7 @@
     max-width: 198px;
     flex-wrap: wrap;
   }
-  .popular__list {
-    flex-direction: column;
-  }
+
   .discount__list {
     display: grid;
     grid-template-columns: 1fr;
@@ -429,3 +436,9 @@
     height: 105px;
   }
 }
+@media only screen and (min-width: 1272px) {
+    .popular__list {
+      display: flex;
+      flex-direction: column;
+    }
+  }

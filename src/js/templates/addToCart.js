@@ -1,49 +1,77 @@
-import iconsPath from '/src/images/icons.svg'
+import iconsPath from '/src/images/icons.svg';
+
 const productsListCart = document.querySelector('.products__list');
+const spanCasa = document.querySelector('.css-span-casa');
+
+document.addEventListener('DOMContentLoaded', onDocumentLoad);
 
 productsListCart.addEventListener('click', onProductsListCartClick);
 
-function onProductsListCartClick(e) {
-    console.dir(e.target);
-    if(e.target.nodeName !== "use" && e.target.nodeName !== "svg" && e.target.nodeName !== "BUTTON"){
-        return
-    }
-    const id = e.target.closest('.products__item').dataset.id;
-    const svg = e.target.closest('.products__item-svg');
-
-    const localStorageItem = localStorage.getItem("cartIds");
-    if (!localStorageItem) {
-        localStorage.setItem("cartIds", JSON.stringify([id]));
-    } else if (JSON.parse(localStorage.getItem("cartIds")).includes(id)) {
-svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`
-    } else {
-        const ids = JSON.parse(localStorage.getItem("cartIds"));
-        ids.push(id);
-        localStorage.setItem("cartIds", JSON.stringify(ids));
-    }
-    
+function onDocumentLoad(e) {
+    const localStorageItemParse = loadToLS('cartIds');
+    spanCasa.textContent = `Cart (${localStorageItemParse.length})`;
 }
-// const popularListCart = document.querySelector('.popular__list');
 
-// popularListCart.addEventListener('click', onPopularListCartClick);
+function onProductsListCartClick(e) {
 
-// function onPopularListCartClick(e) {
-    
-//     if(e.target.nodeName !== "path" && e.target.nodeName !== "svg" && e.target.nodeName !== "BUTTON"){
-//         return
-//     }
-//     const id = e.target.closest('.popular__item').dataset.id;
-//     const btn = e.target.closest('.products__item-link');
+  if (
+    e.target.nodeName !== 'use' &&
+    e.target.nodeName !== 'svg' &&
+    e.target.nodeName !== 'BUTTON'
+  ) {
+    return;
+  }
+  const id = e.target.closest('.products__item').dataset.id;
+  const svg = e.target.closest('.products__item-svg');
+  const localStorageItemParse = loadToLS('cartIds');
+  
+  if (!localStorageItemParse) {
+    saveToLS('cartIds', localStorageItemParse);
+    svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
+    svg.classList.add('checked');
+    spanCasa.textContent = `Cart (${localStorageItemParse.length})`;
+  } else if (loadToLS('cartIds').includes(id)) {
+    return;
+  } else {
+    localStorageItemParse.push(id);
+    saveToLS('cartIds', localStorageItemParse);
+    svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
+    svg.classList.add('checked');
+    spanCasa.textContent = `Cart (${localStorageItemParse.length})`;
+  }
+}
 
-//     const localStorageItem = localStorage.getItem("cartIds");
-//     if (!localStorageItem) {
-//         localStorage.setItem("cartIds", JSON.stringify([id]));
-//     } else if (JSON.parse(localStorage.getItem("cartIds")).includes(id)) {
-// btn.innerHTML = '<p>yes</p>'
-//     } else {
-//         const ids = JSON.parse(localStorage.getItem("cartIds"));
-//         ids.push(id);
-//         localStorage.setItem("cartIds", JSON.stringify(ids));
-//     }
-    
-// }
+function saveToLS(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+function loadToLS(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) || [];
+  } catch (error) {
+    console.log(error.message);
+    return localStorage.getItem(key);
+  }
+}
+
+//  setTimeout(() => {
+//     const localStorageItemParse = loadToLS('cartIds');
+//   console.log(localStorageItemParse);
+//   if (!localStorageItemParse) {
+//     return;
+//   }
+//   localStorageItemParse.forEach(element => {
+//     console.log(element);
+//     const productItem = document.querySelector(`[data-id="${element}"]`);
+//     console.log(productItem);
+//     const svg = productItem.querySelector('.products__item-svg');
+//     svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
+//     svg.classList.add('checked');
+//   });
+//   spanCasa.textContent = `Cart (${localStorageItemParse.length})`;
+// }, 5000);
+
+

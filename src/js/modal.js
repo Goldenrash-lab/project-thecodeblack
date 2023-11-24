@@ -5,6 +5,7 @@ import axios from "axios";
 const BASE_URL = 'https://food-boutique.b.goit.study/api/products';
 const modal = document.querySelector('.modal');
 
+
 async function getProductsById(id) {
     try {
         const response = await axios.get(`${BASE_URL}/${id}`);
@@ -38,6 +39,15 @@ productsContainers.forEach(container => {
         }
     })
 });
+
+// productList.addEventListener('click', e => {
+//     const targetEl = e.target.closest('.products__item')
+//     if (targetEl) {
+//         onModalOpen();
+//     }
+
+// });
+
 
 
 function onCloseModal() { 

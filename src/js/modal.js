@@ -42,15 +42,6 @@ productsContainers.forEach(container => {
     })
 });
 
-// productList.addEventListener('click', e => {
-//     const targetEl = e.target.closest('.products__item')
-//     if (targetEl) {
-//         onModalOpen();
-//     }
-
-// });
-
-
 function onCloseModal() { 
     modal.classList.remove('open');
     window.removeEventListener('keydown', onDocumentKeyPress)
@@ -66,6 +57,23 @@ function onModalOpen(productData) {
     const productInfoHTML = fetchProductInfo(productData);
     modal.insertAdjacentHTML('beforeend', productInfoHTML);
     handleScrolling();
+
+    const addToCartBtn = document.querySelector('.modal__buy-btn');
+
+    addToCartBtn.addEventListener('click', (e) => {
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        const itemIndex = cartItems.findIndex(item => item.id === productData.id);
+        if (itemIndex === -1) {
+            cartItems.push(productData);
+            addToCartBtn.querySelector('.modal__buy-btn-text').textContent = 'Remove from';
+        } else {
+            cartItems.splice(itemIndex, 1);
+            addToCartBtn.querySelector('.modal__buy-btn-text').textContent = 'Add to';
+        }
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    });
 };
 
 function onDocumentKeyPress(e) {
@@ -83,6 +91,9 @@ modal.addEventListener('click', e => {
 function fetchProductInfo(product) {
     const { img, name, category, size, popularity, desc, price } = product;
 
+    const isInCart = JSON.parse(localStorage.getItem('cartItems'))?.some(item => item.id === product.id);
+    const addToCartBtnText = isInCart ? 'Remove from' : 'Add to';
+
     return `
         <div class="modal__inner">
             <button class="modal__close">
@@ -96,21 +107,21 @@ function fetchProductInfo(product) {
 
                 <div class="modal__product-content">
                     <h4 class="modal__product-title">${name}</h4>
-                        <div class="modal__product-item-info">
+                       <div class="modal__product-item-info">
                             <h5 class="modal__product-label">Category:</h5>
                             <p class="modal__product-text">${category}</p>
                             <h5 class="modal__product-label">Size:</h5>
                             <p class="modal__product-text">${size}</p>
-                            <h5 class="modal__product-label">Popularity:</h5>
-                            <p class="modal__product-text">${popularity}</p>
+                                <h5 class="modal__product-label">Popularity:</h5>
+                                <p class="modal__product-text">${popularity}</p>
                             </div>
-                            <p class="modal__product-descr">${desc}</p>                        
+                            <p class="modal__product-descr">${desc}</p>                          
             </div>
             </div>
             <div class="modal__product-buy">
                 <p class="modal__product-price"><span>&#36;</span>${price}</p>
                 <button class="modal__buy-btn" type="button">
-                    <p class="modal__buy-btn-text">Add to</p>
+                    <p class="modal__buy-btn-text">${addToCartBtnText}</p>
                     <svg class="modal__cart-icon" width="18" height="18">
                         <use href="${iconPath}#icon-cart-icon"></use>
                     </svg>
@@ -126,40 +137,3 @@ function handleScrolling() {
         productDescr.classList.add('scroll-adding');
     }
 };
-
-/**
-  |============================
-  | card-btn
-  |============================
-*/
-
-// function isProductInCart(productId) {
-//     const cart = JSON.parse(localStorage.getItem('cart' || []));
-//     return cart.includes(productId);
-// };
-
-// function addToCart(productId) {
-//     let cart = JSON.parse(localStorage.getItem('cart' || []));
-//     if (!cart.includes(productId)) {
-//         cart.push(productId);
-//         localStorage.setItem('cart', JSON.stringify(cart));
-//     }
-// };
-
-// function removeFromCart(productId) {
-//     let cart = JSON.parse(localStorage.getItem('cart' || []));
-//     const index = cart.indexOf(productId);
-//     if (index === -1) {
-//         cart.splice(index, 1);
-//     }
-// }
-
-
-//     const addToCartBtn = document.querySelector('.modal__buy-btn');
-//     const cartBtnText = document.querySelector('.modal__buy-btn-text');
-
-//     addToCartBtn.addEventListener('click', (e) => {
-//         if () {
-            
-//         }
-// });

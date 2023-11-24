@@ -436,9 +436,16 @@
     height: 105px;
   }
 }
+
+/* стили галочки в карте продукта */
+.checked {
+  stroke: var(--light-grey);
+    fill: transparent;
+}
 @media only screen and (min-width: 1272px) {
     .popular__list {
       display: flex;
       flex-direction: column;
     }
   }
+  

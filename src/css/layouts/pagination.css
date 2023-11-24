@@ -163,22 +163,22 @@
 }
 
 .tui-pagination .tui-prev {
-  margin-right: 27px;
+  margin-right: 13px;
 }
 
 @media only screen and (min-width: 768px) {
   .tui-pagination .tui-prev {
-    margin-right: 60px;
+    margin-right: 45px;
   }
 }
 
 .tui-pagination .tui-next {
-  margin-left: 27px;
+  margin-left: 13px;
 }
 
 @media only screen and (min-width: 768px) {
   .tui-pagination .tui-next {
-    margin-left: 60px;
+    margin-left: 45px;
   }
 }
 

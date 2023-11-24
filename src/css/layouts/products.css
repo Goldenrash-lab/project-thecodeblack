@@ -285,6 +285,8 @@
   align-items: center;
 }
 .discount__item-link {
+  border: none;
+  cursor: pointer;
   background-color: var(--green);
   width: 34px;
   height: 34px;

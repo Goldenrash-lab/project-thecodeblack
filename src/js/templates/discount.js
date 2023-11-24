@@ -66,9 +66,7 @@ function createPopularList(products) {
 // =============додавання в LS=================
 refs.listDiscountProductsEl.addEventListener('click', onDiscListCartClick)
 
-function onDiscListCartClick(e) {
-  console.log('hello');
-  console.log(e.target);
+function onDiscListCartClick(e) {  
   if(e.target.nodeName !== "use" && e.target.nodeName !== "svg" && e.target.nodeName !== "BUTTON"){return}
  
   const id = e.target.closest('.discount__item').dataset.id;

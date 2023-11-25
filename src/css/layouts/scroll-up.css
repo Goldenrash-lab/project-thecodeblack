@@ -9,19 +9,36 @@
    border: transparent;
    color: transparent;
    cursor: pointer;
+  width: 64px;
+  height: 64px;
+  background-color: var(--green);
+  border-radius: 64px;
  }
- .scrollUp {
-   font-size: 14px;
-   color: black;
+ .home-anchor:hover{
+  background-color: var(--green-accent);
  }
+
+ .icon-angle {
+  height: 48px;
+  width: 48px;
+  stroke-width: 2px;
+  fill: var(--light-grey);
+}
 
  @media screen and (min-width: 768px) {
    .home-anchor {
      bottom: 30px;
      right: 50px;
    }
+   .icon-angle {
+    width: 64px;
+    height: 64px;
+  }
  }
  @media screen and (min-width: 1280px) {
+  .icon-angle:hover {
+    fill: var(--light-grey);
+  }
    .home-anchor {
      bottom: 40px;
      right: 60px;

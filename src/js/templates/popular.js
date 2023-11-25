@@ -63,7 +63,6 @@ function renderPopularProducts(arr) {
   refs.formPopularEl.innerHTML = markap;
 }
 // LS
-<<<<<<< Updated upstream
 
 refs.formPopularEl.addEventListener('click', onFormPopularElClick);
 
@@ -99,5 +98,3 @@ function onFormPopularElClick(el) {
     localStorage.setItem('cartIds', JSON.stringify(ids));
   }
 }
-=======
->>>>>>> Stashed changes

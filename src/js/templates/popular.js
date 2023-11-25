@@ -1,6 +1,5 @@
 import { ProductPopularAPI } from '../products/API_popular';
 import iconsPath from '/src/images/icons.svg';
-import iconPath from '/src/images/icons.svg';
 
 const refs = {
   formPopularEl: document.querySelector('.popular__list'),
@@ -61,4 +60,42 @@ function createPopular(arr) {
 function renderPopularProducts(arr) {
   const markap = createPopular(arr).join('');
   refs.formPopularEl.innerHTML = markap;
+}
+
+
+// LS
+refs.formPopularEl.addEventListener('click', onFormPopularElClick);
+
+function onFormPopularElClick(el) {
+  if (
+    el.target.nodeName !== 'use' &&
+    el.target.nodeName !== 'svg' &&
+    el.target.nodeName !== 'BUTTON'
+  ) {
+    return;
+  }
+
+  const id = el.target.closest('.popular__item').dataset.id;
+  let svg = null;
+
+  if (el.target.nodeName === 'BUTTON') {
+    svg = el.target.querySelector('.popular__item-svg');
+  } else {
+    svg = el.target.closest('.popular__item-svg');
+  }
+
+  const localStorageItem = JSON.parse(localStorage.getItem('cartIds'));
+  console.log(localStorageItem);
+  console.log(localStorageItem.length);
+
+  svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
+  svg.classList.add('checked-popular');
+
+  if (localStorageItem.includes(id)) {
+    return;
+  } else {
+    const ids = JSON.parse(localStorage.getItem('cartIds'));
+    ids.push(id);
+    localStorage.setItem('cartIds', JSON.stringify(ids));
+  }
 }

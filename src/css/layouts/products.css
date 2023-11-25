@@ -89,6 +89,7 @@
 }
 .products__item-svg {
   fill: var(--light-grey);
+  height: 18px;
 }
 
 .products__item-link-popular {
@@ -125,6 +126,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  width: 275px;
 }
 .popular__item {
   border-radius: 10px;
@@ -347,20 +349,18 @@
     flex-direction: row;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    
   }
 }
-  @media only screen and (max-width: 768px) {
+
+@media only screen and (max-width: 768px) {
   .products__list {
     width: 563px;
   }
 
-  
   .popular__item {
     width: 275px;
     min-width: 275px;
   }
-
   .discount__list {
     /* display: grid; */
     /* grid-template-columns: 1fr 1fr; */
@@ -447,12 +447,17 @@
 /* стили галочки в карте продукта */
 .checked {
   stroke: var(--light-grey);
-    fill: transparent;
-    height:  18px;
+  fill: transparent;
+  height: 18px;
 }
 @media only screen and (min-width: 1272px) {
-    .popular__list {
-      display: flex;
-      flex-direction: column;
-    }
+  .popular__list {
+    display: flex;
+    flex-direction: column;
   }
+}
+
+.checked-popular {
+  fill: transparent;
+  stroke: var(--green);
+}

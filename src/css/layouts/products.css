@@ -89,6 +89,7 @@
 }
 .products__item-svg {
   fill: var(--light-grey);
+  height: 18px;
 }
 
 .products__item-link-popular {
@@ -447,6 +448,7 @@
   stroke: var(--light-grey);
   fill: transparent;
   height: 18px;
+
 }
 @media only screen and (min-width: 1272px) {
   .popular__list {

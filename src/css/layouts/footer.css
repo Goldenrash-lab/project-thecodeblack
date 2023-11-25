@@ -8,21 +8,21 @@ display: flex;
 gap: 78px;
     }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1272px) {
   .footer__wrapper {
     display:flex;
     justify-content: space-between;
     }
 }
 
-@media screen and (min-width: 769px) and (max-width: 1279px) {
+@media screen and (min-width: 769px) and (max-width: 1271px) {
   .footer-tablet{
     display: flex;
     flex-direction: column;
       }
 }
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1272px) {
   .footer-tablet{
 display: flex;
 gap: 149px;

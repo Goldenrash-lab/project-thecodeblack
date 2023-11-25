@@ -1,6 +1,5 @@
 import { ProductPopularAPI } from '../products/API_popular';
 import iconsPath from '/src/images/icons.svg';
-import iconPath from '/src/images/icons.svg';
 
 const refs = {
   formPopularEl: document.querySelector('.popular__list'),
@@ -62,8 +61,9 @@ function renderPopularProducts(arr) {
   const markap = createPopular(arr).join('');
   refs.formPopularEl.innerHTML = markap;
 }
-// LS
 
+
+// LS
 refs.formPopularEl.addEventListener('click', onFormPopularElClick);
 
 function onFormPopularElClick(el) {

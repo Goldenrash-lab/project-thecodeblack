@@ -63,36 +63,37 @@ function createPopularList(products) {
     refs.listDiscountProductsEl.innerHTML = markup;
 }
 
-// =============додавання в LS=================
-refs.listDiscountProductsEl.addEventListener('click', onDiscListCartClick)
 
-function onDiscListCartClick(e) {  
-  if(e.target.nodeName !== "use" && e.target.nodeName !== "svg" && e.target.nodeName !== "BUTTON"){return}
- 
-  const id = e.target.closest('.discount__item').dataset.id;
+// LS
+refs.listDiscountProductsEl.addEventListener('click', onDiscListCartClick);
+
+function onDiscListCartClick(el) {
+  if (
+    el.target.nodeName !== 'use' &&
+    el.target.nodeName !== 'svg' &&
+    el.target.nodeName !== 'BUTTON'
+  ) {
+    return;
+  }
+
+  const id = el.target.closest('.discount__item').dataset.id;
   let svg = null;
-  if (e.target.nodeName === "BUTTON") {
-    svg = e.target.querySelector('.discount__item-cartsvg')
-  } else { svg = e.target.closest('.discount__item-cartsvg') }
+  if (el.target.nodeName === 'BUTTON') {
+    svg = el.target.querySelector('.discount__item-cartsvg');
+  } else {
+    svg = el.target.closest('.discount__item-cartsvg');
+  }
   
-  const localStorageItem = JSON.parse(localStorage.getItem("cartIds"));
-  
+  const localStorageItem = JSON.parse(localStorage.getItem('cartIds'));
+
   svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
-  
-    if (localStorageItem.includes(id)) {
-      return      
-    } else {
-      const ids = JSON.parse(localStorage.getItem("cartIds"));
-        ids.push(id);
-        localStorage.setItem("cartIds", JSON.stringify(ids));
-    }
-    }
-      
-    // } else {
-    //     const ids = JSON.parse(localStorage.getItem("cartIds"));
-    //     ids.push(id);
-    //     localStorage.setItem("cartIds", JSON.stringify(ids));
-    // }
+  svg.classList.add('checked');
 
-
-
+  if (localStorageItem.includes(id)) {
+    return;
+  } else {
+    const ids = JSON.parse(localStorage.getItem('cartIds'));
+    ids.push(id);
+    localStorage.setItem('cartIds', JSON.stringify(ids));
+  }
+}

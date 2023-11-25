@@ -64,8 +64,6 @@ function renderPopularProducts(arr) {
 
 
 // LS
-
-
 refs.formPopularEl.addEventListener('click', onFormPopularElClick);
 
 function onFormPopularElClick(el) {
@@ -91,6 +89,7 @@ function onFormPopularElClick(el) {
   console.log(localStorageItem.length);
 
   svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
+  svg.classList.add('checked-popular');
 
   if (localStorageItem.includes(id)) {
     return;

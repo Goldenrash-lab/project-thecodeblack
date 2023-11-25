@@ -456,3 +456,7 @@
     flex-direction: column;
   }
 }
+.checked-popular {
+  fill: transparent;
+  stroke: var(--green);
+}

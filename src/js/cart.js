@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', onDocumentLoad);
 
 function onDocumentLoad() {
   const obj = loadToLS('cartIds');
+  if (!obj.length) {
+    spanCasa.innerHTML = `CART(0)`;
+  }
   spanCasa.innerHTML = `CART(${obj.length})`;
 }
 

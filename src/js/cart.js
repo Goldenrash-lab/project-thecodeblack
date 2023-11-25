@@ -3,17 +3,17 @@ import '../../node_modules/modern-normalize/modern-normalize.css';
 import './templates/footer-validation';
 import './templates/footer-postApi';
 
-
 // CART VALUE
 
 const spanCasa = document.querySelector('.css-span-casa');
-
+console.log(spanCasa.innerHTML);
 function onDocumentLoad() {
   const obj = loadToLS('cartIds');
   if (!obj.length) {
     spanCasa.innerHTML = `CART(0)`;
+  } else {
+    spanCasa.innerHTML = `CART(${obj.length})`;
   }
-  spanCasa.innerHTML = `CART(${obj.length})`;
 }
 
 // Связываем элементы и переменные
@@ -29,9 +29,8 @@ const refs = {
 
 //достаём данные из local storage
 const cartIdsData = localStorage.getItem('cartIds');
-const cartIdsArray = JSON.parse(cartIdsData);
+const cartIdsArray = JSON.parse(cartIdsData) || [];
 getCartProducts(cartIdsArray);
-
 
 //функция запроса данных
 function getCartProducts(cartIds) {
@@ -105,7 +104,7 @@ function renderProductsCart(products) {
     })
     .join('');
 
-  return refs.productList.innerHTML = markup;
+  return (refs.productList.innerHTML = markup);
 }
 
 // функция для вывода данных в счетчик в заголовке страницы
@@ -123,13 +122,13 @@ function countTotalPrice(priceArray) {
   let totalPrice = 0;
 
   priceArray.forEach(product => {
-    return totalPrice += product.price;
+    return (totalPrice += product.price);
   });
 
-  return refs.totalWrapper.innerHTML = `
+  return (refs.totalWrapper.innerHTML = `
         <span class="key-span">Sum:</span>
         <span class="price-text">&#36;${totalPrice.toFixed(2)}</span>
-    `;
+    `);
 }
 
 // функция для удаления одного элемента
@@ -183,7 +182,6 @@ function scrollAdding(listLength) {
 document.addEventListener('DOMContentLoaded', onDocumentLoad);
 refs.productList.addEventListener('click', clickDeleteElBtn);
 refs.deleteAllBtn.addEventListener('click', clickDeleteAllBtn);
-
 
 // экспорт функций
 export function saveToLS(key, value) {

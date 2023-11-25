@@ -1,6 +1,7 @@
 import '../../node_modules/modern-normalize/modern-normalize.css';
 import './templates/footer-validation';
 import './templates/footer-postApi';
+import './templates/addToCart';
 
 // Связываем элементы и переменные
 const refs = {

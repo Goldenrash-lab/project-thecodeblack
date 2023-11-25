@@ -103,21 +103,28 @@ function fetchProductInfo(product) {
             </button>
 
             <div class="modal__product-info">
-                <div class="modal__img-box"><img class="modal__product-img" src="${img}" alt="${name}" width="295"/></div>
-
-                <div class="modal__product-content">
+                 <div class="modal__img-box"><img class="modal__product-img" src="${img}" alt="${name}" width="295"/></div>
+                  <div class="modal__product-content">
                     <h4 class="modal__product-title">${name}</h4>
-                       <div class="modal__product-item-info">
-                            <h5 class="modal__product-label">Category:</h5>
-                            <p class="modal__product-text">${category}</p>
+                     <ul class="modal__product-list">
+                         <li class="modal__product-item">
+                             <h5 class="modal__product-label">Category:</h5>
+                             <p class="modal__product-text">${category}</p>
+                         </li>
+                        <li class="modal__product-item">
                             <h5 class="modal__product-label">Size:</h5>
                             <p class="modal__product-text">${size}</p>
-                                <h5 class="modal__product-label">Popularity:</h5>
-                                <p class="modal__product-text">${popularity}</p>
-                            </div>
-                            <p class="modal__product-descr">${desc}</p>                          
+                         </li>
+                        <li class="modal__product-item">
+                            <h5 class="modal__product-label">Popularity:</h5>
+                            <p class="modal__product-text">${popularity}</p>
+                         </li>
+                     </ul>
+                         
+                    <p class="modal__product-descr">${desc}</p>           
+                  </div>
             </div>
-            </div>
+
             <div class="modal__product-buy">
                 <p class="modal__product-price"><span>&#36;</span>${price}</p>
                 <button class="modal__buy-btn" type="button">

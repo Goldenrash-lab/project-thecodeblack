@@ -2,7 +2,8 @@ import { ProductDiscountAPI } from "../products/API_discount";
 import iconsPath from '/src/images/icons.svg'
 const refs = {
     buttonEl: document.querySelector('.hero-icon'),
-listDiscountProductsEl: document.querySelector('.discount__list')}
+  listDiscountProductsEl: document.querySelector('.discount__list'),
+spanCasa: document.querySelector('.css-span-casa'),}
 const productDiscountAPI = new ProductDiscountAPI();
 
 
@@ -20,8 +21,14 @@ function getDiscountProduct() {
 }
 // 1 продукт
 function discountProduct(product) {
-const {_id, img, name, price} = product
-    const productLi = `<li class="discount__item" data-id=${_id}>
+  const { _id, img, name, price } = product;
+
+  const cartId = loadToLS('cartIds');
+
+  let use = '';
+  if (cartId.includes(_id)) { use=`<svg class="discount__item-cartsvg checked" width="18" height="18"><use href="${iconsPath}#icon-check"></use></svg>` } else { use = `<svg class="discount__item-cartsvg" width="18" height="18"><use href="${iconsPath}#icon-cart-icon"></use></svg>` };
+
+  const productLi = `<li class="discount__item" data-id=${_id}>
             <div class="discount__item-wrapper">
               <img
                 src="${img}"
@@ -39,13 +46,14 @@ const {_id, img, name, price} = product
               <div class="discount__item-box">
                 <p class="discount__item-price">$${price}</p>
                 <button type="button" class="discount__item-link">
-                  <svg class="discount__item-cartsvg" width="18" height="18">
-                    <use href="${iconsPath}#icon-cart-icon"></use>
-                  </svg>
+                ${use}
                 </button>
-              </div>
-            </div>
-          </li>`
+                </div>
+                </div>
+                </li>`
+                // <svg class="discount__item-cartsvg" width="18" height="18">
+                // <use href="${iconsPath}#icon-cart-icon"></use>
+                // </svg>
     // console.log(productLi);
     return productLi;
 };
@@ -63,38 +71,57 @@ function createPopularList(products) {
     refs.listDiscountProductsEl.innerHTML = markup;
 }
 
-// =============додавання в LS=================
-refs.listDiscountProductsEl.addEventListener('click', onDiscListCartClick)
 
-function onDiscListCartClick(e) {  
-  if(e.target.nodeName !== "use" && e.target.nodeName !== "svg" && e.target.nodeName !== "BUTTON"){return}
- 
-  const id = e.target.closest('.discount__item').dataset.id;
+// LS
+refs.listDiscountProductsEl.addEventListener('click', onDiscListCartClick);
+
+function onDiscListCartClick(el) {
+  if (
+    el.target.nodeName !== 'use' &&
+    el.target.nodeName !== 'svg' &&
+    el.target.nodeName !== 'BUTTON'
+  ) {
+    return;
+  }
+
+
+  const id = el.target.closest('.discount__item').dataset.id;
   let svg = null;
-  if (e.target.nodeName === "BUTTON") {
-    svg = e.target.querySelector('.discount__item-cartsvg')
-  } else { svg = e.target.closest('.discount__item-cartsvg') }
-  
-  const localStorageItem = JSON.parse(localStorage.getItem("cartIds"));
-  console.log(localStorageItem);
-  console.log(localStorageItem.length);
-  
-  svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
-  
-    if (localStorageItem.includes(id)) {
-      return      
-    } else {
-      const ids = JSON.parse(localStorage.getItem("cartIds"));
-        ids.push(id);
-        localStorage.setItem("cartIds", JSON.stringify(ids));
-    }
-    }
-      
-    // } else {
-    //     const ids = JSON.parse(localStorage.getItem("cartIds"));
-    //     ids.push(id);
-    //     localStorage.setItem("cartIds", JSON.stringify(ids));
-    // }
+  if (el.target.nodeName === 'BUTTON') {
+    svg = el.target.querySelector('.discount__item-cartsvg');
+  } else {
+    svg = el.target.closest('.discount__item-cartsvg');
+  }
+    svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
+  svg.classList.add('checked');
+
+  const localStorageItem = loadToLS('cartIds');
+  if (localStorageItem.includes(id)) {
+    return;
+  } else {    
+    localStorageItem.push(id);
+    saveToLS('cartIds', localStorageItem);
+    refs.spanCasa.textContent = `Cart (${localStorageItem.length})`;
+  }
+}
+
+function saveToLS(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+function loadToLS(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) || [];
+  } catch (error) {
+    console.log(error.message);
+    return localStorage.getItem(key);
+  }
+}
 
 
+
+// console.log(checkCart(658))
 

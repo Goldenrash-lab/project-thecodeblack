@@ -19,7 +19,7 @@ const makeSubscription = savedData => {
         Notiflix.Notify.warning('Sorry, this email already subscribed');
       }
       if (err.response.status === 400) {
-        Notify.info('Please write your email :)');
+        Notify.info('Please enter your email :)');
       }
     });
 };

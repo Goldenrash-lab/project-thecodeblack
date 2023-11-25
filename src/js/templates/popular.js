@@ -1,5 +1,6 @@
 import { ProductPopularAPI } from '../products/API_popular';
-import iconsPath from '/src/images/icons.svg'
+import iconsPath from '/src/images/icons.svg';
+import iconPath from '/src/images/icons.svg';
 
 const refs = {
   formPopularEl: document.querySelector('.popular__list'),
@@ -36,7 +37,7 @@ function createPopular(arr) {
 
                   <button type="button" class="popular__item-link">
                     <svg class="popular__item-svg" width="12" height="12">
-                      <use href="${iconsPath}#icon-cart-icon"></use>
+                      <use href="${iconsPath}#icon-shopping-cart"></use>
                     </svg>
                   </button>
 

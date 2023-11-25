@@ -349,6 +349,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+}
 
 @media only screen and (max-width: 768px) {
   .products__list {
@@ -447,7 +448,6 @@
   stroke: var(--light-grey);
   fill: transparent;
   height: 18px;
-
 }
 @media only screen and (min-width: 1272px) {
   .popular__list {
@@ -460,4 +460,3 @@
   fill: transparent;
   stroke: var(--green);
 }
-

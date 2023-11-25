@@ -21,8 +21,14 @@ function getDiscountProduct() {
 }
 // 1 продукт
 function discountProduct(product) {
-const {_id, img, name, price} = product
-    const productLi = `<li class="discount__item" data-id=${_id}>
+  const { _id, img, name, price } = product;
+
+  const cartId = loadToLS('cartIds');
+
+  let use = '';
+  if (cartId.includes(_id)) { use=`<svg class="discount__item-cartsvg checked" width="18" height="18"><use href="${iconsPath}#icon-check"></use></svg>` } else { use = `<svg class="discount__item-cartsvg" width="18" height="18"><use href="${iconsPath}#icon-cart-icon"></use></svg>` };
+
+  const productLi = `<li class="discount__item" data-id=${_id}>
             <div class="discount__item-wrapper">
               <img
                 src="${img}"
@@ -40,13 +46,14 @@ const {_id, img, name, price} = product
               <div class="discount__item-box">
                 <p class="discount__item-price">$${price}</p>
                 <button type="button" class="discount__item-link">
-                  <svg class="discount__item-cartsvg" width="18" height="18">
-                    <use href="${iconsPath}#icon-cart-icon"></use>
-                  </svg>
+                ${use}
                 </button>
-              </div>
-            </div>
-          </li>`
+                </div>
+                </div>
+                </li>`
+                // <svg class="discount__item-cartsvg" width="18" height="18">
+                // <use href="${iconsPath}#icon-cart-icon"></use>
+                // </svg>
     // console.log(productLi);
     return productLi;
 };
@@ -113,3 +120,8 @@ function loadToLS(key) {
     return localStorage.getItem(key);
   }
 }
+
+
+
+// console.log(checkCart(658))
+

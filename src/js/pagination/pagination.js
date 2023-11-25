@@ -20,7 +20,7 @@ let params = loadToLS('PARAMS');
 console.log(params);
 
 export const instance = new Pagination(container, {
-  itemsPerPage: 9,
+  itemsPerPage: 1,
   visiblePages: 4,
   centerAlign: true,
   firstItemClassName: 'tui-first-child',
@@ -51,6 +51,7 @@ getProducts(params).then(res => {
 });
 
 export function resetTotalPage(totalPages) {
+  instance.setTotalItems(totalPages * 9);
   instance.reset(totalPages);
   // instance.movePageTo(params.page);
 }

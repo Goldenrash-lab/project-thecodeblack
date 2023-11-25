@@ -65,6 +65,8 @@ function onModalOpen(productData) {
     const isInCart = cartItems.includes(productId);
     addToCartBtn.querySelector('.modal__buy-btn-text').textContent = isInCart ? 'Remove from' : 'Add to';
 
+    const spanCasa = document.querySelector('.css-span-casa');
+
     addToCartBtn.addEventListener('click', () => {
         const itemIndex = cartItems.indexOf(productId);
         if (itemIndex === -1) {
@@ -75,6 +77,7 @@ function onModalOpen(productData) {
             addToCartBtn.querySelector('.modal__buy-btn-text').textContent = 'Add to';
         }
         localStorage.setItem('cartIds', JSON.stringify(cartItems));
+        spanCasa.textContent = `Cart(${cartItems.length })`;
     });
 }
 

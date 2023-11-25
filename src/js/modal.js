@@ -57,9 +57,11 @@ function onModalOpen(productData) {
     modal.insertAdjacentHTML('beforeend', productInfoHTML);
     handleScrolling();
 
+    const productId = productData._id; 
+    modal.setAttribute('data-product-id', productId);
+
     const addToCartBtn = document.querySelector('.modal__buy-btn');
-    const productId = productData.id;
-    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    let cartItems = JSON.parse(localStorage.getItem('cartIds')) || [];
     const isInCart = cartItems.includes(productId);
     addToCartBtn.querySelector('.modal__buy-btn-text').textContent = isInCart ? 'Remove from' : 'Add to';
 
@@ -72,7 +74,7 @@ function onModalOpen(productData) {
             cartItems.splice(itemIndex, 1);
             addToCartBtn.querySelector('.modal__buy-btn-text').textContent = 'Add to';
         }
-        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        localStorage.setItem('cartIds', JSON.stringify(cartItems));
     });
 }
 
@@ -88,14 +90,10 @@ modal.addEventListener('click', e => {
     }
 });
 
-function fetchProductInfo(product) {
-    const { img, name, category, size, popularity, desc, price } = product;
 
-    const isInCart = JSON.parse(localStorage.getItem('cartItems'))?.indexOf(product.id) !== -1;
-    const addToCartBtnText = isInCart ? 'Remove from' : 'Add to';
-
+function fetchProductInfo({ img, name, category, size, popularity, desc, price, _id}) {
     return `
-        <div class="modal__inner">
+        <div class="modal__inner" data-product-id='${_id}'>
             <button class="modal__close">
                 <svg class="modal__close-icon" width="13" height="13">
                     <use href="${iconPath}#icon-close"></use>
@@ -127,8 +125,8 @@ function fetchProductInfo(product) {
 
             <div class="modal__product-buy">
                 <p class="modal__product-price"><span>&#36;</span>${price}</p>
-                <button class="modal__buy-btn" type="button">
-                    <p class="modal__buy-btn-text">${addToCartBtnText}</p>
+                <button class="modal__buy-btn" type="button" data-state='add'>
+                    <p class="modal__buy-btn-text">Add to</p>
                     <svg class="modal__cart-icon" width="18" height="18">
                         <use href="${iconPath}#icon-cart-icon"></use>
                     </svg>

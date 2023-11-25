@@ -36,7 +36,7 @@ function createPopular(arr) {
 
                   <button type="button" class="popular__item-link">
                     <svg class="popular__item-svg" width="12" height="12">
-                      <use href="${iconsPath}#icon-cart-icon"></use>
+                      <use href="${iconsPath}#icon-shopping-cart"></use>
                     </svg>
                   </button>
 
@@ -62,8 +62,8 @@ function renderPopularProducts(arr) {
   refs.formPopularEl.innerHTML = markap;
 }
 
-// LS
 
+// LS
 refs.formPopularEl.addEventListener('click', onFormPopularElClick);
 
 function onFormPopularElClick(el) {
@@ -89,6 +89,7 @@ function onFormPopularElClick(el) {
   console.log(localStorageItem.length);
 
   svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
+  svg.classList.add('checked-popular');
 
   if (localStorageItem.includes(id)) {
     return;

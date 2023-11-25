@@ -346,6 +346,7 @@ body{
     .product-item{
         gap: 40px;
         padding: 40px 0; 
+        max-height: 200px;
     }
 
     .product-img-wrapper {

@@ -349,7 +349,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-}
+
 @media only screen and (max-width: 768px) {
   .products__list {
     width: 563px;
@@ -359,7 +359,6 @@
     width: 275px;
     min-width: 275px;
   }
-
   .discount__list {
     /* display: grid; */
     /* grid-template-columns: 1fr 1fr; */
@@ -456,7 +455,9 @@
     flex-direction: column;
   }
 }
+
 .checked-popular {
   fill: transparent;
   stroke: var(--green);
 }
+

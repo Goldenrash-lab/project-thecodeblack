@@ -2,7 +2,8 @@ import { ProductDiscountAPI } from "../products/API_discount";
 import iconsPath from '/src/images/icons.svg'
 const refs = {
     buttonEl: document.querySelector('.hero-icon'),
-listDiscountProductsEl: document.querySelector('.discount__list')}
+  listDiscountProductsEl: document.querySelector('.discount__list'),
+spanCasa: document.querySelector('.css-span-casa'),}
 const productDiscountAPI = new ProductDiscountAPI();
 
 
@@ -76,6 +77,7 @@ function onDiscListCartClick(el) {
     return;
   }
 
+
   const id = el.target.closest('.discount__item').dataset.id;
   let svg = null;
   if (el.target.nodeName === 'BUTTON') {
@@ -83,17 +85,31 @@ function onDiscListCartClick(el) {
   } else {
     svg = el.target.closest('.discount__item-cartsvg');
   }
-  
-  const localStorageItem = JSON.parse(localStorage.getItem('cartIds'));
-
-  svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
+    svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
   svg.classList.add('checked');
 
+  const localStorageItem = loadToLS('cartIds');
   if (localStorageItem.includes(id)) {
     return;
-  } else {
-    const ids = JSON.parse(localStorage.getItem('cartIds'));
-    ids.push(id);
-    localStorage.setItem('cartIds', JSON.stringify(ids));
+  } else {    
+    localStorageItem.push(id);
+    saveToLS('cartIds', localStorageItem);
+    refs.spanCasa.textContent = `Cart (${localStorageItem.length})`;
+  }
+}
+
+function saveToLS(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+function loadToLS(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) || [];
+  } catch (error) {
+    console.log(error.message);
+    return localStorage.getItem(key);
   }
 }

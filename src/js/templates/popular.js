@@ -3,6 +3,7 @@ import iconsPath from '/src/images/icons.svg';
 
 const refs = {
   formPopularEl: document.querySelector('.popular__list'),
+  spanCasa: document.querySelector('.css-span-casa'),
 };
 
 document.addEventListener('DOMContentLoaded', onformPopularElLoaded);
@@ -85,8 +86,8 @@ function onFormPopularElClick(el) {
   }
 
   const localStorageItem = JSON.parse(localStorage.getItem('cartIds'));
-  console.log(localStorageItem);
-  console.log(localStorageItem.length);
+  // console.log(localStorageItem);
+  // console.log(localStorageItem.length);
 
   svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
   svg.classList.add('checked-popular');
@@ -97,5 +98,8 @@ function onFormPopularElClick(el) {
     const ids = JSON.parse(localStorage.getItem('cartIds'));
     ids.push(id);
     localStorage.setItem('cartIds', JSON.stringify(ids));
+    refs.spanCasa.textContent = `Cart (${ids.length})`;
+
   }
+
 }

@@ -21,7 +21,7 @@ function createPopular(arr) {
     const { category, img, name, popularity, size, _id } = el;
     return `<li class="popular__item" data-id="${_id}">
               <div class="popular__item-inner">
-                <img src="${img}" width="74" alt="${name}" class="popular__item-img" />
+                <img src="${img}" width="74" alt="${name}" class="popular__item-img" loading="lazy"/>
               </div>
               <div class="popular__item-box">
                 <div class="popular__item-buy">

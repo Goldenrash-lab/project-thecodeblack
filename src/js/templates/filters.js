@@ -174,6 +174,7 @@ export function createProducts(arr) {
             src="${img}"
             alt="${name}"
             width="295"
+            loading="lazy"
           />
           </div>
           <h3 class="products__item-title">${name}</h3>

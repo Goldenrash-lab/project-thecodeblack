@@ -79,7 +79,8 @@ function renderProductsCart(products) {
               <img
               class="product-item-img"
               src="${img}"
-              alt=""
+              alt="${name}"
+              loading="lazy"
             />
             </div>
 

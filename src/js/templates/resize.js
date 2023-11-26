@@ -3,17 +3,12 @@ import { ProductAPI } from '../products/API';
 import { loadProducts } from './filters';
 
 window.addEventListener('resize', throttle(onResizeDocument, 500));
-const loaderEl = `<div class="loader"></div>`;
 
 const refs = {
   productListEl: document.querySelector('.products__list'),
 };
 
-const productAPI = new ProductAPI();
-
 function onResizeDocument(e) {
-  console.log(e.target.innerHeight);
-  console.log(e.target.innerWidth);
   const height = e.target.innerHeight;
   const width = e.target.innerWidth;
   const params = loadToLS('PARAMS');

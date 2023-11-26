@@ -1,5 +1,6 @@
 import { ProductDiscountAPI } from "../products/API_discount";
 import iconsPath from '/src/images/icons.svg'
+
 const refs = {
     buttonEl: document.querySelector('.hero-icon'),
   listDiscountProductsEl: document.querySelector('.discount__list'),
@@ -51,9 +52,6 @@ function discountProduct(product) {
                 </div>
                 </div>
                 </li>`
-                // <svg class="discount__item-cartsvg" width="18" height="18">
-                // <use href="${iconsPath}#icon-cart-icon"></use>
-                // </svg>
     // console.log(productLi);
     return productLi;
 };
@@ -105,21 +103,6 @@ function onDiscListCartClick(el) {
   }
 }
 
-function saveToLS(key, value) {
-  try {
-    localStorage.setItem(key, JSON.stringify(value));
-  } catch (error) {
-    console.log(error.message);
-  }
-}
-function loadToLS(key) {
-  try {
-    return JSON.parse(localStorage.getItem(key)) || [];
-  } catch (error) {
-    console.log(error.message);
-    return localStorage.getItem(key);
-  }
-}
 
 
 

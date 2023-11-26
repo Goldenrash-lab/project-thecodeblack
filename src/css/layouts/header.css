@@ -28,7 +28,6 @@
   height: 53px;
   border-radius: 9px;
   border: none;
-
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -55,7 +54,6 @@
   border-radius: 50%;
   fill: #e8e8e2;
   background-color: #6d8434;
-
   color: #f4f4fd;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -69,13 +67,14 @@
 
 .css-span-link-text {
   color: #010101;
-  font-family: FONTSPRING DEMO - Quincy CF;
+  font-family: 'FONTSPRING DEMO - Quincy CF';
   font-size: 18px;
   font-style: normal;
   font-weight: 900;
   line-height: 1.11;
   letter-spacing: 0.02em;
 }
+
 .css-svg-logo {
   display: flex;
   align-items: center;
@@ -87,18 +86,18 @@
     width: 20px;
     height: 20px;
   }
-}
 
-@media only screen and (min-width: 768px) {
   .css-svg-logo-text {
     width: 155px;
     height: 21px;
   }
 }
+
 .css-a-link-icon:focus,
 .css-a-link-icon:hover {
   background: #6d8434;
 }
+
 .css-link-home {
   width: 60px;
   height: 38px;
@@ -110,7 +109,6 @@
   border-radius: 30px;
   background: #6d8434;
   color: #e8e8e2;
-
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -128,7 +126,7 @@
     width: 104px;
     height: 48px;
     color: #e8e8e2;
-    font-family: Neue Montreal;
+    font-family: 'Neue Montreal';
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
@@ -151,11 +149,13 @@
   display: flex;
   gap: 6px;
 }
+
 @media only screen and (min-width: 768px) {
   .css-div-casa-header {
     gap: 16px;
   }
 }
+
 .css-link-casa {
   fill: #e8e8e2;
   display: flex;
@@ -164,29 +164,34 @@
   gap: 14px;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .css-link-casa-icon:focus,
 .css-link-casa-icon:hover {
   background-color: #586f1f;
 }
+
 .css-span-casa {
   display: none;
   color: #010101;
-  font-family: Neue Montreal;
+  font-family: 'Neue Montreal';
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 24px; /* 133.333% */
+  line-height: 24px;
   text-transform: uppercase;
 }
+
 @media only screen and (min-width: 768px) {
   .css-span-casa {
     display: contents;
   }
 }
+
 .css-a-link-icon:focus,
 .css-a-link-icon:hover {
   fill: #e8e8e2;
 }
+
 .css-a-link-icon:focus .css-div-icon-header,
 .css-a-link-icon:hover .css-div-icon-header {
   background-color: #e8e8e2;

@@ -6,6 +6,7 @@ import './templates/footer-postApi';
 // CART VALUE
 
 const spanCasa = document.querySelector('.css-span-casa');
+const loaderEl = `<div class="loader"></div>`;
 
 function onDocumentLoad() {
   const obj = loadToLS('cartIds');
@@ -35,7 +36,10 @@ getCartProducts(cartIdsArray);
 //функция запроса данных
 function getCartProducts(cartIds) {
   const BASE_URL = 'https://food-boutique.b.goit.study/api/products';
-
+  refs.productList.innerHTML = loaderEl;
+  refs.productList.classList.add('load-discount');
+  refs.totalWrapper.innerHTML = loaderEl;
+  refs.totalWrapper.classList.add('load-total');
   Promise.all(
     cartIds.map(productId => {
       return axios
@@ -57,6 +61,7 @@ function getCartProducts(cartIds) {
       cartLargeNumber(productsData.length);
       renderProductsCart(productsData);
       countTotalPrice(productsData);
+      refs.productList.classList.remove('load-discount');
     })
     .catch(error => {
       console.error('Ошибка при выполнении запросов:', error);

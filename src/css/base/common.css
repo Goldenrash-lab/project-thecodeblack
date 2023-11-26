@@ -67,6 +67,12 @@ p {
 .load-discount {
   padding-top: 25px;
 }
+
+.load-total {
+  margin-right: 25px;
+  margin-bottom: 8px;
+}
+
 .loader {
   color: var(--green);
   margin: 0 auto;

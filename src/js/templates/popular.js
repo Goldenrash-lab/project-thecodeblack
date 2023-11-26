@@ -44,13 +44,13 @@ function createPopular(arr) {
                 </div>
                 <div class="popular__item-info">
                   <div class="popular__item-info-top">
-                    <h5 class="popular__item-label">Category:</h5>
+                    <h4 class="popular__item-label">Category:</h4>
                     <p class="popular__item-text">${category}</p>
                   </div>
                   <div class="popular__item-info-bottom">
-                    <h5 class="popular__item-label">Size:</h5>
+                    <h4 class="popular__item-label">Size:</h4>
                     <p class="popular__item-text">${size}</p>
-                    <h5 class="popular__item-label">Popularity:</h5>
+                    <h4 class="popular__item-label">Popularity:</h4>
                     <p class="popular__item-text">${popularity}</p>
                   </div>
                 </div>

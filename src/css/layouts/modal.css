@@ -255,6 +255,8 @@ body.modal-open {
 
     border-radius: 30px;
     background-color: var(--green);
+
+    transition: background-color 500ms;
 }
 
 .modal__buy-btn:hover,

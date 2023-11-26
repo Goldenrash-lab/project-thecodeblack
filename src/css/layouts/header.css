@@ -24,21 +24,29 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  width: 150px;
-  height: 53px;
+  width: 160px;
+  height: 47px;
   border-radius: 9px;
   border: none;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  justify-content: center;
 }
 
 @media only screen and (min-width: 325px) {
   .css-a-link-icon {
-    padding-left: 15px;
-    width: 190px;
+    width: 170px;
+    justify-content: center;
   }
 }
 
 @media only screen and (min-width: 768px) {
+  .css-a-link-icon {
+    width: 200px;
+    height: 60px;
+  }
+}
+
+@media only screen and (min-width: 1272px) {
   .css-a-link-icon {
     width: 220px;
     height: 60px;
@@ -115,7 +123,7 @@
   line-height: 18px;
 }
 
-@media only screen and (min-width: 325px) {
+@media only screen and (min-width: 768px) {
   .css-link-home {
     width: 77px;
   }

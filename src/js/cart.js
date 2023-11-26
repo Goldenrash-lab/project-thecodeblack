@@ -176,7 +176,7 @@ function updateLocalStorage(elementToRemove) {
 
 // Добавляем скролл, когда 3 элемента и больше
 function scrollAdding(listLength) {
-  if (listLength > 3 && window.innerWidth >= 768) {
+  if (listLength > 3) {
     refs.productList.classList.add('scroll-adding');
   }
 }

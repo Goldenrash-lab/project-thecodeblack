@@ -132,7 +132,7 @@
   border-radius: 10px;
 
   display: flex;
-  max-width: 335px;
+  width: 335px;
   padding: 12px;
   background-color: var(--card-background);
 }
@@ -350,26 +350,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-}
 
-@media only screen and (max-width: 768px) {
-  .products__list {
-    width: 563px;
-  }
-
-  .popular__item {
-    width: 275px;
-    min-width: 275px;
-  }
   .discount__list {
-    /* display: grid; */
-    /* grid-template-columns: 1fr 1fr; */
     flex-direction: row;
     max-height: 232px;
     overflow: auto;
-  }
-  .discount__item {
-    max-width: 336px;
   }
 }
 

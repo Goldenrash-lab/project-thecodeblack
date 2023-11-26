@@ -17,12 +17,7 @@ body.modal-open {
     transition: all 0.1s linear;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 480px) {
-  .modal {
-    width: 100%;
-    height: 100%;
-  }
-}
+
 
 .modal.open {
     display: flex;
@@ -36,12 +31,18 @@ body.modal-open {
 .modal__inner {
     position: relative;
     background-color: var(--card-background);
-    width: 335px;
     height: 535px;
+    width: 335px;
     margin: auto;
     border-radius: 20px;
     padding: 40px 20px;
     cursor: default;
+}
+
+@media only screen and (max-width: 375px) {
+    .modal__inner {
+        max-width: 300px;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -90,7 +91,7 @@ body.modal-open {
     align-items: center;
     background-color: var(--light-grey);
     border-radius: 10px;
-    width: 295px;
+    width: 100%;
     height: 212px;
 }
 
@@ -124,7 +125,7 @@ body.modal-open {
     color: var(--black);
     font-size: 18px;
     font-weight: 500;
-    line-height: 1.1;
+    line-height: 1.11;
     padding-bottom: 10px;
 
 }
@@ -141,15 +142,16 @@ body.modal-open {
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 9px;
+    row-gap: 9px;
+    column-gap: 8px;
     height: auto;
-    width: 295px;
+    width: 246px;
 
 }
 
 @media only screen and (min-width: 768px) {
   .modal__product-list {
-    width: 246px;
+    row-gap: 9px;
   }
 }
 
@@ -166,7 +168,7 @@ body.modal-open {
     align-items: flex-end;
     font-size: 12px;
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.16;
     
 }
 
@@ -174,7 +176,7 @@ body.modal-open {
     color: var(--black);
     font-size: 12px;
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.16;
 }
 
 .modal__product-descr {
@@ -183,8 +185,7 @@ body.modal-open {
     font-weight: 400;
     margin-top: 20px;
     line-height: 1.29;
-    width: 295px;
-    height: 74px;
+    height: 54px;
     overflow-y: auto;
 }
 
@@ -192,7 +193,7 @@ body.modal-open {
     .modal__product-descr {
         font-size: 16px;
         width: 256px;
-        height: 104px;
+        height: 80px;
         line-height: 1.25;
         margin-top: 24px;
     }
@@ -213,7 +214,7 @@ body.modal-open {
     display: inline-flex;
     justify-content: space-between;
     align-items: flex-end;
-    width: 295px;
+    width: 100%;
     height: 42px;
     margin-top: 40px;
 }
@@ -230,7 +231,7 @@ body.modal-open {
     color: var(--black);
     font-size: 18px;
     font-weight: 500;
-    line-height: 1.1;
+    line-height: 1.11;
 }
 
 @media only screen and (min-width: 768px) {

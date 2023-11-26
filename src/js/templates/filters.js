@@ -95,14 +95,18 @@ function onDocumentLoad() {
   });
 
   productAPI.getCategories().then(res => {
-    renderOption(res);
+    const newRes = res.map(el => {
+      return el.replace('&', '%26');
+    });
+    renderOption(newRes);
   });
 }
 
 function createOption(arr) {
   return arr.map(el => {
+    const newRes = el.replace('%26', '&');
     return `
-        <option value="${el}">${el}</option>
+        <option value="${el}">${newRes}</option>
         `;
   });
 }
@@ -121,8 +125,16 @@ function onSelectElChange() {
   saveToLS('PARAMS', obj);
 
   productAPI.getProductsByCat(obj).then(res => {
+    container.classList.remove('visually-hidden');
     renderProducts(res.results);
     resetTotalPage(res.totalPages);
+    console.log(res);
+    if (res.totalPages === 1 || res.totalPages === 0) {
+      container.classList.add('visually-hidden');
+    }
+    if (!res.totalPages) {
+      refs.productListEl.innerHTML = '<h2>Products not found!</h2>';
+    }
   });
 }
 

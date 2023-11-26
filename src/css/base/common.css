@@ -1,15 +1,16 @@
-
 @font-face {
   font-family: 'Neue Montreal';
   src: local('Neue Montreal'),
     url('../../fonts/NeueMontreal-Medium.otf') format('opentype');
   font-weight: 500;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Neue Montreal';
   src: local('Neue Montreal'),
     url('../../fonts/NeueMontreal-Regular.otf') format('opentype');
   font-weight: 400;
+  font-display: swap;
 }
 
 body {

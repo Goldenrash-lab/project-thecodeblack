@@ -164,7 +164,7 @@ export function createProducts(arr) {
           </div>
           <div class="products__item-buy">
             <p class="products__item-price">$${price}</p>
-            <button type="button" class="products__item-link">
+            <button type="button" aria-label="button-buy" class="products__item-link">
               <svg class="products__item-svg" width="18" heigth="18">
                 <use href="${iconPath}#icon-cart-icon">
                 </use>

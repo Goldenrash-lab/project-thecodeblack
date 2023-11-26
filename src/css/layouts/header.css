@@ -23,20 +23,10 @@
 .css-a-link-icon {
   display: flex;
   align-items: center;
-  gap: 8px;
-  width: 160px;
-  height: 47px;
-  border-radius: 9px;
-  border: none;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   justify-content: center;
-}
-
-@media only screen and (min-width: 325px) {
-  .css-a-link-icon {
-    width: 170px;
-    justify-content: center;
-  }
+  border-radius: 9px;
+  gap: 8px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media only screen and (min-width: 768px) {
@@ -107,7 +97,6 @@
 }
 
 .css-link-home {
-  width: 60px;
   height: 38px;
   display: flex;
   padding: 10px 20px;

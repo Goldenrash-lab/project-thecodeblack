@@ -8,5 +8,4 @@ import './templates/footer-validation';
 import './templates/footer-postApi';
 import './templates/popular';
 import './templates/scroll-up';
-
-
+import './templates/resize';

@@ -6,7 +6,7 @@ import { createProducts, renderProducts } from '../templates/filters';
 const container = document.querySelector('#tui-pagination-container');
 const products = document.querySelector('.products__list');
 
-window.addEventListener('DOMContentLoaded', refreshPage);
+// window.addEventListener('DOMContentLoaded', refreshPage);
 
 export async function refreshPage() {
   products.innerHTML = '';
@@ -41,12 +41,6 @@ export const instance = new Pagination(container, {
       '<span class="tui-ico-ellip">...</span>' +
       '</a>',
   },
-});
-
-getProducts(params).then(res => {
-  instance.reset(res.totalPages);
-  // instance.movePageTo(params.page);
-  instance.setTotalItems(res.totalPages * 9);
 });
 
 export function resetTotalPage(totalPages) {

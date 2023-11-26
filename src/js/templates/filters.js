@@ -90,6 +90,7 @@ function onDocumentLoad() {
   // _______
 
   productAPI.getProductsByCat(localStorage).then(res => {
+    resetTotalPage(res.totalPages);
     renderProducts(res.results);
   });
 

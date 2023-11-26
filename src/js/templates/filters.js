@@ -151,12 +151,12 @@ export function createProducts(arr) {
             width="295"
           />
           </div>
-          <h4 class="products__item-title">${name}</h4>
+          <h3 class="products__item-title">${name}</h3>
           <div class="products__item-info">
             <div class="products__item-wrapper">
-              <h5 class="products__item-label">Category:</h5>
+              <h4 class="products__item-label">Category:</h4>
               <p class="products__item-text">${category}</p>
-              <h5 class="products__item-label">Size:</h5>
+              <h4 class="products__item-label">Size:</h4>
               <p class="products__item-text">${size}</p>
             </div>
             <h5 class="products__item-label">Popularity:</h5>

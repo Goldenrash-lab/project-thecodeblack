@@ -15,15 +15,25 @@
       </svg>
     </button>
   </div>
-  <select class="category-choice" aria-label="category-choice">
-    <option value="">Show All</option>
-  </select>
-  <select class="sort-by" aria-label="sort-by">
-    <option value="atoz">A to Z</option>
-    <option value="ztoa">Z to A</option>
-    <option value="priceup">Price Up</option>
-    <option value="pricedown">Price Down</option>
-    <option value="popularityup">Popularity Up</option>
-    <option value="popularitydown">Popularity Down</option>
-  </select>
+  <div class="search__wrapper">
+    <select class="category-choice" aria-label="category-choice">
+      <option value="">Show All</option>
+    </select>
+    <svg class="search__svg" width="12" height="8">
+      <use href="./images/icons.svg#icon-select-arrow"></use>
+    </svg>
+  </div>
+  <div class="sort__wrapper">
+    <select class="sort-by" aria-label="sort-by">
+      <option value="atoz">A to Z</option>
+      <option value="ztoa">Z to A</option>
+      <option value="priceup">Price Up</option>
+      <option value="pricedown">Price Down</option>
+      <option value="popularityup">Popularity Up</option>
+      <option value="popularitydown">Popularity Down</option>
+    </select>
+    <svg class="sort__svg" width="12" height="8">
+      <use href="./images/icons.svg#icon-select-arrow"></use>
+    </svg>
+  </div>
 </form>

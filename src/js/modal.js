@@ -111,7 +111,7 @@ function fetchProductInfo({
 }) {
   return `
         <div class="modal__inner" data-product-id='${_id}'>
-            <button class="modal__close" aria-label="button close>
+            <button class="modal__close" aria-label="button close">
                 <svg class="modal__close-icon" width="13" height="13">
                     <use href="${iconPath}#icon-close"></use>
                 </svg>

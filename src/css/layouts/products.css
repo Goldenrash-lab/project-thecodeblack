@@ -181,6 +181,7 @@
   align-items: center;
   border: none;
   padding: 0;
+  cursor: pointer;
 }
 .popular__item-link:hover {
   background-color: var(--green-accent);

@@ -446,3 +446,8 @@
   fill: transparent;
   stroke: var(--green);
 }
+@media only screen and (min-width: 1272px) {
+  .products__box {
+    margin-bottom: 140px;
+  }
+}

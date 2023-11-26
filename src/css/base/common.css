@@ -66,6 +66,8 @@ p {
 }
 .load-discount {
   padding-top: 25px;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 .load-total {

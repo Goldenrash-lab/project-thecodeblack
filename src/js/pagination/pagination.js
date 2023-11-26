@@ -27,10 +27,10 @@ export const instance = new Pagination(container, {
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
   template: {
-    page: '<a href="#" aria-label="pagination-page" class="tui-page-btn">{{page}}</a>',
+    page: '<a href="#" aria-label="pagination-page link" class="tui-page-btn">{{page}}</a>',
     currentPage:
       '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton: `<a href="#" aria-label="pagination-move" class="icon tui-page-btn tui-{{type}}">
+    moveButton: `<a href="#" aria-label="pagination-move link" class="icon tui-page-btn tui-{{type}}">
       <span class="tui-ico-{{type}}">{{type}}>
       </span>
       </a>`,
@@ -39,7 +39,7 @@ export const instance = new Pagination(container, {
       </span>
       </span>`,
     moreButton:
-      '<a href="#" aria-label="pagination-more" class="tui-page-btn tui-{{type}}-is-ellip">' +
+      '<a href="#" aria-label="pagination-more link" class="tui-page-btn tui-{{type}}-is-ellip">' +
       '<span class="tui-ico-ellip">...</span>' +
       '</a>',
   },

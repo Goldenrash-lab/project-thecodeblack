@@ -1,0 +1,64 @@
+.home-anchor {
+   position: fixed;
+   bottom: 0;
+   right: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-decoration: none;
+   border: transparent;
+   color: transparent;
+   cursor: pointer;
+  width: 64px;
+  height: 64px;
+  background-color: var(--green-accent);
+  border-radius: 64px;
+ }
+ .home-anchor:hover{
+  background-color: var(--green);
+  transition: 1s;
+ }
+
+ .icon-angle {
+  height: 48px;
+  width: 48px;
+  stroke-width: 2px;
+  fill: var(--light-grey);
+}
+
+@media screen and (min-width: 320px) and (max-device-width: 767px) {
+  .home-anchor {
+    width: 48px;
+    height: 48px;
+    bottom: 20px;
+    right: 20px;
+  }
+  .icon-angle {
+    position: absolute;
+    top: 5%;
+   width: 36px;
+   height: 36px;
+   top: 10%;
+   left: 13%;
+ }
+}
+
+ @media screen and (min-width: 768px) {
+   .home-anchor {
+     bottom: 30px;
+     right: 50px;
+   }
+   .icon-angle {
+    width: 64px;
+    height: 64px;
+  }
+ }
+ @media screen and (min-width: 1280px) {
+  .icon-angle:hover {
+    fill: var(--light-grey);
+  }
+   .home-anchor {
+     bottom: 40px;
+     right: 60px;
+   }
+ }

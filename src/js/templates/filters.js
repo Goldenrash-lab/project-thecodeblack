@@ -95,14 +95,18 @@ function onDocumentLoad() {
   });
 
   productAPI.getCategories().then(res => {
-    renderOption(res);
+    const newRes = res.map(el => {
+      return el.replace('&', '%26');
+    });
+    renderOption(newRes);
   });
 }
 
 function createOption(arr) {
   return arr.map(el => {
+    const newRes = el.replace('%26', '&');
     return `
-        <option value="${el}">${el}</option>
+        <option value="${el}">${newRes}</option>
         `;
   });
 }
@@ -121,8 +125,16 @@ function onSelectElChange() {
   saveToLS('PARAMS', obj);
 
   productAPI.getProductsByCat(obj).then(res => {
+    container.classList.remove('visually-hidden');
     renderProducts(res.results);
     resetTotalPage(res.totalPages);
+    console.log(res);
+    if (res.totalPages === 1 || res.totalPages === 0) {
+      container.classList.add('visually-hidden');
+    }
+    if (!res.totalPages) {
+      refs.productListEl.innerHTML = '<h2>Products not found!</h2>';
+    }
   });
 }
 
@@ -139,12 +151,12 @@ export function createProducts(arr) {
             width="295"
           />
           </div>
-          <h4 class="products__item-title">${name}</h4>
+          <h3 class="products__item-title">${name}</h3>
           <div class="products__item-info">
             <div class="products__item-wrapper">
-              <h5 class="products__item-label">Category:</h5>
+              <h4 class="products__item-label">Category:</h4>
               <p class="products__item-text">${category}</p>
-              <h5 class="products__item-label">Size:</h5>
+              <h4 class="products__item-label">Size:</h4>
               <p class="products__item-text">${size}</p>
             </div>
             <h5 class="products__item-label">Popularity:</h5>
@@ -152,7 +164,7 @@ export function createProducts(arr) {
           </div>
           <div class="products__item-buy">
             <p class="products__item-price">$${price}</p>
-            <button type="button" class="products__item-link">
+            <button type="button" aria-label="button-buy" class="products__item-link">
               <svg class="products__item-svg" width="18" heigth="18">
                 <use href="${iconPath}#icon-cart-icon">
                 </use>

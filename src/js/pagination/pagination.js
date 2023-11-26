@@ -20,16 +20,16 @@ let params = loadToLS('PARAMS');
 console.log(params);
 
 export const instance = new Pagination(container, {
-  itemsPerPage: 9,
+  itemsPerPage: 1,
   visiblePages: 4,
   centerAlign: true,
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
   template: {
-    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+    page: '<a href="#" aria-label="pagination-page" class="tui-page-btn">{{page}}</a>',
     currentPage:
       '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton: `<a href="#" class="icon tui-page-btn tui-{{type}}">
+    moveButton: `<a href="#" aria-label="pagination-move" class="icon tui-page-btn tui-{{type}}">
       <span class="tui-ico-{{type}}">{{type}}>
       </span> 
       </a>`,
@@ -38,7 +38,7 @@ export const instance = new Pagination(container, {
       </span>
       </span>`,
     moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+      '<a href="#" aria-label="pagination-more" class="tui-page-btn tui-{{type}}-is-ellip">' +
       '<span class="tui-ico-ellip">...</span>' +
       '</a>',
   },
@@ -51,6 +51,7 @@ getProducts(params).then(res => {
 });
 
 export function resetTotalPage(totalPages) {
+  instance.setTotalItems(totalPages * 9);
   instance.reset(totalPages);
   // instance.movePageTo(params.page);
 }

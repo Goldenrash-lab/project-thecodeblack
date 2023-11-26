@@ -1,24 +1,26 @@
-import { ProductDiscountAPI } from "../products/API_discount";
-import iconsPath from '/src/images/icons.svg'
+import { ProductDiscountAPI } from '../products/API_discount';
+import iconsPath from '/src/images/icons.svg';
 
 const refs = {
-    buttonEl: document.querySelector('.hero-icon'),
+  buttonEl: document.querySelector('.hero-icon'),
   listDiscountProductsEl: document.querySelector('.discount__list'),
-spanCasa: document.querySelector('.css-span-casa'),}
+  spanCasa: document.querySelector('.css-span-casa'),
+};
 const productDiscountAPI = new ProductDiscountAPI();
-
 
 document.addEventListener('DOMContentLoaded', getDiscountProduct);
 
 function getDiscountProduct() {
-    // console.log('hello');
-    productDiscountAPI.getDiscount().then(products => {
-        // console.log(products);
-        createPopularList(products);
-})
-      .catch(error => {
-    console.error('Error fetching discount products:', error);
-  });
+  // console.log('hello');
+  productDiscountAPI
+    .getDiscount()
+    .then(products => {
+      // console.log(products);
+      createPopularList(products);
+    })
+    .catch(error => {
+      console.error('Error fetching discount products:', error);
+    });
 }
 // 1 продукт
 function discountProduct(product) {
@@ -27,7 +29,11 @@ function discountProduct(product) {
   const cartId = loadToLS('cartIds');
 
   let use = '';
-  if (cartId.includes(_id)) { use=`<svg class="discount__item-cartsvg checked" width="18" height="18"><use href="${iconsPath}#icon-check"></use></svg>` } else { use = `<svg class="discount__item-cartsvg" width="18" height="18"><use href="${iconsPath}#icon-cart-icon"></use></svg>` };
+  if (cartId.includes(_id)) {
+    use = `<svg class="discount__item-cartsvg checked" width="18" height="18"><use href="${iconsPath}#icon-check"></use></svg>`;
+  } else {
+    use = `<svg class="discount__item-cartsvg" width="18" height="18"><use href="${iconsPath}#icon-cart-icon"></use></svg>`;
+  }
 
   const productLi = `<li class="discount__item" data-id=${_id}>
             <div class="discount__item-wrapper">
@@ -46,7 +52,7 @@ function discountProduct(product) {
               <h4 class="discount__item-label">${name}</h4>
               <div class="discount__item-box">
                 <p class="discount__item-price">$${price}</p>
-                <button type="button" class="discount__item-link">
+                <button type="button" aria-label="cart button" class="discount__item-link">
                 ${use}
                 </button>
                 </div>
@@ -55,20 +61,21 @@ function discountProduct(product) {
     // console.log(productLi);
     return productLi;
 };
+
 // всі продукти
 function discountProducts(products) {
-    const productUl = products.map(product => {
-        return discountProduct(product);
-    }
-    ).join('')
-    return productUl;
+  const productUl = products
+    .map(product => {
+      return discountProduct(product);
+    })
+    .join('');
+  return productUl;
 }
 //рендеримо розмітку
 function createPopularList(products) {
-    const markup = discountProducts(products);
-    refs.listDiscountProductsEl.innerHTML = markup;
+  const markup = discountProducts(products);
+  refs.listDiscountProductsEl.innerHTML = markup;
 }
-
 
 // LS
 refs.listDiscountProductsEl.addEventListener('click', onDiscListCartClick);
@@ -82,7 +89,6 @@ function onDiscListCartClick(el) {
     return;
   }
 
-
   const id = el.target.closest('.discount__item').dataset.id;
   let svg = null;
   if (el.target.nodeName === 'BUTTON') {
@@ -90,13 +96,13 @@ function onDiscListCartClick(el) {
   } else {
     svg = el.target.closest('.discount__item-cartsvg');
   }
-    svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
+  svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
   svg.classList.add('checked');
 
   const localStorageItem = loadToLS('cartIds');
   if (localStorageItem.includes(id)) {
     return;
-  } else {    
+  } else {
     localStorageItem.push(id);
     saveToLS('cartIds', localStorageItem);
     refs.spanCasa.textContent = `Cart (${localStorageItem.length})`;
@@ -104,7 +110,4 @@ function onDiscListCartClick(el) {
 }
 
 
-
-
 // console.log(checkCart(658))
-

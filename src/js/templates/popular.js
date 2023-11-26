@@ -35,7 +35,7 @@ function createPopular(arr) {
                 <div class="popular__item-buy">
                   <h4 class="popular__item-title">${name}</h4>
 
-                  <button type="button" class="popular__item-link">
+                  <button type="button" aria-label="button-buy" class="popular__item-link">
                     <svg class="popular__item-svg" width="12" height="12">
                       <use href="${iconsPath}#icon-shopping-cart"></use>
                     </svg>
@@ -44,13 +44,13 @@ function createPopular(arr) {
                 </div>
                 <div class="popular__item-info">
                   <div class="popular__item-info-top">
-                    <h5 class="popular__item-label">Category:</h5>
+                    <h4 class="popular__item-label">Category:</h4>
                     <p class="popular__item-text">${category}</p>
                   </div>
                   <div class="popular__item-info-bottom">
-                    <h5 class="popular__item-label">Size:</h5>
+                    <h4 class="popular__item-label">Size:</h4>
                     <p class="popular__item-text">${size}</p>
-                    <h5 class="popular__item-label">Popularity:</h5>
+                    <h4 class="popular__item-label">Popularity:</h4>
                     <p class="popular__item-text">${popularity}</p>
                   </div>
                 </div>
@@ -62,7 +62,6 @@ function renderPopularProducts(arr) {
   const markap = createPopular(arr).join('');
   refs.formPopularEl.innerHTML = markap;
 }
-
 
 // LS
 refs.formPopularEl.addEventListener('click', onFormPopularElClick);
@@ -99,7 +98,5 @@ function onFormPopularElClick(el) {
     ids.push(id);
     localStorage.setItem('cartIds', JSON.stringify(ids));
     refs.spanCasa.textContent = `Cart (${ids.length})`;
-
   }
-
 }

@@ -1,4 +1,4 @@
-<h4 class="filters-title">Filters:</h4>
+<h2 class="filters-title">Filters:</h2>
 <form name="filters" class="filters__form">
   <!-- <h4 class="filters-title">Filters:</h4> -->
   <div class="search">
@@ -9,16 +9,16 @@
       placeholder="Search for anything"
       autofocus
     />
-    <button class="search-submit" type="submit">
+    <button class="search-submit" aria-label="search button" type="submit">
       <svg class="search-icon" width="20" height="20">
         <use href="./images/icons.svg#icon-search"></use>
       </svg>
     </button>
   </div>
-  <select class="category-choice">
+  <select class="category-choice" aria-label="category-choice">
     <option value="">Show All</option>
   </select>
-  <select class="sort-by">
+  <select class="sort-by" aria-label="sort-by">
     <option value="atoz">A to Z</option>
     <option value="ztoa">Z to A</option>
     <option value="priceup">Price Up</option>

@@ -26,13 +26,14 @@
   justify-content: center;
   border-radius: 9px;
   gap: 8px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media only screen and (min-width: 768px) {
   .css-a-link-icon {
     width: 200px;
     height: 60px;
+    transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
@@ -140,6 +141,7 @@
   align-items: center;
   border-radius: 30px;
   background: #6d8434;
+  transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .css-div-casa-header {
@@ -159,7 +161,6 @@
   align-items: center;
   align-content: center;
   gap: 14px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .css-link-casa-icon:focus,

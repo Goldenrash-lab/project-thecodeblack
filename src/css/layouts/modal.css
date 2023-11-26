@@ -1,116 +1,114 @@
 body.modal-open {
-    overflow-y: hidden;
+  overflow-y: hidden;
 }
 
 .modal {
-    position: fixed;
-    inset: 0;
-    margin: auto;
+  position: fixed;
+  inset: 0;
+  margin: auto;
 
-    background-color: transparent;
-    cursor: pointer;
-    overflow-y: auto;
+  background-color: transparent;
+  cursor: pointer;
+  overflow-y: auto;
 
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(.2);
-    transition: all 0.1s linear;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.2);
+  transition: all 0.1s linear;
 }
 
-
-
 .modal.open {
-    display: flex;
-    opacity: 1;
-    visibility: visible;
-    background-color:  rgba(1, 1, 1, 0.40);
-    transform: scale(1);
-    transition: background-color 0.3s ease-in-out;
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  background-color: rgba(1, 1, 1, 0.4);
+  transform: scale(1);
+  transition: background-color 0.5s ease-in-out;
 }
 
 .modal__inner {
-    position: relative;
-    background-color: var(--card-background);
-    height: 535px;
-    width: 335px;
-    margin: auto;
-    border-radius: 20px;
-    padding: 40px 20px;
-    cursor: default;
+  position: relative;
+  background-color: var(--card-background);
+  height: 535px;
+  width: 335px;
+  margin: auto;
+  border-radius: 20px;
+  padding: 40px 20px;
+  cursor: default;
 }
 
 @media only screen and (max-width: 375px) {
-    .modal__inner {
-        max-width: 300px;
-    }
+  .modal__inner {
+    max-width: 300px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
-    .modal__inner {
-        width: 600px;
-        height: 380px;
-        padding: 40px;
-    }
+  .modal__inner {
+    width: 600px;
+    height: 380px;
+    padding: 40px;
+  }
 }
 
 .modal__close {
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    top: 14;
-    right: 14;
-    display: block;
-    width: 22px;
-    height: 22px;
-    cursor: pointer;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 14;
+  right: 14;
+  display: block;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 768px) {
-    .modal__close {
-        top: 24;
-        right: 24;
-        width: 28px;
-        height: 28px;
-    }
+  .modal__close {
+    top: 24;
+    right: 24;
+    width: 28px;
+    height: 28px;
+  }
 }
-.modal__product-info{
-    display: block;
+.modal__product-info {
+  display: block;
 }
 
 @media only screen and (min-width: 768px) {
-    .modal__product-info {
-        display: flex;
-        gap: 24px;
-        flex-flow: nowrap;
-    }
+  .modal__product-info {
+    display: flex;
+    gap: 24px;
+    flex-flow: nowrap;
+  }
 }
 
 .modal__img-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--light-grey);
-    border-radius: 10px;
-    width: 100%;
-    height: 212px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-grey);
+  border-radius: 10px;
+  width: 100%;
+  height: 212px;
 }
 
 @media only screen and (min-width: 768px) {
-    .modal__product-box {
-        width: 240px;
-    }
+  .modal__product-box {
+    width: 240px;
+  }
 }
 
 .modal__product-img {
-    width: 160px;
-    height: 160px;
-    border-radius: 10px;
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
 }
 
-.modal__product-content{
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
+.modal__product-content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -122,31 +120,28 @@ body.modal-open {
 }
 
 .modal__product-title {
-    color: var(--black);
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.11;
-    padding-bottom: 10px;
-
+  color: var(--black);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+  padding-bottom: 10px;
 }
-
 
 @media only screen and (min-width: 768px) {
-    .modal__product-title {
-        font-size: 20px;
-        line-height: 1.2;
-    }
+  .modal__product-title {
+    font-size: 20px;
+    line-height: 1.2;
+  }
 }
 
-.modal__product-list{
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    row-gap: 9px;
-    column-gap: 8px;
-    height: auto;
-    width: 246px;
-
+.modal__product-list {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  row-gap: 9px;
+  column-gap: 8px;
+  height: auto;
+  width: 246px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -155,133 +150,131 @@ body.modal-open {
   }
 }
 
-.modal__product-item{
-    display: flex;
-    align-items: flex-start;
-    flex-direction: row;
-    gap: 4px;
+.modal__product-item {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 4px;
 }
 
 .modal__product-label {
-    color: rgba(1, 1, 1, 0.30);
-    display: flex;
-    align-items: flex-end;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.16;
-    
+  color: rgba(1, 1, 1, 0.3);
+  display: flex;
+  align-items: flex-end;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.16;
 }
 
 .modal__product-text {
-    color: var(--black);
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.16;
+  color: var(--black);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.16;
 }
 
 .modal__product-descr {
-    color: var(--grey);
-    font-size: 14px;
-    font-weight: 400;
-    margin-top: 20px;
-    line-height: 1.29;
-    height: 54px;
-    overflow-y: auto;
+  color: var(--grey);
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 20px;
+  line-height: 1.29;
+  height: 54px;
+  overflow-y: auto;
 }
 
 @media only screen and (min-width: 768px) {
-    .modal__product-descr {
-        font-size: 16px;
-        width: 256px;
-        height: 80px;
-        line-height: 1.25;
-        margin-top: 24px;
-    }
+  .modal__product-descr {
+    font-size: 16px;
+    width: 256px;
+    height: 80px;
+    line-height: 1.25;
+    margin-top: 24px;
+  }
 }
 
 .modal__product-descr::-webkit-scrollbar {
-    width: 5px;
-    background-color: transparent;
+  width: 5px;
+  background-color: transparent;
 }
 
 .modal__product-descr::-webkit-scrollbar-thumb {
-    background: var(--cancel-grey);
-    border-radius: 20px;
+  background: var(--cancel-grey);
+  border-radius: 20px;
 }
 
-
 .modal__product-buy {
-    display: inline-flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-    height: 42px;
-    margin-top: 40px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  height: 42px;
+  margin-top: 40px;
 }
 
 @media only screen and (min-width: 768px) {
-    .modal__product-buy {
-        margin-top: 48px;
-        width: 520px;
-        height: 40px;
-    }
+  .modal__product-buy {
+    margin-top: 48px;
+    width: 520px;
+    height: 40px;
+  }
 }
 
 .modal__product-price {
-    color: var(--black);
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.11;
+  color: var(--black);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
 }
 
 @media only screen and (min-width: 768px) {
-    .modal__product-price {
-        font-size: 20px;
-        line-height: 1.2;
-    }
+  .modal__product-price {
+    font-size: 20px;
+    line-height: 1.2;
+  }
 }
 
 .modal__buy-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 42px;
-    padding: 12px 24px;
-    gap: 10px;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  padding: 12px 24px;
+  gap: 10px;
+  cursor: pointer;
 
-    border: none;
-    outline: transparent;
+  border: none;
+  outline: transparent;
 
-    border-radius: 30px;
-    background-color: var(--green);
+  border-radius: 30px;
+  background-color: var(--green);
 }
 
 .modal__buy-btn:hover,
 .modal__buy-btn:focus {
-    background-color: var(--green-accent);
+  background-color: var(--green-accent);
 }
 
 @media only screen and (min-width: 768px) {
-    .modal__buy-btn {
-        padding: 10px 28px;
-    }
+  .modal__buy-btn {
+    padding: 10px 28px;
+  }
 }
 
 .modal__buy-btn-text {
-    color: var(--light-grey);
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.29;
+  color: var(--light-grey);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.29;
 }
 
 @media only screen and (min-width: 768px) {
-    .modal__buy-btn-text {
-        font-size: 16px;
-        line-height: 1.25;
-    }
+  .modal__buy-btn-text {
+    font-size: 16px;
+    line-height: 1.25;
+  }
 }
 
 .modal__cart-icon {
-    fill: var(--light-grey);
+  fill: var(--light-grey);
 }

@@ -5,14 +5,16 @@ import { createProducts, renderProducts } from '../templates/filters';
 
 const container = document.querySelector('#tui-pagination-container');
 const products = document.querySelector('.products__list');
+const loaderEl = `<div class="loader"></div>`;
 
 // window.addEventListener('DOMContentLoaded', refreshPage);
 
 export async function refreshPage() {
-  products.innerHTML = '';
+  products.innerHTML = loaderEl;
+  products.classList.add('load');
 
   const product = await getProducts(params);
-
+  products.classList.remove('load');
   renderProducts(product.results);
 }
 
@@ -30,7 +32,7 @@ export const instance = new Pagination(container, {
       '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
     moveButton: `<a href="#" aria-label="pagination-move" class="icon tui-page-btn tui-{{type}}">
       <span class="tui-ico-{{type}}">{{type}}>
-      </span> 
+      </span>
       </a>`,
     disabledMoveButton: `<span class="tui-page-btn tui-is-disabled tui-{{type}}">
       <span class="tui-ico-{{type}}">{{type}}>

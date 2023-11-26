@@ -42,6 +42,7 @@ function discountProduct(product) {
                 width="304"
                 height="150"
                 class="discount__item-img"
+                loading="lazy"
               />
             </div>
             <svg class="discount__item-svg" width="60" height="60">

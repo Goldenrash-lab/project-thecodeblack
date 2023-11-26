@@ -11,6 +11,7 @@ const refs = {
 const productPopularAPI = new ProductPopularAPI();
 
 export function onformPopularElLoaded() {
+  refs.formPopularEl.classList.remove('load');
   return productPopularAPI.getPopular().then(function (response) {
     renderPopularProducts(response);
   });

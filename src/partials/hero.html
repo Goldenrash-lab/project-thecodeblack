@@ -14,6 +14,7 @@
           /src/images/hero/hero_mobile.webp    1x,
           /src/images/hero/hero_mobile@2x.webp 2x
         "
+        width="300"
       />
       <source
         media="(max-width: 1271px)"
@@ -21,6 +22,7 @@
           /src/images/hero/hero_tab.webp    1x,
           /src/images/hero/hero_tab@2x.webp 2x
         "
+        width="704"
       />
       <source
         media="(min-width: 1272px)"
@@ -28,8 +30,13 @@
           /src/images/hero/hero_desk.webp    1x,
           /src/images/hero/hero_desk@2x.webp 2x
         "
+        width="1240"
       />
-      <img src="/src//images/hero/hero_mobile.webp" alt="Bascket with food" />
+      <img
+        src="/src//images/hero/hero_mobile.webp"
+        alt="Bascket with food"
+        loading="lazy"
+      />
     </picture>
     <svg class="hero-icon" width="100px" height="100px">
       <use href="/src/images/icons.svg#icon-organic-food"></use>

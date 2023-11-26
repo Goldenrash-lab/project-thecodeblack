@@ -14,6 +14,7 @@ export function getDiscountProduct() {
   productDiscountAPI
     .getDiscount()
     .then(products => {
+      refs.listDiscountProductsEl.classList.remove('load-discount');
       createPopularList(products);
     })
     .catch(error => {

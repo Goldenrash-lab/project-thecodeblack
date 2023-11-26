@@ -63,6 +63,16 @@ function onSortElChange(e) {
   });
 }
 
+export function loadProducts(params) {
+  refs.productListEl.innerHTML = loaderEl;
+  refs.productListEl.classList.add('load');
+  productAPI.getProductsByCat(params).then(res => {
+    refs.productListEl.classList.remove('load');
+    renderProducts(res.results);
+    resetTotalPage(res.totalPages);
+  });
+}
+
 function onFormElSubmit(e) {
   e.preventDefault();
 
@@ -98,7 +108,14 @@ function onDocumentLoad() {
     limit: 9,
     sort: 'ByABC=true',
   };
-
+  const width = window.innerWidth;
+  if (width <= 1272 && width >= 768) {
+    localStorage.limit = 8;
+  } else if (width < 768) {
+    localStorage.limit = 6;
+  } else {
+    localStorage.limit = 9;
+  }
   saveToLS('PARAMS', localStorage);
 
   // _______

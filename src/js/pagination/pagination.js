@@ -5,14 +5,16 @@ import { createProducts, renderProducts } from '../templates/filters';
 
 const container = document.querySelector('#tui-pagination-container');
 const products = document.querySelector('.products__list');
+const loaderEl = `<div class="loader"></div>`;
 
 // window.addEventListener('DOMContentLoaded', refreshPage);
 
 export async function refreshPage() {
-  products.innerHTML = '';
+  products.innerHTML = loaderEl;
+  products.classList.add('load');
 
   const product = await getProducts(params);
-
+  products.classList.remove('load');
   renderProducts(product.results);
 }
 
@@ -25,19 +27,19 @@ export const instance = new Pagination(container, {
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
   template: {
-    page: '<a href="#" aria-label="pagination-page" class="tui-page-btn">{{page}}</a>',
+    page: '<a href="#" aria-label="pagination-page link" class="tui-page-btn">{{page}}</a>',
     currentPage:
       '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton: `<a href="#" aria-label="pagination-move" class="icon tui-page-btn tui-{{type}}">
+    moveButton: `<a href="#" aria-label="pagination-move link" class="icon tui-page-btn tui-{{type}}">
       <span class="tui-ico-{{type}}">{{type}}>
-      </span> 
+      </span>
       </a>`,
     disabledMoveButton: `<span class="tui-page-btn tui-is-disabled tui-{{type}}">
       <span class="tui-ico-{{type}}">{{type}}>
       </span>
       </span>`,
     moreButton:
-      '<a href="#" aria-label="pagination-more" class="tui-page-btn tui-{{type}}-is-ellip">' +
+      '<a href="#" aria-label="pagination-more link" class="tui-page-btn tui-{{type}}-is-ellip">' +
       '<span class="tui-ico-ellip">...</span>' +
       '</a>',
   },

@@ -75,6 +75,7 @@
                   type="email"
                   pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
                   placeholder="Enter your email"
+                  required
                 />
                 <span class="placeholder-span">Mail:</span>
               </div>
@@ -93,7 +94,34 @@
 
       <!-- Empty cart Template -->
       <div class="warning-container visually-hidden" id="warning-container">
-        <img class="warning-image" src="./images/cart/basket.png" alt="" />
+        <picture class="warning-image">
+          <source
+            media="(max-width: 767px)"
+            srcset="
+              /src/images/cart/basket_mob.webp    1x,
+              /src/images/cart/basket_mob@2x.webp 2x
+            "
+          />
+          <source
+            media="(max-width: 1271px)"
+            srcset="
+              /src/images/cart/basket_tab.webp    1x,
+              /src/images/cart/basket_tab@2x.webp 2x
+            "
+          />
+          <source
+            media="(min-width: 1272px)"
+            srcset="
+              /src/images/cart/basket_desk.webp    1x,
+              /src/images/cart/basket_desk@2x.webp 2x
+            "
+          />
+          <img
+            class="warning-image"
+            src="/src/images/cart/basket_mob.webp"
+            alt="Bascket with food"
+          />
+        </picture>
         <div class="warning-text-content">
           <p class="warning-descr">
             Your basket is <span class="color-text">empty...</span>

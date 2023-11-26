@@ -6,12 +6,13 @@ const refs = {
   spanCasa: document.querySelector('.css-span-casa'),
 };
 
-document.addEventListener('DOMContentLoaded', onformPopularElLoaded);
+// document.addEventListener('DOMContentLoaded', onformPopularElLoaded);
 
 const productPopularAPI = new ProductPopularAPI();
 
-function onformPopularElLoaded() {
-  productPopularAPI.getPopular().then(function (response) {
+export function onformPopularElLoaded() {
+  refs.formPopularEl.classList.remove('load');
+  return productPopularAPI.getPopular().then(function (response) {
     renderPopularProducts(response);
   });
 }

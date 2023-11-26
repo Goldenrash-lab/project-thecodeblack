@@ -8,14 +8,13 @@ const refs = {
 };
 const productDiscountAPI = new ProductDiscountAPI();
 
-document.addEventListener('DOMContentLoaded', getDiscountProduct);
+// document.addEventListener('DOMContentLoaded', getDiscountProduct);
 
-function getDiscountProduct() {
-  // console.log('hello');
+export function getDiscountProduct() {
   productDiscountAPI
     .getDiscount()
     .then(products => {
-      // console.log(products);
+      refs.listDiscountProductsEl.classList.remove('load-discount');
       createPopularList(products);
     })
     .catch(error => {

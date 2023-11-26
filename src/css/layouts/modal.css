@@ -246,8 +246,11 @@ body.modal-open {
   border: none;
   outline: transparent;
 
-  border-radius: 30px;
-  background-color: var(--green);
+
+    border-radius: 30px;
+    background-color: var(--green);
+
+    transition: background-color 500ms;
 }
 
 .modal__buy-btn:hover,

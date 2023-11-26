@@ -10,15 +10,6 @@ document.addEventListener('DOMContentLoaded', onformPopularElLoaded);
 
 const productPopularAPI = new ProductPopularAPI();
 
-productPopularAPI
-  .getPopular()
-  .then(data => {
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('Error fetching popular products:', error);
-  });
-
 function onformPopularElLoaded() {
   productPopularAPI.getPopular().then(function (response) {
     renderPopularProducts(response);
@@ -85,8 +76,6 @@ function onFormPopularElClick(el) {
   }
 
   const localStorageItem = JSON.parse(localStorage.getItem('cartIds'));
-  // console.log(localStorageItem);
-  // console.log(localStorageItem.length);
 
   svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
   svg.classList.add('checked-popular');

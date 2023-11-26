@@ -57,10 +57,10 @@ function discountProduct(product) {
                 </button>
                 </div>
                 </div>
-                </li>`
-    // console.log(productLi);
-    return productLi;
-};
+                </li>`;
+
+  return productLi;
+}
 
 // всі продукти
 function discountProducts(products) {
@@ -109,5 +109,18 @@ function onDiscListCartClick(el) {
   }
 }
 
-
-// console.log(checkCart(658))
+function saveToLS(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+function loadToLS(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) || [];
+  } catch (error) {
+    console.log(error.message);
+    return localStorage.getItem(key);
+  }
+}

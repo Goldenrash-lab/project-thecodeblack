@@ -17,7 +17,6 @@ export async function refreshPage() {
 }
 
 let params = loadToLS('PARAMS');
-console.log(params);
 
 export const instance = new Pagination(container, {
   itemsPerPage: 1,

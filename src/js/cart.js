@@ -6,7 +6,7 @@ import './templates/footer-postApi';
 // CART VALUE
 
 const spanCasa = document.querySelector('.css-span-casa');
-console.log(spanCasa.innerHTML);
+
 function onDocumentLoad() {
   const obj = loadToLS('cartIds');
   if (!obj.length) {
@@ -161,7 +161,6 @@ function clickDeleteAllBtn() {
 function updateLocalStorage(elementToRemove) {
   const cartIdsData = localStorage.getItem('cartIds');
   const cartIdsArray = JSON.parse(cartIdsData);
-  console.log(cartIdsArray);
 
   const updatedCartIds = cartIdsArray.filter(id => id !== elementToRemove);
   localStorage.setItem('cartIds', JSON.stringify(updatedCartIds));

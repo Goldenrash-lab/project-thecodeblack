@@ -20,7 +20,6 @@ const productAPI = new ProductAPI();
 
 function onSortElChange(e) {
   const value = e.target.value;
-  console.log(value);
   let sortType = '';
   switch (value) {
     case 'atoz':
@@ -128,7 +127,6 @@ function onSelectElChange() {
     container.classList.remove('visually-hidden');
     renderProducts(res.results);
     resetTotalPage(res.totalPages);
-    console.log(res);
     if (res.totalPages === 1 || res.totalPages === 0) {
       container.classList.add('visually-hidden');
     }

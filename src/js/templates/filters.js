@@ -1,13 +1,16 @@
 import { ProductAPI } from '../products/API';
 import iconPath from '/src/images/icons.svg';
-import { refreshPage } from '../pagination/pagination';
 import { resetTotalPage } from '../pagination/pagination';
+import { onformPopularElLoaded } from './popular';
+import { getDiscountProduct } from './discount';
 
 const refs = {
   selectEl: document.querySelector('.category-choice'),
   productListEl: document.querySelector('.products__list'),
   formEl: document.querySelector('.filters__form'),
   sortEl: document.querySelector('.sort-by'),
+  formPopularEl: document.querySelector('.popular__list'),
+  listDiscountProductsEl: document.querySelector('.discount__list'),
 };
 
 document.addEventListener('DOMContentLoaded', onDocumentLoad);
@@ -15,6 +18,12 @@ refs.selectEl.addEventListener('change', onSelectElChange);
 refs.formEl.addEventListener('submit', onFormElSubmit);
 refs.sortEl.addEventListener('change', onSortElChange);
 const container = document.querySelector('#tui-pagination-container');
+
+// loader
+
+const loaderEl = `<div class="loader"></div>`;
+
+// __________
 
 const productAPI = new ProductAPI();
 
@@ -45,7 +54,10 @@ function onSortElChange(e) {
   obj.sort = sortType;
   obj.page = 1;
   saveToLS('PARAMS', obj);
+  refs.productListEl.innerHTML = loaderEl;
+  refs.productListEl.classList.add('load');
   productAPI.getProductsByCat(obj).then(res => {
+    refs.productListEl.classList.remove('load');
     renderProducts(res.results);
     resetTotalPage(res.totalPages);
   });
@@ -60,8 +72,10 @@ function onFormElSubmit(e) {
   obj.keyword = keyword;
   obj.page = 1;
   saveToLS('PARAMS', obj);
-
+  refs.productListEl.innerHTML = loaderEl;
+  refs.productListEl.classList.add('load');
   productAPI.getProductsByCat(obj).then(res => {
+    refs.productListEl.classList.remove('load');
     container.classList.remove('visually-hidden');
     renderProducts(res.results);
     resetTotalPage(res.totalPages);
@@ -88,8 +102,17 @@ function onDocumentLoad() {
   saveToLS('PARAMS', localStorage);
 
   // _______
-
+  refs.formPopularEl.classList.add('load');
+  refs.productListEl.classList.add('load');
+  refs.listDiscountProductsEl.classList.add('load-discount');
+  refs.productListEl.innerHTML = loaderEl;
+  refs.listDiscountProductsEl.innerHTML = loaderEl;
+  refs.formPopularEl.innerHTML = loaderEl;
   productAPI.getProductsByCat(localStorage).then(res => {
+    getDiscountProduct();
+    onformPopularElLoaded();
+    refs.productListEl.classList.remove('load');
+    refs.listDiscountProductsEl.classList.remove('load-discount');
     resetTotalPage(res.totalPages);
     renderProducts(res.results);
   });
@@ -123,8 +146,11 @@ function onSelectElChange() {
   obj.category = value;
   obj.page = 1;
   saveToLS('PARAMS', obj);
-
+  refs.productListEl.innerHTML = loaderEl;
+  refs.productListEl.classList.add('load');
   productAPI.getProductsByCat(obj).then(res => {
+    refs.productListEl.innerHTML = loaderEl;
+    refs.productListEl.classList.remove('load');
     container.classList.remove('visually-hidden');
     renderProducts(res.results);
     resetTotalPage(res.totalPages);

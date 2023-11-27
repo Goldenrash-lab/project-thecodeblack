@@ -19,6 +19,19 @@ export function onformPopularElLoaded() {
 function createPopular(arr) {
   return arr.map(el => {
     const { category, img, name, popularity, size, _id } = el;
+
+    const cartId = loadToLS('cartIds');
+
+    let use = '';
+    if (Object.keys(cartId).includes(_id)) {
+      use = `<svg class="popular__item-svg checked-popular" width="12" height="12">
+    <use href="${iconsPath}#icon-check"></use>
+    </svg>`;
+    } else {
+      use = `<svg class="popular__item-svg" width="12" height="12">
+    <use href="${iconsPath}#icon-shopping-cart"></use>
+    </svg>`;
+    }
     return `<li class="popular__item" data-id="${_id}">
               <div class="popular__item-inner">
                 <img src="${img}" width="74" alt="${name}" class="popular__item-img" loading="lazy"/>
@@ -28,9 +41,7 @@ function createPopular(arr) {
                   <h4 class="popular__item-title">${name}</h4>
 
                   <button type="button" aria-label="button-buy" class="popular__item-link">
-                    <svg class="popular__item-svg" width="12" height="12">
-                      <use href="${iconsPath}#icon-shopping-cart"></use>
-                    </svg>
+                    ${use}
                   </button>
 
                 </div>
@@ -88,7 +99,9 @@ function onFormPopularElClick(el) {
     // ids.push(id);
     saveToLS('cartIds', localStorageItem);
     // localStorage.setItem('cartIds', JSON.stringify(ids));
-    refs.spanCasa.textContent = `Cart (${Object.keys(localStorageItem).length})`;
+    refs.spanCasa.textContent = `Cart (${
+      Object.keys(localStorageItem).length
+    })`;
   }
 }
 

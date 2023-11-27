@@ -206,6 +206,19 @@ function renderOption(arr) {
 export function createProducts(arr) {
   return arr.map(el => {
     const { category, img, name, popularity, price, size, _id } = el;
+
+    const cartId = loadToLS('cartIds');
+
+    let use = '';
+    if (Object.keys(cartId).includes(_id)) {
+      use = `<svg class="discount__item-cartsvg checked" width="18" height="18"><use href="${iconPath}#icon-check"></use></svg>`;
+    } else {
+      use = `<svg class="products__item-svg" width="18" heigth="18">
+                <use href="${iconPath}#icon-cart-icon">
+                </use>
+              </svg>`;
+    }
+
     return `
     <li class="products__item" data-id="${_id}">
         <div class="products__item-inner">
@@ -231,10 +244,7 @@ export function createProducts(arr) {
           <div class="products__item-buy">
             <p class="products__item-price">$${price}</p>
             <button type="button" aria-label="button-buy" class="products__item-link">
-              <svg class="products__item-svg" width="18" heigth="18">
-                <use href="${iconPath}#icon-cart-icon">
-                </use>
-              </svg>
+              ${use}
             </button>
           </div>
         </li>

@@ -28,7 +28,7 @@ function discountProduct(product) {
   const cartId = loadToLS('cartIds');
 
   let use = '';
-  if (cartId.includes(_id)) {
+  if (Object.keys(cartId).includes(_id)) {
     use = `<svg class="discount__item-cartsvg checked" width="18" height="18"><use href="${iconsPath}#icon-check"></use></svg>`;
   } else {
     use = `<svg class="discount__item-cartsvg" width="18" height="18"><use href="${iconsPath}#icon-cart-icon"></use></svg>`;
@@ -100,12 +100,12 @@ function onDiscListCartClick(el) {
   svg.classList.add('checked');
 
   const localStorageItem = loadToLS('cartIds');
-  if (localStorageItem.includes(id)) {
+  if (Object.keys(localStorageItem).includes(id)) {
     return;
   } else {
-    localStorageItem.push(id);
+    localStorageItem[id] = 1;
     saveToLS('cartIds', localStorageItem);
-    refs.spanCasa.textContent = `Cart (${localStorageItem.length})`;
+    refs.spanCasa.textContent = `Cart (${Object.keys(localStorageItem).length})`;
   }
 }
 
@@ -118,7 +118,7 @@ function saveToLS(key, value) {
 }
 function loadToLS(key) {
   try {
-    return JSON.parse(localStorage.getItem(key)) || [];
+    return JSON.parse(localStorage.getItem(key)) || {};
   } catch (error) {
     console.log(error.message);
     return localStorage.getItem(key);

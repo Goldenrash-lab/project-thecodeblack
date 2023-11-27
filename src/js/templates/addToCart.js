@@ -13,7 +13,6 @@ function onDocumentLoad(e) {
 }
 
 function onProductsListCartClick(e) {
-
   if (
     e.target.nodeName !== 'use' &&
     e.target.nodeName !== 'svg' &&
@@ -22,24 +21,26 @@ function onProductsListCartClick(e) {
     return;
   }
   const id = e.target.closest('.products__item').dataset.id;
-  console.dir(e.target.closest('.products__item'));
 
   let svg = null;
-  if (e.target.nodeName === "BUTTON") {
-    svg = e.target.querySelector('.products__item-svg')
-  } else { svg = e.target.closest('.products__item-svg') }
+  if (e.target.nodeName === 'BUTTON') {
+    svg = e.target.querySelector('.products__item-svg');
+  } else {
+    svg = e.target.closest('.products__item-svg');
+  }
 
   const localStorageItemParse = loadToLS('cartIds');
 
   if (Object.keys(localStorageItemParse).includes(id)) {
-  
     return;
   } else {
     localStorageItemParse[id] = 1;
     saveToLS('cartIds', localStorageItemParse);
     svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
     svg.classList.add('checked');
-    spanCasa.textContent = `Cart (${Object.keys(localStorageItemParse).length})`;
+    spanCasa.textContent = `Cart (${
+      Object.keys(localStorageItemParse).length
+    })`;
   }
 }
 

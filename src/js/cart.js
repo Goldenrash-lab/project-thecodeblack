@@ -106,6 +106,13 @@ function renderProductsCart(products) {
                     <path d="M11.0625 2.11488L9.88512 0.9375L6 4.82262L2.11488 0.9375L0.9375 2.11488L4.82262 6L0.9375 9.88512L2.11488 11.0625L6 7.17738L9.88512 11.0625L11.0625 9.88512L7.17738 6L11.0625 2.11488Z" fill="#010101"/>
                 </svg>
               </button>
+
+            <div class="counter__wrapper">
+              <button class="counter__btn" type="button" data-action="decrement"> - </button>
+              <span class="counter__value">1</span>
+              <button class="counter__btn" type="button" data-action="increment"> + </button>
+            </div>
+
           </li>`;
     })
     .join('');
@@ -204,3 +211,111 @@ export function loadToLS(key) {
     return localStorage.getItem(key);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+  |============================
+  | COUNTER
+  |============================
+*/
+
+refs.productList.addEventListener('click', e => {
+  const target = e.target;
+
+  if (target.classList.contains('counter__btn')) {
+    const cartItem = target.closest('.product-item');
+    const counterValue = cartItem.querySelector('.counter__value');
+    const counterAction = target.getAttribute('data-action');
+    let counter = parseInt(counterValue.textContent);
+
+    if (counterAction === 'increment') {
+      counter += 1;
+    } else if (counterAction === 'decrement' && counter > 1) {
+      counter -= 1;
+    }
+
+    counterValue.textContent = counter;
+
+    recalculateTotalPrice();
+  }
+});
+
+function recalculateTotalPrice() {
+  const productsInCart = Array.from(refs.productList.querySelectorAll('.product-item'));
+
+  let totalPrice = 0;
+  let totalCartQuantity = 0;
+
+  productsInCart.forEach(productEl => {
+    const quantity = parseInt(productEl.querySelector('.counter__value').textContent);
+    const price = parseFloat(productEl.querySelector('.product-price').textContent.replace('$', ''));
+    totalPrice += price * quantity;
+
+    totalCartQuantity += quantity;
+    spanCasa.textContent = `Cart(${totalCartQuantity})`;
+    refs.cartHeading.innerHTML = `Cart(${totalCartQuantity})`;
+  });
+
+  refs.totalWrapper.innerHTML = `
+        <span class="key-span">Sum:</span>
+        <span class="price-text">&#36;${totalPrice.toFixed(2)}</span>
+    `;
+};
+
+
+
+
+
+

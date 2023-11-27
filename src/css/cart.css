@@ -533,3 +533,117 @@ body {
     left: 19px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+  |============================
+  | COUNTER
+  |============================
+*/
+
+.counter__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+  position: absolute;
+
+  border-radius: 100px;
+  border: 1px solid var(--card-fields);
+  background-color: var(--light-grey);
+
+  padding: 4px 14px;
+  width: 80px;
+  height: 28px;
+  font-weight: 500;
+
+  right: 3px;
+  bottom: 28px;
+ 
+}
+
+@media only screen and (min-width: 768px) {
+  .counter__wrapper {
+    gap: 10px;
+
+    padding: 6px 16px;
+    width: 104px;
+    height: 36px;
+
+    right: 6px;
+    bottom: 36px;
+  }
+}
+
+.counter__wrapper>button {
+  border: none;
+  outline: transparent;
+  border-radius: 50%;
+  min-width: 24px;
+  cursor: pointer;
+ 
+  background: transparent;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--black);
+  transition: background-color 500ms;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .counter__wrapper>button {
+    font-size: 18px;
+  }
+}
+
+.counter__wrapper>button:hover,
+.counter__wrapper>button:focus {
+  background-color: var(--green);
+}
+
+.counter__value {
+  color: var(--tangeline-grey);
+  font-size: 18px;
+  line-height: 1.11;
+}
+
+@media only screen and (min-width: 768px) {
+  .counter__value {
+    font-size: 20px;
+    line-height: 1.11;
+  }
+}

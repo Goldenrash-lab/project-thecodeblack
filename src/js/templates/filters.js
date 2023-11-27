@@ -27,7 +27,7 @@ const loaderEl = `<div class="loader"></div>`;
 
 const productAPI = new ProductAPI();
 
-function onSortElChange(e) {
+async function onSortElChange(e) {
   const value = e.target.value;
   let sortType = '';
   switch (value) {
@@ -56,24 +56,32 @@ function onSortElChange(e) {
   saveToLS('PARAMS', obj);
   refs.productListEl.innerHTML = loaderEl;
   refs.productListEl.classList.add('load');
-  productAPI.getProductsByCat(obj).then(res => {
+
+  try {
+    const res = await productAPI.getProductsByCat(obj);
     refs.productListEl.classList.remove('load');
     renderProducts(res.results);
     resetTotalPage(res.totalPages);
-  });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-export function loadProducts(params) {
+export async function loadProducts(params) {
   refs.productListEl.innerHTML = loaderEl;
   refs.productListEl.classList.add('load');
-  productAPI.getProductsByCat(params).then(res => {
+
+  try {
+    const res = await productAPI.getProductsByCat(params);
     refs.productListEl.classList.remove('load');
     renderProducts(res.results);
     resetTotalPage(res.totalPages);
-  });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-function onFormElSubmit(e) {
+async function onFormElSubmit(e) {
   e.preventDefault();
 
   const keyword = e.target.elements['search-input'].value;
@@ -84,7 +92,10 @@ function onFormElSubmit(e) {
   saveToLS('PARAMS', obj);
   refs.productListEl.innerHTML = loaderEl;
   refs.productListEl.classList.add('load');
-  productAPI.getProductsByCat(obj).then(res => {
+
+  try {
+    const res = await productAPI.getProductsByCat(obj);
+
     refs.productListEl.classList.remove('load');
     container.classList.remove('visually-hidden');
     renderProducts(res.results);
@@ -95,10 +106,12 @@ function onFormElSubmit(e) {
     if (!res.totalPages) {
       refs.productListEl.innerHTML = '<h2>Products not found!</h2>';
     }
-  });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-function onDocumentLoad() {
+async function onDocumentLoad() {
   // DEFAULT LStorage
 
   const localStorage = {
@@ -125,21 +138,55 @@ function onDocumentLoad() {
   refs.productListEl.innerHTML = loaderEl;
   refs.listDiscountProductsEl.innerHTML = loaderEl;
   refs.formPopularEl.innerHTML = loaderEl;
-  productAPI.getProductsByCat(localStorage).then(res => {
+
+  try {
+    const res = await productAPI.getProductsByCat(localStorage);
     getDiscountProduct();
     onformPopularElLoaded();
     refs.productListEl.classList.remove('load');
     refs.listDiscountProductsEl.classList.remove('load-discount');
     resetTotalPage(res.totalPages);
     renderProducts(res.results);
-  });
-
-  productAPI.getCategories().then(res => {
+  } catch (error) {
+    console.log(error);
+  }
+  try {
+    const res = await productAPI.getCategories();
     const newRes = res.map(el => {
       return el.replace('&', '%26');
     });
     renderOption(newRes);
-  });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function onSelectElChange() {
+  const value = refs.selectEl.value;
+
+  const obj = loadToLS('PARAMS');
+  obj.category = value;
+  obj.page = 1;
+  saveToLS('PARAMS', obj);
+  refs.productListEl.innerHTML = loaderEl;
+  refs.productListEl.classList.add('load');
+
+  try {
+    const res = await productAPI.getProductsByCat(obj);
+    refs.productListEl.innerHTML = loaderEl;
+    refs.productListEl.classList.remove('load');
+    container.classList.remove('visually-hidden');
+    renderProducts(res.results);
+    resetTotalPage(res.totalPages);
+    if (res.totalPages === 1 || res.totalPages === 0) {
+      container.classList.add('visually-hidden');
+    }
+    if (!res.totalPages) {
+      refs.productListEl.innerHTML = '<h2>Products not found!</h2>';
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function createOption(arr) {
@@ -154,30 +201,6 @@ function createOption(arr) {
 function renderOption(arr) {
   const markup = createOption(arr).join('');
   refs.selectEl.insertAdjacentHTML('afterbegin', markup);
-}
-
-function onSelectElChange() {
-  const value = refs.selectEl.value;
-
-  const obj = loadToLS('PARAMS');
-  obj.category = value;
-  obj.page = 1;
-  saveToLS('PARAMS', obj);
-  refs.productListEl.innerHTML = loaderEl;
-  refs.productListEl.classList.add('load');
-  productAPI.getProductsByCat(obj).then(res => {
-    refs.productListEl.innerHTML = loaderEl;
-    refs.productListEl.classList.remove('load');
-    container.classList.remove('visually-hidden');
-    renderProducts(res.results);
-    resetTotalPage(res.totalPages);
-    if (res.totalPages === 1 || res.totalPages === 0) {
-      container.classList.add('visually-hidden');
-    }
-    if (!res.totalPages) {
-      refs.productListEl.innerHTML = '<h2>Products not found!</h2>';
-    }
-  });
 }
 
 export function createProducts(arr) {

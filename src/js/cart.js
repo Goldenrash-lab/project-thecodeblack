@@ -12,10 +12,10 @@ const loaderEl = `<div class="loader"></div>`;
 
 function onDocumentLoad() {
   const obj = loadToLS('cartIds');
-  if (!obj.length) {
+  if (!Object.keys(obj).length) {
     spanCasa.innerHTML = `CART(0)`;
   } else {
-    spanCasa.innerHTML = `CART(${obj.length})`;
+    spanCasa.innerHTML = `CART(${Object.keys(obj).length})`;
   }
 }
 
@@ -31,8 +31,9 @@ const refs = {
 };
 
 //достаём данные из local storage
-const cartIdsData = localStorage.getItem('cartIds');
-const cartIdsArray = JSON.parse(cartIdsData) || [];
+// const cartIdsData = localStorage.getItem('cartIds');
+//
+const cartIdsArray = loadToLS('cartIds');
 getCartProducts(cartIdsArray);
 
 //функция запроса данных
@@ -43,7 +44,8 @@ function getCartProducts(cartIds) {
   refs.totalWrapper.innerHTML = loaderEl;
   refs.totalWrapper.classList.add('load-total');
   Promise.all(
-    cartIds.map(productId => {
+    // *****
+    Object.keys(cartIds).map(productId => {
       return axios
         .get(`${BASE_URL}/${productId}`)
         .then(response => {
@@ -159,7 +161,7 @@ function clickDeleteElBtn(event) {
 
   updateLocalStorage(productId);
   const obj = loadToLS('cartIds');
-  spanCasa.innerHTML = `CART(${obj.length})`;
+  spanCasa.innerHTML = `CART(${Object.keys(obj).length})`;
 }
 
 //Удаляем все элементы списка по нажатию на кнопку Delete All
@@ -167,21 +169,27 @@ function clickDeleteAllBtn() {
   refs.cartHeading.innerHTML = 'CART (0)';
   refs.warningContainer.classList.remove('visually-hidden');
   refs.baseContainer.innerHTML = '';
-  localStorage.setItem('cartIds', JSON.stringify([]));
+  // ***
+  // localStorage.setItem('cartIds', JSON.stringify([]));
+  localStorage.setItem('cartIds', JSON.stringify({}));
   const obj = loadToLS('cartIds');
-  spanCasa.innerHTML = `CART(${obj.length})`;
+  spanCasa.innerHTML = `CART(${Object.keys(obj).length})`;
 }
 
 // дополнительная функция для обновления local storage после удаления элемента
 function updateLocalStorage(elementToRemove) {
-  const cartIdsData = localStorage.getItem('cartIds');
-  const cartIdsArray = JSON.parse(cartIdsData);
+  // const cartIdsData = localStorage.getItem('cartIds');
+  // const cartIdsArray = JSON.parse(cartIdsData);
+  const cartIdsArray = loadToLS('cartIds');
 
-  const updatedCartIds = cartIdsArray.filter(id => id !== elementToRemove);
-  localStorage.setItem('cartIds', JSON.stringify(updatedCartIds));
-  cartLargeNumber(updatedCartIds.length);
+  delete cartIdsArray[elementToRemove];
 
-  getCartProducts(updatedCartIds);
+  // const updatedCartIds = Object.keys(cartIdsArray).filter(id => id !== elementToRemove);
+  // localStorage.setItem('cartIds', JSON.stringify(updatedCartIds));
+  saveToLS('cartIds', cartIdsArray);
+  cartLargeNumber(Object.keys(cartIdsArray).length);
+
+  getCartProducts(cartIdsArray);
 }
 
 // Добавляем скролл, когда 3 элемента и больше
@@ -225,8 +233,12 @@ refs.productList.addEventListener('click', e => {
 
   if (target.classList.contains('counter__btn')) {
     const cartItem = target.closest('.product-item');
+
     const counterValue = cartItem.querySelector('.counter__value');
     const counterAction = target.getAttribute('data-action');
+    const id = cartItem.dataset.productid;
+
+    const localStorageItemParse = loadToLS('cartIds');
     let counter = parseInt(counterValue.textContent);
 
     if (counterAction === 'increment') {
@@ -236,6 +248,12 @@ refs.productList.addEventListener('click', e => {
     }
 
     counterValue.textContent = counter;
+
+    if (Object.keys(localStorageItemParse).includes(id)) {
+      localStorageItemParse[id] = counter;
+
+      saveToLS('cartIds', localStorageItemParse);
+    }
 
     recalculateTotalPrice();
   }
@@ -259,8 +277,8 @@ function recalculateTotalPrice() {
     totalPrice += price * quantity;
 
     totalCartQuantity += quantity;
-    spanCasa.textContent = `Cart(${totalCartQuantity})`;
-    refs.cartHeading.innerHTML = `Cart(${totalCartQuantity})`;
+    // spanCasa.textContent = `Cart(${totalCartQuantity})`;
+    // refs.cartHeading.innerHTML = `Cart(${totalCartQuantity})`;
   });
 
   refs.totalWrapper.innerHTML = `

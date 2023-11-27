@@ -76,17 +76,34 @@ function onFormPopularElClick(el) {
     svg = el.target.closest('.popular__item-svg');
   }
 
-  const localStorageItem = JSON.parse(localStorage.getItem('cartIds'));
+  const localStorageItem = loadToLS('cartIds');
 
   svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
   svg.classList.add('checked-popular');
 
-  if (localStorageItem.includes(id)) {
+  if (Object.keys(localStorageItem).includes(id)) {
     return;
   } else {
-    const ids = JSON.parse(localStorage.getItem('cartIds'));
-    ids.push(id);
-    localStorage.setItem('cartIds', JSON.stringify(ids));
-    refs.spanCasa.textContent = `Cart (${ids.length})`;
+    localStorageItem[id] = 1;
+    // ids.push(id);
+    saveToLS('cartIds', localStorageItem);
+    // localStorage.setItem('cartIds', JSON.stringify(ids));
+    refs.spanCasa.textContent = `Cart (${Object.keys(localStorageItem).length})`;
+  }
+}
+
+function saveToLS(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+function loadToLS(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) || {};
+  } catch (error) {
+    console.log(error.message);
+    return localStorage.getItem(key);
   }
 }

@@ -7,22 +7,27 @@ const cartForm = document.querySelector('.form-wrapper');
 const STORAGE_KEY = 'order';
 let order = {
   email: '',
-  products: [
-    {
-      productId: '',
-      amount: '',
-    },
-  ],
+  products: [],
 };
 
 const makeOrder = () => {
   const cartIdsData = JSON.parse(localStorage.getItem('cartIds'));
-  order.products = cartIdsData.map(id => {
+
+  const keys = Object.keys(cartIdsData);
+  for (const key of keys) {
     const amount = document.querySelector(
-      `[data-productid="${id}"] .counter__value`
+      `[data-productid="${key}"] .counter__value`
     ).textContent;
-    return { productId: id, amount: +amount };
-  });
+    order.products.push({ productId: key, amount: +amount });
+  }
+
+  // const cardsIds = Object.keys(cartIdsData);
+  // order.products = cardsIds.map(id => {
+  //   const amount = document.querySelector(
+  //     `[data-productid="${id}"] .counter__value`
+  //   ).textContent;
+  //   return { productId: id, amount: +amount };
+  // });
   return order;
 };
 
@@ -43,11 +48,13 @@ cartForm.addEventListener('submit', onCheckout);
 
 function onCheckout(e) {
   e.preventDefault();
-  makeOrder();
+  order = makeOrder();
   localStorage.setItem(STORAGE_KEY, JSON.stringify(order));
   const savedOrder = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  e.currentTarget.reset();
-  localStorage.removeItem(STORAGE_KEY);
-  makeCheckout(savedOrder);
-  clickDeleteAllBtn();
+
+  makeCheckout(savedOrder).then(res => {
+    cartForm.reset();
+    localStorage.removeItem(STORAGE_KEY);
+    clickDeleteAllBtn();
+  });
 }

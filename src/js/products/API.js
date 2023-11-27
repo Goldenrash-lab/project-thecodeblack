@@ -7,15 +7,15 @@ export class ProductAPI {
     this.totalPages = 1;
   }
 
-  getCategories() {
-    return axios.get('products/categories').then(res => res.data);
+  async getCategories() {
+    const res = await axios.get('products/categories');
+    return res.data;
   }
-  getProductsByCat(obj) {
+  async getProductsByCat(obj) {
     const { keyword, category, page, limit, sort } = obj;
-    return axios
-      .get(
-        `products?keyword=${keyword}&category=${category}&page=${page}&limit=${limit}&${sort}`
-      )
-      .then(res => res.data);
+    const res = await axios.get(
+      `products?keyword=${keyword}&category=${category}&page=${page}&limit=${limit}&${sort}`
+    );
+    return res.data;
   }
 }

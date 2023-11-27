@@ -171,7 +171,6 @@ function clickDeleteAllBtn() {
   // localStorage.setItem('cartIds', JSON.stringify([]));
   localStorage.setItem('cartIds', JSON.stringify({}));
   const obj = loadToLS('cartIds');
-  console.log(Object.keys(obj).length);
   spanCasa.innerHTML = `CART(${Object.keys(obj).length})`;
 }
 
@@ -285,11 +284,11 @@ refs.productList.addEventListener('click', e => {
 
   if (target.classList.contains('counter__btn')) {
     const cartItem = target.closest('.product-item');
-    console.dir(cartItem);
+    
     const counterValue = cartItem.querySelector('.counter__value');
     const counterAction = target.getAttribute('data-action');
     const id = cartItem.dataset.productid;
-    console.log(id);
+   
     const localStorageItemParse = loadToLS('cartIds');
     let counter = parseInt(counterValue.textContent);
 
@@ -302,9 +301,9 @@ refs.productList.addEventListener('click', e => {
     counterValue.textContent = counter;
    
     if (Object.keys(localStorageItemParse).includes(id)) {
-      console.log(localStorageItemParse);
+ 
       localStorageItemParse[id] = counter;
-      console.log(localStorageItemParse);
+
       saveToLS('cartIds', localStorageItemParse);
       
     }

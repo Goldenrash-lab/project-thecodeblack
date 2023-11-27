@@ -35,6 +35,7 @@ productsContainers.forEach(container => {
       e.preventDefault();
       try {
         const productId = targetItem.dataset.id;
+        console.log(productId);
         const productData = await getProductsById(productId);
         onModalOpen(productData);
       } catch (error) {
@@ -64,8 +65,8 @@ function onModalOpen(productData) {
   modal.setAttribute('data-product-id', productId);
 
   const addToCartBtn = document.querySelector('.modal__buy-btn');
-  let cartItems = JSON.parse(localStorage.getItem('cartIds')) || [];
-  const isInCart = cartItems.includes(productId);
+  let cartItems = JSON.parse(localStorage.getItem('cartIds')) || {};
+  const isInCart = Object.keys(cartItems).includes(productId);
   addToCartBtn.querySelector('.modal__buy-btn-text').textContent = isInCart
     ? 'Remove from'
     : 'Add to';
@@ -73,17 +74,17 @@ function onModalOpen(productData) {
   const spanCasa = document.querySelector('.css-span-casa');
 
   addToCartBtn.addEventListener('click', () => {
-    const itemIndex = cartItems.indexOf(productId);
+    const itemIndex = Object.keys(cartItems).indexOf(productId);
     if (itemIndex === -1) {
-      cartItems.push(productId);
+      cartItems[productId] = 1;
       addToCartBtn.querySelector('.modal__buy-btn-text').textContent =
         'Remove from';
     } else {
-      cartItems.splice(itemIndex, 1);
+      delete cartItems[productId];
       addToCartBtn.querySelector('.modal__buy-btn-text').textContent = 'Add to';
     }
     localStorage.setItem('cartIds', JSON.stringify(cartItems));
-    spanCasa.textContent = `Cart(${cartItems.length})`;
+    spanCasa.textContent = `Cart(${Object.keys(cartItems).length})`;
   });
 }
 

@@ -26,7 +26,6 @@
   justify-content: center;
   border-radius: 9px;
   gap: 8px;
-  transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
 
   padding-top: 5px;
   padding-bottom: 5px;
@@ -88,11 +87,6 @@
     width: 155px;
     height: 21px;
   }
-}
-
-.css-a-link-icon:focus,
-.css-a-link-icon:hover {
-  background: #6d8434;
 }
 
 .css-link-home {
@@ -169,21 +163,6 @@
   .css-span-casa {
     display: contents;
   }
-}
-
-.css-a-link-icon:focus,
-.css-a-link-icon:hover {
-  fill: #e8e8e2;
-}
-
-.css-a-link-icon:focus .css-div-icon-header,
-.css-a-link-icon:hover .css-div-icon-header {
-  background-color: #e8e8e2;
-}
-
-.css-a-link-icon:focus .css-svg-logo,
-.css-a-link-icon:hover .css-svg-logo {
-  fill: #6d8434;
 }
 
 @media only screen and (min-width: 768px) {

@@ -2,7 +2,6 @@ import axios from 'axios';
 import Notiflix, { Notify } from 'notiflix';
 
 axios.defaults.baseURL = 'https://food-boutique.b.goit.study/api';
-// contenttype apl json
 
 // axios.post(url[, data[, config]])
 

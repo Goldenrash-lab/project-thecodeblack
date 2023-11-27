@@ -2,6 +2,8 @@ import axios from 'axios';
 import '../../node_modules/modern-normalize/modern-normalize.css';
 import './templates/footer-validation';
 import './templates/footer-postApi';
+import './templates/cart-postApi';
+import './templates/cart-validation';
 
 // CART VALUE
 
@@ -212,59 +214,6 @@ export function loadToLS(key) {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
   |============================
   | COUNTER
@@ -287,20 +236,26 @@ refs.productList.addEventListener('click', e => {
     }
 
     counterValue.textContent = counter;
-    
+
     recalculateTotalPrice();
   }
 });
 
 function recalculateTotalPrice() {
-  const productsInCart = Array.from(refs.productList.querySelectorAll('.product-item'));
+  const productsInCart = Array.from(
+    refs.productList.querySelectorAll('.product-item')
+  );
 
   let totalPrice = 0;
   let totalCartQuantity = 0;
 
   productsInCart.forEach(productEl => {
-    const quantity = parseInt(productEl.querySelector('.counter__value').textContent);
-    const price = parseFloat(productEl.querySelector('.product-price').textContent.replace('$', ''));
+    const quantity = parseInt(
+      productEl.querySelector('.counter__value').textContent
+    );
+    const price = parseFloat(
+      productEl.querySelector('.product-price').textContent.replace('$', '')
+    );
     totalPrice += price * quantity;
 
     totalCartQuantity += quantity;
@@ -312,10 +267,6 @@ function recalculateTotalPrice() {
         <span class="key-span">Sum:</span>
         <span class="price-text">&#36;${totalPrice.toFixed(2)}</span>
     `;
-};
+}
 
-
-
-
-
-
+export { clickDeleteAllBtn };

@@ -19,7 +19,7 @@ async function getProductsById(id) {
 const productsContainers = document.querySelectorAll(
   '.products__list, .discount__list, .popular__list'
 );
-let svg = null;
+let svgNotClick = null;
 productsContainers.forEach(container => {
   container.addEventListener('click', async e => {
     const isBuyBtn = e.target.closest('.products__item-link');
@@ -32,7 +32,7 @@ productsContainers.forEach(container => {
     const targetItem = e.target.closest(
       '.products__item, .discount__item, .popular__item'
     );
-    svg = targetItem;
+    svgNotClick = targetItem;
     if (targetItem) {
       e.preventDefault();
       try {
@@ -82,7 +82,7 @@ function onModalOpen(productData) {
         'Remove from';
 
       // ____
-      svg = svg.querySelector('.products__item-svg');
+      svg = svgNotClick.querySelector('.products__item-svg');
       svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
       svg.classList.add('checked');
       spanCasa.textContent = `Cart (${Object.keys(cartItems).length})`;
@@ -91,6 +91,12 @@ function onModalOpen(productData) {
     } else {
       delete cartItems[productId];
       addToCartBtn.querySelector('.modal__buy-btn-text').textContent = 'Add to';
+      // _______
+      svg = svgNotClick.querySelector('.products__item-svg');
+      svg.innerHTML = `<use href="${iconsPath}#icon-cart-icon"></use>`;
+      svg.classList.remove('checked');
+      spanCasa.textContent = `Cart (${Object.keys(cartItems).length})`;
+      // ________
     }
     localStorage.setItem('cartIds', JSON.stringify(cartItems));
     spanCasa.textContent = `Cart(${Object.keys(cartItems).length})`;

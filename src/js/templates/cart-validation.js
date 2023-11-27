@@ -1,6 +1,7 @@
 import throttle from 'lodash.throttle';
 import { makeCheckout } from './cart-postApi';
 import { clickDeleteAllBtn } from '../cart';
+import Notiflix from 'notiflix';
 
 const cartForm = document.querySelector('.form-wrapper');
 
@@ -52,9 +53,13 @@ function onCheckout(e) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(order));
   const savedOrder = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-  makeCheckout(savedOrder).then(res => {
-    cartForm.reset();
-    localStorage.removeItem(STORAGE_KEY);
-    clickDeleteAllBtn();
-  });
+  makeCheckout(savedOrder)
+    .then(res => {
+      cartForm.reset();
+      localStorage.removeItem(STORAGE_KEY);
+      clickDeleteAllBtn();
+    })
+    .catch(err => {
+      Notiflix.Notify.failure(err.response.data.message);
+    });
 }

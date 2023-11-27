@@ -85,6 +85,30 @@ p {
   transform: translateX(-38px);
   animation: l21 0.5s infinite alternate linear;
 }
+@media only screen and (min-width: 1272px) {
+  .products__list.load {
+    height: 1169px;
+    width: 925px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .products__list.load {
+    height: 1536px;
+    width: 704px;
+  }
+}
+@media only screen and (min-width: 320px) {
+  .products__list.load {
+    height: 2236px;
+    width: 343px;
+  }
+}
+
+.products__list .loader {
+  display: flex;
+  width: 5px;
+  height: 5px;
+}
 
 @keyframes l21 {
   50% {

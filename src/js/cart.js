@@ -287,7 +287,7 @@ refs.productList.addEventListener('click', e => {
     }
 
     counterValue.textContent = counter;
-
+    
     recalculateTotalPrice();
   }
 });

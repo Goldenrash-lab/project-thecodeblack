@@ -27,20 +27,28 @@
   border-radius: 9px;
   gap: 8px;
   transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 @media only screen and (min-width: 768px) {
   .css-a-link-icon {
-    width: 200px;
-    height: 60px;
     transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 
 @media only screen and (min-width: 1272px) {
   .css-a-link-icon {
-    width: 220px;
-    height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
@@ -98,7 +106,6 @@
 }
 
 .css-link-home {
-  height: 38px;
   display: flex;
   padding: 10px 20px;
   justify-content: center;
@@ -110,25 +117,14 @@
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 18px;
 }
 
 @media only screen and (min-width: 768px) {
   .css-link-home {
-    width: 77px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .css-link-home {
-    width: 104px;
-    height: 48px;
-    color: #e8e8e2;
-    font-family: 'Neue Montreal';
     font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
+    padding: 12px 28px;
+    line-height: 1.33em;
+    gap: 16px;
   }
 }
 

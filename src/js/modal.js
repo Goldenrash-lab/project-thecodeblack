@@ -1,6 +1,7 @@
 // import { functions } from "lodash";
 import iconPath from '../images/icons.svg';
 import axios from 'axios';
+import iconsPath from '/src/images/icons.svg';
 
 const BASE_URL = 'https://food-boutique.b.goit.study/api/products';
 const modal = document.querySelector('.modal');
@@ -18,7 +19,7 @@ async function getProductsById(id) {
 const productsContainers = document.querySelectorAll(
   '.products__list, .discount__list, .popular__list'
 );
-
+let svg = null;
 productsContainers.forEach(container => {
   container.addEventListener('click', async e => {
     const isBuyBtn = e.target.closest('.products__item-link');
@@ -31,6 +32,7 @@ productsContainers.forEach(container => {
     const targetItem = e.target.closest(
       '.products__item, .discount__item, .popular__item'
     );
+    svg = targetItem;
     if (targetItem) {
       e.preventDefault();
       try {
@@ -72,12 +74,20 @@ function onModalOpen(productData) {
 
   const spanCasa = document.querySelector('.css-span-casa');
 
-  addToCartBtn.addEventListener('click', () => {
+  addToCartBtn.addEventListener('click', e => {
     const itemIndex = Object.keys(cartItems).indexOf(productId);
     if (itemIndex === -1) {
       cartItems[productId] = 1;
       addToCartBtn.querySelector('.modal__buy-btn-text').textContent =
         'Remove from';
+
+      // ____
+      svg = svg.querySelector('.products__item-svg');
+      svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
+      svg.classList.add('checked');
+      spanCasa.textContent = `Cart (${Object.keys(cartItems).length})`;
+
+      // ____
     } else {
       delete cartItems[productId];
       addToCartBtn.querySelector('.modal__buy-btn-text').textContent = 'Add to';

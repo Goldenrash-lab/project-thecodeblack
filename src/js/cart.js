@@ -2,6 +2,8 @@ import axios from 'axios';
 import '../../node_modules/modern-normalize/modern-normalize.css';
 import './templates/footer-validation';
 import './templates/footer-postApi';
+import './templates/cart-postApi';
+import './templates/cart-validation';
 
 // CART VALUE
 
@@ -30,7 +32,7 @@ const refs = {
 
 //достаём данные из local storage
 // const cartIdsData = localStorage.getItem('cartIds');
-// 
+//
 const cartIdsArray = loadToLS('cartIds');
 getCartProducts(cartIdsArray);
 
@@ -220,59 +222,6 @@ export function loadToLS(key) {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
   |============================
   | COUNTER
@@ -284,11 +233,11 @@ refs.productList.addEventListener('click', e => {
 
   if (target.classList.contains('counter__btn')) {
     const cartItem = target.closest('.product-item');
-    
+
     const counterValue = cartItem.querySelector('.counter__value');
     const counterAction = target.getAttribute('data-action');
     const id = cartItem.dataset.productid;
-   
+
     const localStorageItemParse = loadToLS('cartIds');
     let counter = parseInt(counterValue.textContent);
 
@@ -299,13 +248,11 @@ refs.productList.addEventListener('click', e => {
     }
 
     counterValue.textContent = counter;
-   
+
     if (Object.keys(localStorageItemParse).includes(id)) {
- 
       localStorageItemParse[id] = counter;
 
       saveToLS('cartIds', localStorageItemParse);
-      
     }
 
     recalculateTotalPrice();
@@ -313,14 +260,20 @@ refs.productList.addEventListener('click', e => {
 });
 
 function recalculateTotalPrice() {
-  const productsInCart = Array.from(refs.productList.querySelectorAll('.product-item'));
+  const productsInCart = Array.from(
+    refs.productList.querySelectorAll('.product-item')
+  );
 
   let totalPrice = 0;
   let totalCartQuantity = 0;
 
   productsInCart.forEach(productEl => {
-    const quantity = parseInt(productEl.querySelector('.counter__value').textContent);
-    const price = parseFloat(productEl.querySelector('.product-price').textContent.replace('$', ''));
+    const quantity = parseInt(
+      productEl.querySelector('.counter__value').textContent
+    );
+    const price = parseFloat(
+      productEl.querySelector('.product-price').textContent.replace('$', '')
+    );
     totalPrice += price * quantity;
 
     totalCartQuantity += quantity;
@@ -332,10 +285,6 @@ function recalculateTotalPrice() {
         <span class="key-span">Sum:</span>
         <span class="price-text">&#36;${totalPrice.toFixed(2)}</span>
     `;
-};
+}
 
-
-
-
-
-
+export { clickDeleteAllBtn };

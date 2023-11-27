@@ -184,18 +184,17 @@
   padding: 0;
   cursor: pointer;
 }
-.popular__item-link:hover {
+/* .popular__item-link:hover {
   background-color: var(--green-accent);
 }
 .popular__item-link:hover > :first-child {
   fill: var(--light-grey);
-}
+} */
 
 .popular__item-svg {
   fill: var(--green);
   width: 12px;
   height: 12px;
-  transition: fill 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .popular__item-box {

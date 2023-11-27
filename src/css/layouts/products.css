@@ -10,11 +10,12 @@
   gap: 20px;
 }
 .products__item {
+  cursor: pointer;
+
   max-width: 335px;
   padding: 20;
   background-color: var(--card-background);
   border-radius: 20px;
-
 }
 
 .products__item-inner {
@@ -136,6 +137,8 @@
   width: 275px;
 }
 .popular__item {
+  cursor: pointer;
+
   border-radius: 10px;
 
   display: flex;
@@ -256,6 +259,8 @@
 }
 
 .discount__item {
+  cursor: pointer;
+
   max-width: 335px;
   padding: 16px;
   background-color: var(--card-background);
@@ -471,28 +476,11 @@
     margin-bottom: 140px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.products__item,
+.popular__item,
+.discount__item {
+  transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 .products__item:hover,
 .popular__item:hover {
@@ -500,10 +488,7 @@
     0px 41.6px 46.475px 0px rgba(88, 111, 31, 0.04),
     0px 105.3px 124.67812px 0px rgba(88, 111, 31, 0.05),
     0px 208px 286px 0px rgba(88, 111, 31, 0.07);
-  transition: box-shadow 0.5s cubic-bezier(.4, 0, .2, 1);
 }
-
 .discount__item:hover {
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }

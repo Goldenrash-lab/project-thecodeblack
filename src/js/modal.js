@@ -35,7 +35,6 @@ productsContainers.forEach(container => {
       e.preventDefault();
       try {
         const productId = targetItem.dataset.id;
-        console.log(productId);
         const productData = await getProductsById(productId);
         onModalOpen(productData);
       } catch (error) {

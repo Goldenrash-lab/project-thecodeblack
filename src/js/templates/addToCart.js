@@ -28,9 +28,7 @@ function onProductsListCartClick(e) {
   } else {
     svg = e.target.closest('.products__item-svg');
   }
-
   const localStorageItemParse = loadToLS('cartIds');
-
   if (Object.keys(localStorageItemParse).includes(id)) {
     return;
   } else {

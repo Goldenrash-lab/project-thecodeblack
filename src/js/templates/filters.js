@@ -205,7 +205,16 @@ function renderOption(arr) {
 
 export function createProducts(arr) {
   return arr.map(el => {
-    const { category, img, name, popularity, price, size, _id } = el;
+    const {
+      category,
+      img,
+      name,
+      popularity,
+      price,
+      size,
+      _id,
+      is10PercentOff,
+    } = el;
 
     const cartId = loadToLS('cartIds');
 
@@ -219,8 +228,16 @@ export function createProducts(arr) {
               </svg>`;
     }
 
+    let discount = '';
+    if (is10PercentOff) {
+      discount = `<svg class="discount__item-svg" width="60" height="60">
+              <use href="${iconPath}#icon-discount"></use>
+            </svg>`;
+    }
+
     return `
-    <li class="products__item" data-id="${_id}">
+    <li class="products__item" data-id="${_id}">${discount}
+    
         <div class="products__item-inner">
           <img
             class="products__item-img"

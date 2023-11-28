@@ -11,7 +11,7 @@
 }
 .products__item {
   cursor: pointer;
-
+  position: relative;
   max-width: 335px;
   padding: 20;
   background-color: var(--card-background);

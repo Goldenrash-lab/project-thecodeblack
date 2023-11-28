@@ -33,6 +33,7 @@ productsContainers.forEach(container => {
       '.products__item, .discount__item, .popular__item'
     );
     svgNotClick = targetItem;
+
     if (targetItem) {
       e.preventDefault();
       try {
@@ -82,7 +83,7 @@ function onModalOpen(productData) {
         'Remove from';
 
       // ____
-      svg = svgNotClick.querySelector('.products__item-svg');
+      let svg = svgNotClick.querySelector('.products__item-svg');
       svg.innerHTML = `<use href="${iconsPath}#icon-check"></use>`;
       svg.classList.add('checked');
       spanCasa.textContent = `Cart (${Object.keys(cartItems).length})`;
@@ -92,7 +93,7 @@ function onModalOpen(productData) {
       delete cartItems[productId];
       addToCartBtn.querySelector('.modal__buy-btn-text').textContent = 'Add to';
       // _______
-      svg = svgNotClick.querySelector('.products__item-svg');
+      let svg = svgNotClick.querySelector('.products__item-svg');
       svg.innerHTML = `<use href="${iconsPath}#icon-cart-icon"></use>`;
       svg.classList.remove('checked');
       spanCasa.textContent = `Cart (${Object.keys(cartItems).length})`;
